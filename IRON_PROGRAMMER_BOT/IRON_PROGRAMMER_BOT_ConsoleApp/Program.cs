@@ -6,10 +6,10 @@ using Telegram.Bot.Types;
 
 class Program
 {
-    static void Main(string[] args)
+      static void Main(string[] args)
     {
         var telegramBotClient = new TelegramBotClient("7244274831:AAEKs7B6FHzqLBwWYc6nxv6xad6tUFImgnU");
-        telegramBotClient.StartReceiving(updateHandler:HandleUpdate,pollingErrorHandler: HandlePoolingError);
+        telegramBotClient.StartReceiving(updateHandler: HandleUpdate, pollingErrorHandler: HandlePoolingError);
     }
 
     private static async Task HandlePoolingError(ITelegramBotClient client, Exception exception, CancellationToken token)
@@ -21,5 +21,7 @@ class Program
     {
         throw new NotImplementedException();
     }
+
+
 }
 
