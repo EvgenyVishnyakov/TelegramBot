@@ -3,6 +3,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.ReplyMarkups;
+using static System.Net.WebRequestMethods;
 
 class Program
 {
@@ -36,6 +38,23 @@ class Program
                 chatId: chatId,
                 text: $"Бот ответит вам: \t {text}",
                 replyToMessageId: messageId);
+
+            //кнопка в меню
+            await client.SendTextMessageAsync(
+                chatId: chatId,
+                text: $"Бот ответит вам: \t {text}",
+                replyMarkup: new ReplyKeyboardMarkup( new KeyboardButton("Кнопка 1"))
+                {
+                    ResizeKeyboard = true,
+                }
+                );
+
+            //кнопка в тексте
+            await client.SendTextMessageAsync(
+                chatId: chatId,
+                text: $"Бот ответит вам: \t {text}",
+                replyMarkup: new InlineKeyboardMarkup(new InlineKeyboardButton("Кнопка 1") {Url = "https://www.youtube.com/" }) 
+                );
 
         }
     }
