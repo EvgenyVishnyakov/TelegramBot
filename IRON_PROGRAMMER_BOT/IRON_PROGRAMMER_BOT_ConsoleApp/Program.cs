@@ -25,39 +25,40 @@ class Program
         if (update.Message?.Text != null)
         {
             var data = update.Message.Text.Split();
-            if (data[0] == "/buttons" && data.Length == 3)
+            if (data[0] == "/inline_buttons" && data.Length == 3)
             {
                 var first_size = int.Parse(data[1]);
                 var second_size = int.Parse(data[2]);
 
-                var buttons = GetButtons(first_size, second_size);
+                var buttons = GetInlineButtons(first_size, second_size);
 
                 var chatId = update.Message.Chat.Id;
                 var text = update.Message.Text;
                 var messageId = update.Message.MessageId;
 
                 await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
-    replyMarkup: new InlineKeyboardMarkup(new InlineKeyboardButton("Кнопка1") { Url = "https://core.telegram.org/bots/api#inlinekeyboardbutton" }));
+                        replyMarkup: new InlineKeyboardMarkup(buttons));
 
-                //await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}", replyToMessageId: messageId);
             }
-
-
         }
     }
 
-    private static List<List<KeyboardButton>> GetButtons(int first_size, int second_size)
+    private static List<List<InlineKeyboardButton>> GetInlineButtons(int first_size, int second_size)
     {
-        var buttons = new List<List<KeyboardButton>>();
+        var buttons = new List<List<InlineKeyboardButton>>();
 
         var counterButtons = 1;
 
         for (int i = 0; i < first_size; i++)
         {
-            var row = new List<KeyboardButton>();
+            var row = new List<InlineKeyboardButton>();
             for (int j = 0; j < second_size; j++)
             {
-                row.Add(new KeyboardButton(counterButtons.ToString()));
+                row.Add(new InlineKeyboardButton(counterButtons.ToString())
+                {
+                    CallbackData = "Успешно"
+                }
+                );
                 counterButtons++;
             }
             buttons.Add(row);
