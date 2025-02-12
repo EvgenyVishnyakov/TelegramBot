@@ -45,7 +45,6 @@ class Program
 
             }
         }
-
     }
 
     private static List<List<KeyboardButton>> GetReplayButtons(int first_size, int second_size)
@@ -72,7 +71,5 @@ class Program
     {
         Console.WriteLine(exception.Message);
     }
-
-
 }
 
