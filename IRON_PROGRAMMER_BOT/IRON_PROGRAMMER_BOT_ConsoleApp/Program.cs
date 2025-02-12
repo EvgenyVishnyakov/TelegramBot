@@ -30,24 +30,23 @@ class Program
                 var first_size = int.Parse(data[1]);
                 var second_size = int.Parse(data[2]);
 
-                var buttons = GetReplayButtons(first_size, second_size);
+                var buttons = GetButtons(first_size, second_size);
 
                 var chatId = update.Message.Chat.Id;
                 var text = update.Message.Text;
                 var messageId = update.Message.MessageId;
 
                 await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
-                    replyMarkup: new ReplyKeyboardMarkup(buttons)
+    replyMarkup: new InlineKeyboardMarkup(new InlineKeyboardButton("Кнопка1") { Url = "https://core.telegram.org/bots/api#inlinekeyboardbutton" }));
 
-                    {
-                        ResizeKeyboard = true
-                    });
-
+                //await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}", replyToMessageId: messageId);
             }
+
+
         }
     }
 
-    private static List<List<KeyboardButton>> GetReplayButtons(int first_size, int second_size)
+    private static List<List<KeyboardButton>> GetButtons(int first_size, int second_size)
     {
         var buttons = new List<List<KeyboardButton>>();
 
