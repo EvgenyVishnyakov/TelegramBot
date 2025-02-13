@@ -21,48 +21,48 @@ class Program
 
     private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
-
-        var data = update.Message.Text.Split();
-        var chatId = update.Message.Chat.Id;
-        if (data[0] == "/photo" && data.Length == 2)
+        if (update.Message?.Text != null)
         {
-            if (data.Length == 2)
+            var data = update.Message.Text.Split();
+            var chatId = update.Message.Chat.Id;
+            if (data[0] == "/photo" && data.Length == 2)
             {
-                var pathPhoto = data[1];
+                if (data.Length == 2)
+                {
+                    var pathPhoto = data[1];
 
 
-                var text = update.Message.Text;
-                var messageId = update.Message.MessageId;
+                    var text = update.Message.Text;
+                    var messageId = update.Message.MessageId;
 
-                await client.SendPhotoAsync(
-                    chatId: chatId,
-                    InputFile.FromUri(pathPhoto),
-                    caption: "Вот ваша фотка"
-                    );
-            }
-            else
-            {
-                var listPhoto = new string[]{
+                    await client.SendPhotoAsync(
+                        chatId: chatId,
+                        InputFile.FromUri(pathPhoto),
+                        caption: "Вот ваша фотка"
+                        );
+                }
+                else
+                {
+                    var listPhoto = new string[]{
                     "Фото1.jpg",
                     "Фото2.jpg",
                     "Фото3.jpg",
                     "Фото4.png"
                 };
-                var random = new Random();
-                var photoIndex = random.Next(listPhoto.Length);
+                    var random = new Random();
+                    var photoIndex = random.Next(listPhoto.Length);
 
-                using (var file = new FileStream($@"\Images\{listPhoto[photoIndex]}", FileMode.Open, FileAccess.Read))
-                {
-                    await client.SendPhotoAsync(
-                        chatId: chatId,
-                        InputFile.FromStream(file),
-                        caption: listPhoto[photoIndex]
-                        );
+                    using (var file = new FileStream($@"\Images\{listPhoto[photoIndex]}", FileMode.Open, FileAccess.Read))
+                    {
+                        await client.SendPhotoAsync(
+                            chatId: chatId,
+                            InputFile.FromStream(file),
+                            caption: listPhoto[photoIndex]
+                            );
+                    }
                 }
             }
-
         }
-
     }
 
 
