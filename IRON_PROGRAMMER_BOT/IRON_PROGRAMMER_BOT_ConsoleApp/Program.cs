@@ -25,12 +25,11 @@ class Program
         {
             var data = update.Message.Text.Split();
             var chatId = update.Message.Chat.Id;
-            if (data[0] == "/photo" && data.Length == 2)
+            if (data[0] == "/photo")
             {
                 if (data.Length == 2)
                 {
                     var pathPhoto = data[1];
-
 
                     var text = update.Message.Text;
                     var messageId = update.Message.MessageId;
@@ -43,16 +42,11 @@ class Program
                 }
                 else
                 {
-                    var listPhoto = new string[]{
-                    "Фото1.jpg",
-                    "Фото2.jpg",
-                    "Фото3.jpg",
-                    "Фото4.png"
-                };
+                    var listPhoto = GetListPhoto();
                     var random = new Random();
                     var photoIndex = random.Next(listPhoto.Length);
 
-                    using (var file = new FileStream($@"\Images\{listPhoto[photoIndex]}", FileMode.Open, FileAccess.Read))
+                    using (var file = new FileStream($@"Images\{listPhoto[photoIndex]}", FileMode.Open, FileAccess.Read))
                     {
                         await client.SendPhotoAsync(
                             chatId: chatId,
@@ -65,6 +59,15 @@ class Program
         }
     }
 
+    private static string[] GetListPhoto()
+    {
+        return new string[]{
+                    "Фото1.jpg",
+                    "Фото2.jpg",
+                    "Фото3.jpg",
+                    "Фото4.png"
+                };
+    }
 
     private static async Task HandlePollingError(ITelegramBotClient client, Exception exception, CancellationToken token)
     {
