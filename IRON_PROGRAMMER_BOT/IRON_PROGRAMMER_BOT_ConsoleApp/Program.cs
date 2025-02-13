@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.ReplyMarkups;
 
 class Program
 {
@@ -22,50 +21,50 @@ class Program
 
     private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
-        if (update.Message?.Text != null)
+
+        var data = update.Message.Text.Split();
+        var chatId = update.Message.Chat.Id;
+        if (data[0] == "/photo" && data.Length == 2)
         {
-            var data = update.Message.Text.Split();
-            if (data[0] == "/inline_buttons" && data.Length == 3)
+            if (data.Length == 2)
             {
-                var first_size = int.Parse(data[1]);
-                var second_size = int.Parse(data[2]);
+                var pathPhoto = data[1];
 
-                var buttons = GetInlineButtons(first_size, second_size);
 
-                var chatId = update.Message.Chat.Id;
                 var text = update.Message.Text;
                 var messageId = update.Message.MessageId;
 
-                await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
-                        replyMarkup: new InlineKeyboardMarkup(buttons));
-
+                await client.SendPhotoAsync(
+                    chatId: chatId,
+                    InputFile.FromUri(pathPhoto),
+                    caption: "Вот ваша фотка"
+                    );
             }
-        }
-    }
-
-    private static List<List<InlineKeyboardButton>> GetInlineButtons(int first_size, int second_size)
-    {
-        var buttons = new List<List<InlineKeyboardButton>>();
-
-        var counterButtons = 1;
-
-        for (int i = 0; i < first_size; i++)
-        {
-            var row = new List<InlineKeyboardButton>();
-            for (int j = 0; j < second_size; j++)
+            else
             {
-                row.Add(new InlineKeyboardButton(counterButtons.ToString())
+                var listPhoto = new string[]{
+                    "Фото1.jpg",
+                    "Фото2.jpg",
+                    "Фото3.jpg",
+                    "Фото4.png"
+                };
+                var random = new Random();
+                var photoIndex = random.Next(listPhoto.Length);
+
+                using (var file = new FileStream($@"\Images\{listPhoto[photoIndex]}", FileMode.Open, FileAccess.Read))
                 {
-                    CallbackData = "Успешно"
+                    await client.SendPhotoAsync(
+                        chatId: chatId,
+                        InputFile.FromStream(file),
+                        caption: listPhoto[photoIndex]
+                        );
                 }
-                );
-                counterButtons++;
             }
-            buttons.Add(row);
+
         }
 
-        return buttons;
     }
+
 
     private static async Task HandlePollingError(ITelegramBotClient client, Exception exception, CancellationToken token)
     {
