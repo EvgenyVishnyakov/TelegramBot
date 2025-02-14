@@ -21,6 +21,11 @@ class Program
 
     private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
+
+
+
+
+
         if (update.Message?.Text != null)
         {
             var data = update.Message.Text.Split();
