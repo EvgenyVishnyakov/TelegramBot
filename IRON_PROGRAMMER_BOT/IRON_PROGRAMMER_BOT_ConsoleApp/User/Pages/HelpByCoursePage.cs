@@ -6,7 +6,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     public class HelpByCoursePage : IPage
     {
 
-        public PageResult Handle(Update update, UserState userState)
+        public PageResult View(Update update, UserState userState)
         {
             var text = @"Онлайн консультация!
 
@@ -28,9 +28,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             };
         }
 
-        public PageResult View(Update update, UserState userState)
+        public PageResult Handle(Update update, UserState userState)
         {
-            throw new System.NotImplementedException();
+            //if (update.Message == null)
+            //    return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
+            //if (update.Message.Text == "Назад")
+            //{
+            //    return new StartPage().Handle(update, userState);
+            //}
+            return null;
         }
 
         private ReplyKeyboardMarkup GetReplyKeyboard()

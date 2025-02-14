@@ -30,18 +30,18 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
             if (update.Message.Text == "Нужна помощь по курсу")
             {
-                return new HelpByCoursePage().Handle(update, userState);
+                return new HelpByCoursePage().View(update, userState);
             }
 
-            //if (update.Message.Text == "Узнать у курсах")
-            //{
-            //    return new InfoByCoursePage().View(update, userState);
-            //}
+            if (update.Message.Text == "Узнать у курсах")
+            {
+                return new InfoByCoursePage().View(update, userState);
+            }
 
-            //if (update.Message.Text == "Позвать менеджера")
-            //{
-            //    return new ConnectWithManagerPage().View(update, userState);
-            //}
+            if (update.Message.Text == "Позвать менеджера")
+            {
+                return new ConnectWithManagerPage().View(update, userState);
+            }
 
             return null;
         }
