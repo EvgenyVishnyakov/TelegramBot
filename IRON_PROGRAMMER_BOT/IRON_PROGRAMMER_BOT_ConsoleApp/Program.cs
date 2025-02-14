@@ -39,40 +39,38 @@ class Program
                         await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали неверные числовые данные");
                 }
             }
-        }
-
-
-        if (update.Message?.Text != null)
-        {
-            var data = update.Message.Text.Split();
-            if (data[0] == "/inline_buttons" && data.Length == 3)
+            if (update.Message.Text.StartsWith("/inline_buttons"))
             {
-                var first_size = int.Parse(data[1]);
-                var second_size = int.Parse(data[2]);
+                var data = update.Message.Text.Split();
+                if (data.Length == 3)
+                {
+                    long chatId;
+                    string text;
+                    GetDataBYMessage(update, out chatId, out text);
 
-                var buttons = GetInlineButtons(first_size, second_size);
-
-                var chatId = update.Message.Chat.Id;
-                var text = update.Message.Text;
-                var messageId = update.Message.MessageId;
-
-                await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
-                        replyMarkup: new InlineKeyboardMarkup(buttons));
-
+                    if (int.TryParse(data[1], out var countRows) && int.TryParse(data[2], out var countColumns))
+                    {
+                        var buttons = GetInlineButtons(countRows, countColumns);
+                        await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
+                            replyMarkup: new InlineKeyboardMarkup(buttons));
+                    }
+                    else
+                        await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали неверные числовые данные");
+                }
             }
         }
     }
 
-    private static List<List<InlineKeyboardButton>> GetInlineButtons(int first_size, int second_size)
+    private static List<List<InlineKeyboardButton>> GetInlineButtons(int countRows, int countColumns)
     {
         var buttons = new List<List<InlineKeyboardButton>>();
 
         var counterButtons = 1;
 
-        for (int i = 0; i < first_size; i++)
+        for (int i = 0; i < countRows; i++)
         {
             var row = new List<InlineKeyboardButton>();
-            for (int j = 0; j < second_size; j++)
+            for (int j = 0; j < countColumns; j++)
             {
                 row.Add(new InlineKeyboardButton(counterButtons.ToString())
                 {
@@ -104,16 +102,16 @@ class Program
         var messageId = update.Message.MessageId;
     }
 
-    private static List<List<KeyboardButton>> GetReplayButtons(int first_size, int second_size)
+    private static List<List<KeyboardButton>> GetReplayButtons(int countRows, int countColumns)
     {
         var buttons = new List<List<KeyboardButton>>();
 
         var buttonsCounter = 1;
 
-        for (int i = 0; i < first_size; i++)
+        for (int i = 0; i < countRows; i++)
         {
             var row = new List<KeyboardButton>();
-            for (int j = 0; j < second_size; j++)
+            for (int j = 0; j < countColumns; j++)
             {
                 row.Add(new KeyboardButton(buttonsCounter.ToString()));
                 buttonsCounter++;
@@ -128,5 +126,5 @@ class Program
         Console.WriteLine(exception.Message);
     }
 }
-}
+
 
