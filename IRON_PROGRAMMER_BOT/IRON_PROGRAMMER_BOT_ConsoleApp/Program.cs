@@ -87,9 +87,46 @@ class Program
         return buttons;
     }
 
+    private static async Task GetReplyUserButtons(ITelegramBotClient client, long chatId, string text, int countRows, int countColumns)
+    {
+        var buttons = GetReplayButtons(countRows, countColumns);
+        await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
+            replyMarkup: new ReplyKeyboardMarkup(buttons)
+            {
+                ResizeKeyboard = true
+            });
+    }
+
+    private static void GetDataBYMessage(Update update, out long chatId, out string text)
+    {
+        chatId = update.Message.Chat.Id;
+        text = update.Message.Text;
+        var messageId = update.Message.MessageId;
+    }
+
+    private static List<List<KeyboardButton>> GetReplayButtons(int first_size, int second_size)
+    {
+        var buttons = new List<List<KeyboardButton>>();
+
+        var buttonsCounter = 1;
+
+        for (int i = 0; i < first_size; i++)
+        {
+            var row = new List<KeyboardButton>();
+            for (int j = 0; j < second_size; j++)
+            {
+                row.Add(new KeyboardButton(buttonsCounter.ToString()));
+                buttonsCounter++;
+            }
+            buttons.Add(row);
+        }
+        return buttons;
+    }
+
     private static async Task HandlePollingError(ITelegramBotClient client, Exception exception, CancellationToken token)
     {
         Console.WriteLine(exception.Message);
     }
+}
 }
 
