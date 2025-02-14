@@ -9,8 +9,8 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var telegramBotClient = new TelegramBotClient("7239844885:AAHDJcHRUexZj1FtxlTPlI7-XoeFN7yByxg");
-
+        string paramBot = Environment.GetEnvironmentVariable("paramBot")!;
+        var telegramBotClient = new TelegramBotClient(paramBot);
         var user = await telegramBotClient.GetMeAsync();
         Console.WriteLine($"Начали слушать updates {user.Username}");
 
