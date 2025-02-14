@@ -12,7 +12,6 @@ class Program
     {
         string paramBot = Environment.GetEnvironmentVariable("paramBot")!;
         var telegramBotClient = new TelegramBotClient(paramBot);
-
         var user = await telegramBotClient.GetMeAsync();
         Console.WriteLine($"Начали слушать updates {user.Username}");
 
@@ -23,6 +22,7 @@ class Program
 
     private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
+
         if (update.Message?.Text != null)
         {
             if (update.Message.Text.StartsWith("/buttons"))
@@ -39,7 +39,50 @@ class Program
                         await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали неверные числовые данные");
                 }
             }
+            if (update.Message.Text.StartsWith("/inline_buttons"))
+            {
+                var data = update.Message.Text.Split();
+                if (data.Length == 3)
+                {
+                    long chatId;
+                    string text;
+                    GetDataBYMessage(update, out chatId, out text);
+
+                    if (int.TryParse(data[1], out var countRows) && int.TryParse(data[2], out var countColumns))
+                    {
+                        var buttons = GetInlineButtons(countRows, countColumns);
+                        await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали: \n {text}",
+                            replyMarkup: new InlineKeyboardMarkup(buttons));
+                    }
+                    else
+                        await client.SendTextMessageAsync(chatId: chatId, text: $"Вы прислали неверные числовые данные");
+                }
+            }
         }
+    }
+
+    private static List<List<InlineKeyboardButton>> GetInlineButtons(int countRows, int countColumns)
+    {
+        var buttons = new List<List<InlineKeyboardButton>>();
+
+        var counterButtons = 1;
+
+        for (int i = 0; i < countRows; i++)
+        {
+            var row = new List<InlineKeyboardButton>();
+            for (int j = 0; j < countColumns; j++)
+            {
+                row.Add(new InlineKeyboardButton(counterButtons.ToString())
+                {
+                    CallbackData = "Успешно"
+                }
+                );
+                counterButtons++;
+            }
+            buttons.Add(row);
+        }
+
+        return buttons;
     }
 
     private static async Task GetReplyUserButtons(ITelegramBotClient client, long chatId, string text, int countRows, int countColumns)
@@ -83,4 +126,5 @@ class Program
         Console.WriteLine(exception.Message);
     }
 }
+
 
