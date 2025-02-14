@@ -59,16 +59,16 @@ class Program
         var messageId = update.Message.MessageId;
     }
 
-    private static List<List<KeyboardButton>> GetReplayButtons(int first_size, int second_size)
+    private static List<List<KeyboardButton>> GetReplayButtons(int countRows, int countColumns)
     {
         var buttons = new List<List<KeyboardButton>>();
 
         var buttonsCounter = 1;
 
-        for (int i = 0; i < first_size; i++)
+        for (int i = 0; i < countRows; i++)
         {
             var row = new List<KeyboardButton>();
-            for (int j = 0; j < second_size; j++)
+            for (int j = 0; j < countColumns; j++)
             {
                 row.Add(new KeyboardButton(buttonsCounter.ToString()));
                 buttonsCounter++;
