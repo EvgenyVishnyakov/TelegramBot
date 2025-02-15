@@ -1,4 +1,5 @@
-﻿using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
+﻿using IRON_PROGRAMMER_BOT_ConsoleApp.Services;
+using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
@@ -13,11 +14,11 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 ссылку на задачу 
 ссылку на Ваше решение
 Ваш вопрос";
-            var photoUrl = "https://drive.google.com/uc?export=download&id=1uCk5Z4o-PFPM1Pv1oike9YX5GwR7r4vA";
 
+            var path = "Resourses//Photos//Фото ИИ.jpg";
             var replyMarkup = GetReplyKeyboard();
-
-            return new PhotoPageResult(InputFile.FromUri(photoUrl), text, replyMarkup)
+            var resource = ResourcesService.GetResource(path);
+            return new PhotoPageResult(resource, text, replyMarkup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };

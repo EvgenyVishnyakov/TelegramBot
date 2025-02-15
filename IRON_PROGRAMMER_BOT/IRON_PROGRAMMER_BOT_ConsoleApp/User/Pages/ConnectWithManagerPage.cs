@@ -1,4 +1,5 @@
-﻿using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
+﻿using IRON_PROGRAMMER_BOT_ConsoleApp.Services;
+using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
@@ -14,9 +15,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 Спасибо за Ваш интерес!";
 
             var replyMarkup = GetReplyKeyboard();
-            var photoUrl = "https://drive.google.com/uc?export=download&id=1ydLVXSDrLnN4v8bC6HLdKZ9XITl2jYVc";
-
-            return new PhotoPageResult(InputFile.FromUri(photoUrl), text, replyMarkup)
+            var path = "Resourses//Photos//Обратная связь.png";
+            var resource = ResourcesService.GetResource(path);
+            return new PhotoPageResult(resource, text, replyMarkup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };
