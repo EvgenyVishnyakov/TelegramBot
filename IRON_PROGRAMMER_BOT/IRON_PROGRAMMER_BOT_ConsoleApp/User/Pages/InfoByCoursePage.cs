@@ -22,7 +22,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             if (update.Message == null)
                 return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "/back {StartPage}")
+            if (update.CallbackQuery.Data == "/back {StartPage}")
             {
                 return new StartPage().View(update, userState);
             }
@@ -41,6 +41,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 ResizeKeyboard = true
             };
         }
+
 
         private InlineKeyboardMarkup GetMarkup()
         {
