@@ -10,10 +10,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             var text = @"Информация о курсах!
 Вы можете перейти на страницу школы IRON PROGRAMMER";
-            var markup = GetMarkup();
-            var replyMarkup = GetReplyKeyboard();
+            var replyMarkup = GetKeyboard();
 
-            return new PageResultBase(text, markup)
+            return new PageResultBase(text, replyMarkup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };
@@ -21,39 +20,25 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.Message == null)
-                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "/back {StartPage}")
+            if (update.CallbackQuery == null)
+                return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+            if (update.CallbackQuery.Data == "Назад")
             {
                 return new StartPage().View(update, userState);
             }
             return null;
         }
 
-        private ReplyKeyboardMarkup GetReplyKeyboard()
+        private InlineKeyboardMarkup GetKeyboard()
         {
-            return new ReplyKeyboardMarkup(
-                [
-                    [
-                        new KeyboardButton("Назад")
-                    ]
-                ])
-            {
-                ResizeKeyboard = true
-            };
-        }
 
-
-        private InlineKeyboardMarkup GetMarkup()
-        {
+            var button1 = InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109");
+            var button2 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
             return new InlineKeyboardMarkup(new[]
-            {
-        new[]
-        {
-            InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109"),
-            InlineKeyboardButton.WithCallbackData("Назад", "/back {StartPage}")
-        }
-    });
+    {
+        new[] { button1 },
+        new[] { button2 }
+        });
         }
     }
 }

@@ -15,8 +15,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 ссылку на Ваше решение
 Ваш вопрос";
 
-            var path = "Resourses//Photos//Фото ИИ.jpg";
-            var replyMarkup = GetReplyKeyboard();
+            var path = "Resources//Photos//Фото ИИ.jpg";
+            var replyMarkup = GetKeyboard();
             var resource = ResourcesService.GetResource(path);
             return new PhotoPageResult(resource, text, replyMarkup)
             {
@@ -26,26 +26,22 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.Message == null)
-                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "Назад")
+            if (update.CallbackQuery == null)
+                return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+            if (update.CallbackQuery.Data == "Назад")
             {
                 return new HelpByCoursePage().View(update, userState);
             }
             return null;
         }
 
-        private ReplyKeyboardMarkup GetReplyKeyboard()
+        private InlineKeyboardMarkup GetKeyboard()
         {
-            return new ReplyKeyboardMarkup(
-                [
-                    [
-                        new KeyboardButton("Назад")
-                    ]
-                ])
-            {
-                ResizeKeyboard = true
-            };
+            var button1 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
+            return new InlineKeyboardMarkup(new[]
+    {
+        new[] { button1 }
+        });
         }
     }
 }

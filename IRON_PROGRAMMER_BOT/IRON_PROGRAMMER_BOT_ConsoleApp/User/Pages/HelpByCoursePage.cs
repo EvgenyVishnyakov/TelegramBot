@@ -21,8 +21,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
 Совет: спрашивай общее направление, пытайся до глубины задачи дойти сам!
 Успехов!";
-            var path = "Resourses//Videos//ИИ.mp4";
-            var replyMarkup = GetReplyKeyboard();
+            var path = "Resources\\Videos\\ИИ.mp4";
+            var replyMarkup = GetKeyboard();
             var resource = ResourcesService.GetResource(path);
             return new VideoPageResult(resource, text, replyMarkup)
             {
@@ -32,17 +32,17 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.Message == null)
-                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "Назад")
+            if (update.CallbackQuery == null)
+                return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+            if (update.CallbackQuery.Data == "Назад")
             {
                 return new StartPage().View(update, userState);
             }
-            if (update.Message.Text == "Общий вопрос по изучаемой теме")
+            if (update.CallbackQuery.Data == "CommonQuestionsPage")
             {
                 return new CommonQuestionsPage().View(update, userState);
             }
-            if (update.Message.Text == "Вопрос по конкретной задаче")
+            if (update.CallbackQuery.Data == "ResolveTaskPage")
             {
                 return new ResolveTaskPage().View(update, userState);
             }
@@ -50,23 +50,18 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             return null;
         }
 
-        private ReplyKeyboardMarkup GetReplyKeyboard()
+        private InlineKeyboardMarkup GetKeyboard()
         {
-            return new ReplyKeyboardMarkup(
-                [
-                    [
-                        new KeyboardButton("Общий вопрос по изучаемой теме")
-                    ],
-                    [
-                        new KeyboardButton("Вопрос по конкретной задаче")
-                    ],
-                    [
-                        new KeyboardButton("Назад")
-                    ]
-                ])
-            {
-                ResizeKeyboard = true
-            };
+            var button1 = InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", "CommonQuestionsPage");
+            var button2 = InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", "ResolveTaskPage");
+            var button3 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
+
+            return new InlineKeyboardMarkup(new[]
+    {
+        new[] { button1 },
+        new[] { button2 },
+        new[] {button3 }
+        });
         }
     }
 }

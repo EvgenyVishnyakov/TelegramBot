@@ -14,8 +14,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 Мы вернемся с обратной связью в ближайшее время!
 Спасибо за Ваш интерес!";
 
-            var replyMarkup = GetReplyKeyboard();
-            var path = "Resourses//Photos//Обратная связь.png";
+            var replyMarkup = GetKeyboard();
+            var path = "Resources//Photos//Обратная связь.png";
             var resource = ResourcesService.GetResource(path);
             return new PhotoPageResult(resource, text, replyMarkup)
             {
@@ -25,33 +25,29 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.Message == null)
-                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "Назад")
+            if (update.CallbackQuery == null)
+                return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+            if (update.CallbackQuery.Data == "Назад")
             {
                 return new StartPage().View(update, userState);
             }
-            if (update.Message.Text == "Отправить вопрос")//реализовать следующий переход к распределению вопроса
+            if (update.CallbackQuery.Data == "sendQuastion")//реализовать следующий переход к распределению вопроса
             {
                 return new StartPage().View(update, userState);
             }
             return null;
         }
 
-        private ReplyKeyboardMarkup GetReplyKeyboard()
+        private InlineKeyboardMarkup GetKeyboard()
         {
-            return new ReplyKeyboardMarkup(
-                [
-                    [
-                        new KeyboardButton("Отправить вопрос")
-                    ],
-                    [
-                        new KeyboardButton("Назад")
-                    ]
-                ])
-            {
-                ResizeKeyboard = true
-            };
+            var button1 = InlineKeyboardButton.WithCallbackData("Отправить вопрос", "sendQuastion");
+
+            var button2 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
+
+            return new InlineKeyboardMarkup(new[]
+    {
+        new[] { button1, button2 }
+        });
         }
     }
 }

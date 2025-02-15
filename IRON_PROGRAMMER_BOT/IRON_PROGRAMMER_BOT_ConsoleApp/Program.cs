@@ -7,6 +7,7 @@ using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 class Program
 {
@@ -25,13 +26,12 @@ class Program
 
     private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
-
-        if (update.Message == null)
+        if (GetTypeUpdate(update))
         {
             return;
         }
 
-        var telegramUserId = update.Message.From.Id;
+        long telegramUserId = GetUserId(update);
         Console.WriteLine($"updateId={update.Id}, telegramUserId={telegramUserId}");
 
         var isExistUserState = stateStorage.TryGet(telegramUserId, out var userState);
@@ -47,6 +47,44 @@ class Program
         await GetUpdate(client, telegramUserId, result);
 
         stateStorage.AddOrUpdate(telegramUserId, result.UpdatedUserState);
+    }
+
+    private static bool GetTypeUpdate(Update update)
+    {
+        switch (update.Type)
+        {
+            case UpdateType.Message:
+                {
+                    return update.Message == null;
+                }
+            case UpdateType.CallbackQuery:
+                {
+                    return update.CallbackQuery == null;
+                }
+            default:
+                {
+                    throw new Exception("Неподдерживаемый тип обновления.");
+                }
+        }
+    }
+
+    private static long GetUserId(Update update)
+    {
+        switch (update.Type)
+        {
+            case UpdateType.Message:
+                {
+                    return update.Message.Chat.Id;
+                }
+            case UpdateType.CallbackQuery:
+                {
+                    return update.CallbackQuery.Message.Chat.Id;
+                }
+            default:
+                {
+                    throw new Exception("Неподдерживаемый тип обновления.");
+                }
+        }
     }
 
     private static async Task GetUpdate(ITelegramBotClient client, long telegramUserId, PageResultBase result)

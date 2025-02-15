@@ -17,7 +17,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 Хочешь узнать о курсах или получить консультацию от наших специалистов?
 Нажми одну из кнопок ниже, выбирай направление - я отвечу и помогу тебе😉";
 
-            var replyMarkup = GetReplyKeyboard();
+            var replyMarkup = GetKeyboard();
 
             return new PageResultBase(text, replyMarkup)
             {
@@ -27,19 +27,19 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.Message == null)
-                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "Нужна помощь по курсу")
+            if (update.CallbackQuery == null)
+                return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+            if (update.CallbackQuery.Data == "HelpByCoursePage")
             {
                 return new HelpByCoursePage().View(update, userState);
             }
 
-            if (update.Message.Text == "Узнать о курсах")
+            if (update.CallbackQuery.Data == "InfoByCoursePage")
             {
                 return new InfoByCoursePage().View(update, userState);
             }
 
-            if (update.Message.Text == "Позвать менеджера")
+            if (update.CallbackQuery.Data == "ConnectWithManagerPage")
             {
                 return new ConnectWithManagerPage().View(update, userState);
             }
@@ -47,23 +47,17 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             return null;
         }
 
-        private ReplyKeyboardMarkup GetReplyKeyboard()
+        private InlineKeyboardMarkup GetKeyboard()
         {
-            return new ReplyKeyboardMarkup(
-                [
-                    [
-                        new KeyboardButton("Нужна помощь по курсу")
-                    ],
-                    [
-                        new KeyboardButton("Узнать о курсах")
-                    ],
-                    [
-                        new KeyboardButton("Позвать менеджера")
-                    ]
-                ])
-            {
-                ResizeKeyboard = true
-            };
+            var button1 = InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage");
+            var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage");
+            var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage");
+
+            return new InlineKeyboardMarkup(new[]
+    {
+        new[] { button1 },
+        new[] { button2, button3 }
+        });
         }
     }
 }
