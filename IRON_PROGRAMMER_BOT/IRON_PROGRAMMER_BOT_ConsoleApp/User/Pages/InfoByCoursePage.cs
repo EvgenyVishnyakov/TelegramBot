@@ -1,4 +1,5 @@
-﻿using Telegram.Bot.Types;
+﻿using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
@@ -22,7 +23,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             if (update.Message == null)
                 return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.CallbackQuery.Data == "/back {StartPage}")
+            if (update.Message.Text == "/back {StartPage}")
             {
                 return new StartPage().View(update, userState);
             }

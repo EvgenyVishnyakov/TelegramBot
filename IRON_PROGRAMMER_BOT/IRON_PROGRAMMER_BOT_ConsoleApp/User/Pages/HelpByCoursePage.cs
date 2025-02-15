@@ -1,4 +1,5 @@
-﻿using Telegram.Bot.Types;
+﻿using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
@@ -19,12 +20,10 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
 Совет: спрашивай общее направление, пытайся до глубины задачи дойти сам!
 Успехов!";
-
-            var photoUrl = "https://drive.google.com/uc?export=download&id=1uCk5Z4o-PFPM1Pv1oike9YX5GwR7r4vA";
-
+            var videoUrl = "https://drive.google.com/uc?export=download&id=1zLn8xYgNdAcvBH9P9sHRpsvzZYi1hETJ";
             var replyMarkup = GetReplyKeyboard();
 
-            return new PhotoPageResult(InputFile.FromUri(photoUrl), text, replyMarkup)
+            return new VideoPageResult(InputFile.FromUri(videoUrl), text, replyMarkup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };

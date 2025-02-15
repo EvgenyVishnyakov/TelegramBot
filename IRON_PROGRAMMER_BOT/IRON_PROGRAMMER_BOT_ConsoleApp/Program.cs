@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Storage;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages;
+using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 
@@ -58,6 +59,30 @@ class Program
                     photo: photoPageResult.Photo,
                     caption: photoPageResult.Text,
                     replyMarkup: photoPageResult.ReplyMarkup
+                    );
+                break;
+            case VideoPageResult videoPageResult:
+                await client.SendVideoAsync(
+                    chatId: telegramUserId,
+                    video: videoPageResult.Video,
+                    caption: videoPageResult.Text,
+                    replyMarkup: videoPageResult.ReplyMarkup
+                    );
+                break;
+            case AudioPageResult audioPageResult:
+                await client.SendAudioAsync(
+                    chatId: telegramUserId,
+                    audio: audioPageResult.Audio,
+                    caption: audioPageResult.Text,
+                    replyMarkup: audioPageResult.ReplyMarkup
+                    );
+                break;
+            case DocumentPageResult documentPageResult:
+                await client.SendDocumentAsync(
+                    chatId: telegramUserId,
+                    document: documentPageResult.Document,
+                    caption: documentPageResult.Text,
+                    replyMarkup: documentPageResult.ReplyMarkup
                     );
                 break;
             default:

@@ -1,7 +1,7 @@
 ﻿using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
+namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult
 {
     public class PhotoPageResult : PageResultBase
     {
