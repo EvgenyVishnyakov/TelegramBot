@@ -30,12 +30,21 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResult Handle(Update update, UserState userState)
         {
-            //if (update.Message == null)
-            //    return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            //if (update.Message.Text == "Назад")
-            //{
-            //    return new StartPage().Handle(update, userState);
-            //}
+            if (update.Message == null)
+                return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
+            if (update.Message.Text == "Назад")
+            {
+                return new StartPage().View(update, userState);
+            }
+            if (update.Message.Text == "Общий вопрос по изучаемой теме")
+            {
+                return new CommonQuestionsPage().View(update, userState);
+            }
+            if (update.Message.Text == "Вопрос по конкретной задаче")
+            {
+                return new ResolveTaskPage().View(update, userState);
+            }
+
             return null;
         }
 
@@ -44,7 +53,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             return new ReplyKeyboardMarkup(
                 [
                     [
-                        new KeyboardButton("Общий вопрос по курсу")
+                        new KeyboardButton("Общий вопрос по изучаемой теме")
                     ],
                     [
                         new KeyboardButton("Вопрос по конкретной задаче")

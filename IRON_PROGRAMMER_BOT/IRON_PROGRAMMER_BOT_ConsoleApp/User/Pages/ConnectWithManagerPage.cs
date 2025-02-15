@@ -22,7 +22,17 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResult Handle(Update update, UserState userState)
         {
-            throw new System.NotImplementedException();
+            if (update.Message == null)
+                return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
+            if (update.Message.Text == "Назад")
+            {
+                return new StartPage().View(update, userState);
+            }
+            if (update.Message.Text == "Отправить вопрос")//реализовать следующий переход к распределению вопроса
+            {
+                return new StartPage().View(update, userState);
+            }
+            return null;
         }
 
         private ReplyKeyboardMarkup GetReplyKeyboard()

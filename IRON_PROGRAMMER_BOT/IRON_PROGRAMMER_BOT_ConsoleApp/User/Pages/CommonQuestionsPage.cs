@@ -3,12 +3,11 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 {
-    public class InfoByCoursePage : IPage
+    public class CommonQuestionsPage : IPage
     {
         public PageResult View(Update update, UserState userState)
         {
-            var text = @"Информация о курсах!
-Вы можете перейти на страницу школы IRON PROGRAMMER";
+            var text = @"Задавайте свой вопрос";
 
             var replyMarkup = GetReplyKeyboard();
 
@@ -22,13 +21,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             if (update.Message == null)
                 return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "Перейти на страницу школы IRON PROGRAMMER")
-            {
-                return new HelpByCoursePage().View(update, userState);
-            }
             if (update.Message.Text == "Назад")
             {
-                return new StartPage().View(update, userState);
+                return new HelpByCoursePage().View(update, userState);
             }
             return null;
         }
@@ -37,10 +32,6 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             return new ReplyKeyboardMarkup(
                 [
-                    [
-                    new KeyboardButton("Перейти на страницу школы IRON PROGRAMMER")
-
-                    ],
                     [
                         new KeyboardButton("Назад")
                     ]
@@ -51,18 +42,3 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         }
     }
 }
-//{
-//    "chat_id" : MENTION_USER_CHAT_ID *,
-//    "text" : "Click to Open URL",
-//    "parse_mode" : "markdown",
-//    "reply_markup" : {
-//        "inline_keyboard" : [
-//            [
-//                {
-//            "text" : "Open link",
-//"url" : "http://example.com"
-//                }
-//            ]
-//        ]
-//   }
-//}
