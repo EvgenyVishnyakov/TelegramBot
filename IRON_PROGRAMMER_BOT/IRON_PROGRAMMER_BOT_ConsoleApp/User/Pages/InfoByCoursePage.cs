@@ -51,18 +51,3 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         }
     }
 }
-//{
-//    "chat_id" : MENTION_USER_CHAT_ID *,
-//    "text" : "Click to Open URL",
-//    "parse_mode" : "markdown",
-//    "reply_markup" : {
-//        "inline_keyboard" : [
-//            [
-//                {
-//            "text" : "Open link",
-//"url" : "http://example.com"
-//                }
-//            ]
-//        ]
-//   }
-//}
