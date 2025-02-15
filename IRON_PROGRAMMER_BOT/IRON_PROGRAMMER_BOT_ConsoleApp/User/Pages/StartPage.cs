@@ -34,7 +34,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 return new HelpByCoursePage().View(update, userState);
             }
 
-            if (update.Message.Text == "Узнать у курсах")
+            if (update.Message.Text == "Узнать о курсах")
             {
                 return new InfoByCoursePage().View(update, userState);
             }
@@ -55,7 +55,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                         new KeyboardButton("Нужна помощь по курсу")
                     ],
                     [
-                        new KeyboardButton("Узнать у курсах")
+                        new KeyboardButton("Узнать о курсах")
                     ],
                     [
                         new KeyboardButton("Позвать менеджера")
