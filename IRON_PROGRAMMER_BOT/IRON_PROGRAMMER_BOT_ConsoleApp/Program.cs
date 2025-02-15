@@ -42,7 +42,13 @@ class Program
 
         var result = userState!.Page.Handle(update, userState);
         Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
+        await GetUpdate(client, telegramUserId, result);
 
+        stateStorage.AddOrUpdate(telegramUserId, result.UpdatedUserState);
+    }
+
+    private static async Task GetUpdate(ITelegramBotClient client, long telegramUserId, PageResultBase result)
+    {
         switch (result)
         {
             case PhotoPageResult photoPageResult:
@@ -59,10 +65,7 @@ class Program
            text: result.Text,
            replyMarkup: result.ReplyMarkup);
                 break;
-
         }
-
-        stateStorage.AddOrUpdate(telegramUserId, result.UpdatedUserState);
     }
 
     private static async Task HandlePollingError(ITelegramBotClient client, Exception exception, CancellationToken token)
