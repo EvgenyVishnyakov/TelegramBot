@@ -5,7 +5,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 {
     public class ConnectWithManagerPage : IPage
     {
-        public PageResult View(Update update, UserState userState)
+        public PageResultBase View(Update update, UserState userState)
         {
             var text = @"Обращение к сотрудникам школы!
 Задавайте свой вопрос 
@@ -13,17 +13,18 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 Спасибо за Ваш интерес!";
 
             var replyMarkup = GetReplyKeyboard();
+            var photoUrl = "https://drive.google.com/uc?export=download&id=1ydLVXSDrLnN4v8bC6HLdKZ9XITl2jYVc";
 
-            return new PageResult(text, replyMarkup)
+            return new PhotoPageResult(InputFile.FromUri(photoUrl), text, replyMarkup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };
         }
 
-        public PageResult Handle(Update update, UserState userState)
+        public PageResultBase Handle(Update update, UserState userState)
         {
             if (update.Message == null)
-                return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
+                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
             if (update.Message.Text == "Назад")
             {
                 return new StartPage().View(update, userState);

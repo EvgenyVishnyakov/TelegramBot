@@ -25,7 +25,7 @@ class Program
     private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
 
-        if (update.Message?.Text == null)
+        if (update.Message == null)
         {
             return;
         }
@@ -43,10 +43,25 @@ class Program
         var result = userState!.Page.Handle(update, userState);
         Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
 
-        await client.SendTextMessageAsync(
-            chatId: telegramUserId,
-            text: result.Text,
-            replyMarkup: result.ReplyMarkup);
+        switch (result)
+        {
+            case PhotoPageResult photoPageResult:
+                await client.SendPhotoAsync(
+                    chatId: telegramUserId,
+                    photo: photoPageResult.Photo,
+                    caption: photoPageResult.Text,
+                    replyMarkup: photoPageResult.ReplyMarkup
+                    );
+                break;
+            default:
+                await client.SendTextMessageAsync(
+           chatId: telegramUserId,
+           text: result.Text,
+           replyMarkup: result.ReplyMarkup);
+                break;
+
+        }
+
         stateStorage.AddOrUpdate(telegramUserId, result.UpdatedUserState);
     }
 

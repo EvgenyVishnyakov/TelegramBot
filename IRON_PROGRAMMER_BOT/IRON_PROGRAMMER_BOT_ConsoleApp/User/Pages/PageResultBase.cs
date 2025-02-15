@@ -2,19 +2,19 @@
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 {
-    public class PageResult
+    public class PageResultBase
     {
         public string Text { get; }
 
-        public ReplyMarkupBase ReplyMarkup { get; }
+        public IReplyMarkup ReplyMarkup { get; }
 
         public UserState UpdatedUserState { get; set; }
 
-        public PageResult(string text, ReplyMarkupBase replyMarkup)
+        public PageResultBase(string text, IReplyMarkup replyMarkup)
         {
             Text = text;
             ReplyMarkup = replyMarkup;
         }
-
     }
 }
+

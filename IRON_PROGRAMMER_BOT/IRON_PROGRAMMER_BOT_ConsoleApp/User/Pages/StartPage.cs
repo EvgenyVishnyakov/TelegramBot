@@ -5,7 +5,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 {
     public class StartPage : IPage
     {
-        public PageResult View(Update update, UserState userState)
+        public PageResultBase View(Update update, UserState userState)
         {
             var text = @"Привет!
 Рад видеть тебя😊
@@ -18,16 +18,16 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
             var replyMarkup = GetReplyKeyboard();
 
-            return new PageResult(text, replyMarkup)
+            return new PageResultBase(text, replyMarkup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };
         }
 
-        public PageResult Handle(Update update, UserState userState)
+        public PageResultBase Handle(Update update, UserState userState)
         {
             if (update.Message == null)
-                return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
+                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
             if (update.Message.Text == "Нужна помощь по курсу")
             {
                 return new HelpByCoursePage().View(update, userState);

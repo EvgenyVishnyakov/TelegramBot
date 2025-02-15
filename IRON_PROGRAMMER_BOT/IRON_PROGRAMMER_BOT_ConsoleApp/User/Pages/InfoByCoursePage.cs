@@ -5,28 +5,24 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 {
     public class InfoByCoursePage : IPage
     {
-        public PageResult View(Update update, UserState userState)
+        public PageResultBase View(Update update, UserState userState)
         {
             var text = @"Информация о курсах!
 Вы можете перейти на страницу школы IRON PROGRAMMER";
-
+            var markup = GetMarkup();
             var replyMarkup = GetReplyKeyboard();
 
-            return new PageResult(text, replyMarkup)
+            return new PageResultBase(text, markup)
             {
                 UpdatedUserState = new UserState(this, userState.UserData)
             };
         }
 
-        public PageResult Handle(Update update, UserState userState)
+        public PageResultBase Handle(Update update, UserState userState)
         {
             if (update.Message == null)
-                return new PageResult("Выберите действие с помощью кнопок", GetReplyKeyboard());
-            if (update.Message.Text == "Перейти на страницу школы IRON PROGRAMMER")
-            {
-                return new HelpByCoursePage().View(update, userState);
-            }
-            if (update.Message.Text == "Назад")
+                return new PageResultBase("Выберите действие с помощью кнопок", GetReplyKeyboard());
+            if (update.Message.Text == "/back {StartPage}")
             {
                 return new StartPage().View(update, userState);
             }
@@ -38,16 +34,24 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             return new ReplyKeyboardMarkup(
                 [
                     [
-                    new KeyboardButton("Перейти на страницу школы IRON PROGRAMMER")
-
-                    ],
-                    [
                         new KeyboardButton("Назад")
                     ]
                 ])
             {
                 ResizeKeyboard = true
             };
+        }
+
+        private InlineKeyboardMarkup GetMarkup()
+        {
+            return new InlineKeyboardMarkup(new[]
+            {
+        new[]
+        {
+            InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109"),
+            InlineKeyboardButton.WithCallbackData("Назад", "/back {StartPage}")
+        }
+    });
         }
     }
 }
