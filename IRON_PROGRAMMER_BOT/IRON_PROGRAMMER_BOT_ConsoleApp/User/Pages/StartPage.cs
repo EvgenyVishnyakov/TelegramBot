@@ -18,15 +18,20 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 Нажми одну из <em>кнопок</em> ниже, выбирай направление - я отвечу и помогу тебе😉";
 
             var replyMarkup = GetKeyboard();
+            userState.AddPage(this);
 
             return new PageResultBase(text, replyMarkup)
             {
-                UpdatedUserState = new UserState(this, userState.UserData)
+                UpdatedUserState = userState
             };
         }
 
         public PageResultBase Handle(Update update, UserState userState)
         {
+            if (update.Message != null)
+            {
+                return View(update, userState);
+            }
             if (update.CallbackQuery == null)
                 return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
             if (update.CallbackQuery.Data == "HelpByCoursePage")

@@ -18,19 +18,26 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             var path = "Resources//Photos//Фото ИИ.jpg";
             var replyMarkup = GetKeyboard();
             var resource = ResourcesService.GetResource(path);
+            userState.AddPage(this);
+
             return new PhotoPageResult(resource, text, replyMarkup)
             {
-                UpdatedUserState = new UserState(this, userState.UserData)
+                UpdatedUserState = userState
             };
         }
 
         public PageResultBase Handle(Update update, UserState userState)
         {
+            if (update.Message != null)
+            {
+                userState.UserData.UserQuastion = update.Message.Text;//для дальнейшей передачи в ИИ
+            }
             if (update.CallbackQuery == null)
                 return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
             if (update.CallbackQuery.Data == "Назад")
             {
-                return new HelpByCoursePage().View(update, userState);
+                userState.Pages.Pop();
+                return userState.CurrenntPage.View(update, userState);
             }
             return null;
         }

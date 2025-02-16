@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Storage;
@@ -37,11 +38,11 @@ class Program
         var isExistUserState = stateStorage.TryGet(telegramUserId, out var userState);
         if (!isExistUserState)
         {
-            userState = new UserState(new NotStatedPage(), new UserData());
+            userState = new UserState(new Stack<IPage>([new NotStatedPage()]), new UserData());
         }
         Console.WriteLine($"updated_Id={update.Id}, userState={userState}");
 
-        var result = userState!.Page.Handle(update, userState);
+        var result = userState!.CurrenntPage.Handle(update, userState);
         Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
 
         var lastMessage = await SendResult(client, telegramUserId, result, update, isExistUserState);

@@ -24,9 +24,11 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             var path = "Resources\\Videos\\ИИ.mp4";
             var replyMarkup = GetKeyboard();
             var resource = ResourcesService.GetResource(path);
+            userState.AddPage(this);
+
             return new VideoPageResult(resource, text, replyMarkup)
             {
-                UpdatedUserState = new UserState(this, userState.UserData)
+                UpdatedUserState = userState
             };
         }
 
@@ -36,7 +38,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
             if (update.CallbackQuery.Data == "Назад")
             {
-                return new StartPage().View(update, userState);
+                userState.Pages.Pop();
+                return userState.CurrenntPage.View(update, userState);
             }
             if (update.CallbackQuery.Data == "CommonQuestionsPage")
             {

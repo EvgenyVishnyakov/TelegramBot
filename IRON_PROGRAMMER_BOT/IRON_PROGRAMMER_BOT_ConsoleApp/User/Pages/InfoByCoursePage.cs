@@ -11,10 +11,11 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             var text = @"<b>Информация о курсах!</b>
 Вы можете перейти на страницу школы <b><u>IRON PROGRAMMER</u></b>";
             var replyMarkup = GetKeyboard();
+            userState.AddPage(this);
 
             return new PageResultBase(text, replyMarkup)
             {
-                UpdatedUserState = new UserState(this, userState.UserData)
+                UpdatedUserState = userState
             };
         }
 
@@ -24,7 +25,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
             if (update.CallbackQuery.Data == "Назад")
             {
-                return new StartPage().View(update, userState);
+                userState.Pages.Pop();
+                return userState.CurrenntPage.View(update, userState);
             }
             return null;
         }
