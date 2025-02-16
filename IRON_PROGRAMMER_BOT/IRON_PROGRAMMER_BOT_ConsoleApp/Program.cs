@@ -96,7 +96,8 @@ class Program
                     chatId: telegramUserId,
                     photo: photoPageResult.Photo,
                     caption: photoPageResult.Text,
-                    replyMarkup: photoPageResult.ReplyMarkup
+                    replyMarkup: photoPageResult.ReplyMarkup,
+                    parseMode: ParseMode.Html
                     );
                 break;
             case VideoPageResult videoPageResult:
@@ -104,7 +105,8 @@ class Program
                     chatId: telegramUserId,
                     video: videoPageResult.Video,
                     caption: videoPageResult.Text,
-                    replyMarkup: videoPageResult.ReplyMarkup
+                    replyMarkup: videoPageResult.ReplyMarkup,
+                    parseMode: ParseMode.Html
                     );
                 break;
             case AudioPageResult audioPageResult:
@@ -112,7 +114,8 @@ class Program
                     chatId: telegramUserId,
                     audio: audioPageResult.Audio,
                     caption: audioPageResult.Text,
-                    replyMarkup: audioPageResult.ReplyMarkup
+                    replyMarkup: audioPageResult.ReplyMarkup,
+                    parseMode: ParseMode.Html
                     );
                 break;
             case DocumentPageResult documentPageResult:
@@ -127,7 +130,8 @@ class Program
                 await client.SendTextMessageAsync(
            chatId: telegramUserId,
            text: result.Text,
-           replyMarkup: result.ReplyMarkup);
+           replyMarkup: result.ReplyMarkup,
+           parseMode: ParseMode.Html);
                 break;
         }
     }

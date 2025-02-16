@@ -8,8 +8,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     {
         public PageResultBase View(Update update, UserState userState)
         {
-            var text = @"Информация о курсах!
-Вы можете перейти на страницу школы IRON PROGRAMMER";
+            var text = @"<b>Информация о курсах!</b>
+Вы можете перейти на страницу школы <b><u>IRON PROGRAMMER</u></b>";
             var replyMarkup = GetKeyboard();
 
             return new PageResultBase(text, replyMarkup)

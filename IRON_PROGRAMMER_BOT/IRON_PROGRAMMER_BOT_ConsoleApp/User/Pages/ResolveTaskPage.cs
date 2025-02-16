@@ -9,11 +9,11 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     {
         public PageResultBase View(Update update, UserState userState)
         {
-            var text = @"Решение задачи
-Отправьте , пожалуйста
-ссылку на задачу 
-ссылку на Ваше решение
-Ваш вопрос";
+            var text = @"<b>Решение задачи! 💻</b>
+<u><i>Отправьте , пожалуйста:</i></u>
+<i> - ссылку на задачу</i>
+<i> - ссылку на Ваше решение</i>
+<i> - Ваш вопрос</i>";
 
             var path = "Resources//Photos//Фото ИИ.jpg";
             var replyMarkup = GetKeyboard();

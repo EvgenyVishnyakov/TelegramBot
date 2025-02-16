@@ -9,7 +9,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     {
         public PageResultBase View(Update update, UserState userState)
         {
-            var text = @"Задавайте свой вопрос";
+            var text = @"<b><u>Задавайте свой вопрос</u></b>";
 
             var path = "Resources//Photos//Фото ИИ.jpg";
 

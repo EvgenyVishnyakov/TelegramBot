@@ -9,10 +9,10 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     {
         public PageResultBase View(Update update, UserState userState)
         {
-            var text = @"Обращение к сотрудникам школы!
+            var text = @"<b><u>Обращение к сотрудникам школы!</u></b>
 Задавайте свой вопрос 
-Мы вернемся с обратной связью в ближайшее время!
-Спасибо за Ваш интерес!";
+<u>Мы вернемся с обратной связью в ближайшее время!</u>
+<b>Спасибо за Ваш интерес!</b>";
 
             var replyMarkup = GetKeyboard();
             var path = "Resources//Photos//Обратная связь.png";
