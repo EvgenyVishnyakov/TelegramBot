@@ -23,6 +23,9 @@
     <None Update="Images\Фото4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\Photos\Логотип.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\Photos\Обратная связь.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

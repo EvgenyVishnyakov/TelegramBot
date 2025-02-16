@@ -1,4 +1,5 @@
-﻿using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
+﻿using IRON_PROGRAMMER_BOT_ConsoleApp.Services;
+using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
@@ -13,7 +14,10 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             var replyMarkup = GetKeyboard();
             userState.AddPage(this);
 
-            return new PageResultBase(text, replyMarkup)
+            var path = "Resources//Photos//Логотип.png";
+            var resource = ResourcesService.GetResource(path);
+
+            return new PhotoPageResult(resource, text, replyMarkup)
             {
                 UpdatedUserState = userState
             };

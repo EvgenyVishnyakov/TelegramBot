@@ -95,36 +95,29 @@ class Program
         {
             case PhotoPageResult photoPageResult:
                 return await SendPhoto(client, telegramUserId, photoPageResult, update);
-            //case VideoPageResult videoPageResult:
-            //    await client.SendVideoAsync(
-            //        chatId: telegramUserId,
-            //        video: videoPageResult.Video,
-            //        caption: videoPageResult.Text,
-            //        replyMarkup: videoPageResult.ReplyMarkup,
-            //        parseMode: ParseMode.Html
-            //        );
-
-            //case AudioPageResult audioPageResult:
-            //    await client.SendAudioAsync(
-            //        chatId: telegramUserId,
-            //        audio: audioPageResult.Audio,
-            //        caption: audioPageResult.Text,
-            //        replyMarkup: audioPageResult.ReplyMarkup,
-            //        parseMode: ParseMode.Html
-            //        );
-
-            //case DocumentPageResult documentPageResult:
-            //    await client.SendDocumentAsync(
-            //        chatId: telegramUserId,
-            //        document: documentPageResult.Document,
-            //        caption: documentPageResult.Text,
-            //        replyMarkup: documentPageResult.ReplyMarkup
-            //        );
-
+            case VideoPageResult videoPageResult:
+                return await SendVideo(client, telegramUserId, videoPageResult, update);
             default:
                 return await SendText(client, telegramUserId, result, update, isExistUserState);
-
         }
+    }
+
+    private static async Task<Telegram.Bot.Types.Message> SendVideo(ITelegramBotClient client, long telegramUserId, VideoPageResult videoPageResult, Update update)
+    {
+        if (videoPageResult.UpdatedUserState.UserData.LastMessage != null)
+        {
+            await client.DeleteMessageAsync(
+                chatId: telegramUserId,
+                messageId: videoPageResult.UpdatedUserState.UserData.LastMessage!.Id);
+        }
+
+        return await client.SendVideoAsync(
+        chatId: telegramUserId,
+        video: videoPageResult.Video,
+        caption: videoPageResult.Text,
+        replyMarkup: videoPageResult.ReplyMarkup,
+        parseMode: ParseMode.Html
+        );
     }
 
     private static async Task<Telegram.Bot.Types.Message> SendPhoto(ITelegramBotClient client, long telegramUserId, PhotoPageResult photoPageResult, Update update)
@@ -137,10 +130,9 @@ class Program
                  media: new InputMediaPhoto(photoPageResult.Photo)
                  {
                      Caption = photoPageResult.Text,
-                     ParseMode = photoPageResult.ParseMode
+                     ParseMode = ParseMode.Html
                  },
                  replyMarkup: (Telegram.Bot.Types.ReplyMarkups.InlineKeyboardMarkup?)photoPageResult.ReplyMarkup
-
                 );
         }
 
@@ -158,7 +150,6 @@ class Program
             replyMarkup: photoPageResult.ReplyMarkup,
             parseMode: ParseMode.Html
             );
-
     }
 
     private static async Task<Telegram.Bot.Types.Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update, bool isExistUserState)
