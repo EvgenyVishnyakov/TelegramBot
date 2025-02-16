@@ -15,6 +15,11 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult
             Text = text;
             ReplyMarkup = replyMarkup;
         }
+
+        public bool IsMedia => this is PhotoPageResult ||
+                                 this is VideoPageResult ||
+                                 this is AudioPageResult ||
+                                 this is DocumentPageResult;
     }
 }
 

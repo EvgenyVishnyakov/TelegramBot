@@ -39,4 +39,16 @@
     <Folder Include="Resources\Documents\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="User\Pages\CommonQuestionsPage.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="User\Pages\HelpByCoursePage.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="User\Pages\InfoByCoursePage.cs">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>
