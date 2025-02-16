@@ -44,7 +44,7 @@ class Program
         var result = userState!.Page.Handle(update, userState);
         Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
 
-        await GetUpdate(client, telegramUserId, result);
+        await GetUpdate(client, telegramUserId, result, update, isExistUserState);
 
         stateStorage.AddOrUpdate(telegramUserId, result.UpdatedUserState);
     }
@@ -87,7 +87,7 @@ class Program
         }
     }
 
-    private static async Task GetUpdate(ITelegramBotClient client, long telegramUserId, PageResultBase result)
+    private static async Task GetUpdate(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update, bool isExistUserState)
     {
         switch (result)
         {
@@ -127,11 +127,26 @@ class Program
                     );
                 break;
             default:
+                //if (!isExistUserState || update.Message != null)
+                //{
                 await client.SendTextMessageAsync(
-           chatId: telegramUserId,
-           text: result.Text,
+            chatId: telegramUserId,
+            text: result.Text,
            replyMarkup: result.ReplyMarkup,
            parseMode: ParseMode.Html);
+                //}
+                // для дальнейшей реализации обновления с медиа
+                //else
+                //{
+                //    await client.EditMessageTextAsync(
+                //    chatId: telegramUserId,
+                //    messageId: update.CallbackQuery.Message.MessageId,
+                //    text: result.Text,
+                //    replyMarkup: (Telegram.Bot.Types.ReplyMarkups.InlineKeyboardMarkup)result.ReplyMarkup,
+                //    parseMode: ParseMode.Html
+                //    );
+
+                //}
                 break;
         }
     }
