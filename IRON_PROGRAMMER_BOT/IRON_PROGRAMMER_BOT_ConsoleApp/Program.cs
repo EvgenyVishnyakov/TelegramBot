@@ -184,32 +184,29 @@ class Program
         }
     }
 
-    private static async Task<Telegram.Bot.Types.Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update, bool isExistUserState)
+    private static async Task<Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update, bool isExistUserState)
     {
-        if (update.CallbackQuery != null && (!result.UpdatedUserState.UserData.LastMessage?.IsMedia ?? false))
+        try
         {
-            return await client.EditMessageTextAsync(
-              chatId: telegramUserId,
-              messageId: result.UpdatedUserState.UserData.LastMessage!.Id,
-              text: result.Text,
-              replyMarkup: (Telegram.Bot.Types.ReplyMarkups.InlineKeyboardMarkup)result.ReplyMarkup,
-              parseMode: ParseMode.Html
-              );
-        }
+            if (result.UpdatedUserState.UserData.LastMessage != null)
+            {
+                await client.DeleteMessageAsync(
+                    chatId: telegramUserId,
+                    messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
+            }
 
-        if (result.UpdatedUserState.UserData.LastMessage != null)
-        {
-            await client.DeleteMessageAsync(
-                chatId: telegramUserId,
-                messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
-        }
-        return await client.SendTextMessageAsync(
+
+            return await client.SendTextMessageAsync(
                         chatId: telegramUserId,
                          text: result.Text,
                         replyMarkup: result.ReplyMarkup,
                         parseMode: ParseMode.Html);
-
-
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка {ex} в методе SendText, файл Programm");
+            return null;
+        }
     }
 
     private static async Task HandlePollingError(ITelegramBotClient client, Exception exception, CancellationToken token)
