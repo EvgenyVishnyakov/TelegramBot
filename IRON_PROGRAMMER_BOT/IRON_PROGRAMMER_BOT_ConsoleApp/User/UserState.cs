@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.User
@@ -9,9 +10,16 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User
 
         public void AddPage(IPage page)
         {
-            if (CurrenntPage.GetType() != page.GetType())
+            try
             {
-                Pages.Push(page);
+                if (CurrenntPage.GetType() != page.GetType())
+                {
+                    Pages.Push(page);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
     }
