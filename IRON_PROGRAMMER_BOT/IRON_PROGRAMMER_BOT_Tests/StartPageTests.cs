@@ -49,8 +49,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             //Act
             var result = startPage.Handle(update, userState);
 
-            //Assert
-            //ClassicAssert.IsInstanceOf<VideoPageResult>(result);
+            //Assert            
             Assert.That(result.GetType(), Is.EqualTo(typeof(VideoPageResult)));
             ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrenntPage);
 
@@ -68,10 +67,9 @@ namespace IRON_PROGRAMMER_BOT_Tests
             //Act
             var result = startPage.Handle(update, userState);
 
-            //Assert
-            //ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
+            //Assert           
             Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-            ClassicAssert.IsInstanceOf<InfoByCoursePage>(result.UpdatedUserState.CurrenntPage);
+            ClassicAssert.IsInstanceOf<IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.InfoByCoursePage>(result.UpdatedUserState.CurrenntPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         }
@@ -83,7 +81,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var startPage = new StartPage();
             var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
             var userState = new UserState(pages, new UserData());
-            var update = new Update() { Message = new Telegram.Bot.Types.Message() { Text = "Невеный текст" } };
+            var update = new Update() { Message = new Message() { Text = "Невеный текст" } };
             var expectedButtons = new InlineKeyboardButton[][]
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage")],
@@ -93,8 +91,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             //Act
             var result = startPage.Handle(update, userState);
 
-            //Assert
-            //ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
+            //Assert            
             Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(startPage));
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
 

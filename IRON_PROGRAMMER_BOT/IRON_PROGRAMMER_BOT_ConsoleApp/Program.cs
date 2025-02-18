@@ -30,7 +30,7 @@ class Program
         try
         {
             var updateType = GetUpdateType(update);
-            if (updateType != UpdateType.Message || updateType != UpdateType.CallbackQuery)
+            if (updateType != UpdateType.Message && updateType != UpdateType.CallbackQuery)
             {
                 return;
             }

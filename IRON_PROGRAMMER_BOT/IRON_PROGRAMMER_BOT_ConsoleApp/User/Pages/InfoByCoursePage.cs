@@ -12,8 +12,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var text = @"<b>Информация о курсах!</b>
-Вы можете перейти на страницу школы <b><u>IRON PROGRAMMER</u></b>";
+                var text = Resources.InfoByCoursePageText;
                 var replyMarkup = GetKeyboard();
                 userState.AddPage(this);
 
@@ -60,8 +59,6 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-
-
                 var button1 = InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109");
                 var button2 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
                 return new InlineKeyboardMarkup(new[]
