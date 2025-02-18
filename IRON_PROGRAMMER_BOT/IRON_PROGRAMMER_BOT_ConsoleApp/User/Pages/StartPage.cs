@@ -9,10 +9,12 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     {
         public PageResultBase View(Update update, UserState userState)
         {
-            var text = Resources.StartPageText;
+            try
+            {
+                var text = Resources.StartPageText;
 
-            var replyMarkup = GetKeyboard();
-            userState.AddPage(this);
+                var replyMarkup = GetKeyboard();
+                userState.AddPage(this);
 
                 return new PageResultBase(text, replyMarkup)
                 {
@@ -28,21 +30,28 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.CallbackQuery == null)
-                return View(update, userState);
-            if (update.CallbackQuery.Data == "HelpByCoursePage")
+            try
             {
-                return new HelpByCoursePage().View(update, userState);
-            }
-
+                if (update.CallbackQuery == null)
+                    return View(update, userState);
+                if (update.CallbackQuery.Data == "HelpByCoursePage")
+                {
+                    return new HelpByCoursePage().View(update, userState);
+                }
                 if (update.CallbackQuery.Data == "InfoByCoursePage")
                 {
                     return new InfoByCoursePage().View(update, userState);
                 }
 
-            if (update.CallbackQuery.Data == "ConnectWithManagerPage")
+                if (update.CallbackQuery.Data == "ConnectWithManagerPage")
+                {
+                    return new ConnectWithManagerPage().View(update, userState);
+                }
+            }
+            catch (Exception ex)
             {
-                return new ConnectWithManagerPage().View(update, userState);
+                Console.WriteLine($"Ошибка {ex} в методе View, файл Handle");
+                return View(update, userState);
             }
 
             return View(update, userState);
@@ -56,8 +65,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage");
                 var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage");
 
-            return new InlineKeyboardMarkup(new[]
-    {
+                return new InlineKeyboardMarkup(new[]
+        {
         new[] { button1 },
         new[] { button2, button3 }
         });
