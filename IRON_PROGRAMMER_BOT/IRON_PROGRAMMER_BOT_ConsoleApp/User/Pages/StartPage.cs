@@ -8,14 +8,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
     {
         public PageResultBase View(Update update, UserState userState)
         {
-            var text = @"<b>Привет!
-Рад видеть тебя😊</b>
-
-<u>Задай свой вопрос и я тебе обязательно отвечу!</u>
-
-Хочешь получить помощь по курсу?
-Хочешь узнать о нашей школе и курсах или получить консультацию от наших специалистов?
-Нажми одну из <em>кнопок</em> ниже, выбирай направление - я отвечу и помогу тебе😉";
+            var text = Resources.StartPageText;
 
             var replyMarkup = GetKeyboard();
             userState.AddPage(this);
@@ -28,12 +21,8 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase Handle(Update update, UserState userState)
         {
-            if (update.Message != null)
-            {
-                return View(update, userState);
-            }
             if (update.CallbackQuery == null)
-                return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+                return View(update, userState);
             if (update.CallbackQuery.Data == "HelpByCoursePage")
             {
                 return new HelpByCoursePage().View(update, userState);
@@ -49,7 +38,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 return new ConnectWithManagerPage().View(update, userState);
             }
 
-            return null;
+            return View(update, userState);
         }
 
         private InlineKeyboardMarkup GetKeyboard()
@@ -60,7 +49,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
             return new InlineKeyboardMarkup(new[]
     {
-        new[] { button1 },
+        new [] { button1 },
         new[] { button2, button3 }
         });
         }

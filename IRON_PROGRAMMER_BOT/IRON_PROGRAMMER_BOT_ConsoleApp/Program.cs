@@ -164,14 +164,12 @@ class Program
               parseMode: ParseMode.Html
               );
         }
-        if (update.Message == null)
+
+        if (result.UpdatedUserState.UserData.LastMessage != null)
         {
-            if (result.UpdatedUserState.UserData.LastMessage != null)
-            {
-                await client.DeleteMessageAsync(
-                    chatId: telegramUserId,
-                    messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
-            }
+            await client.DeleteMessageAsync(
+                chatId: telegramUserId,
+                messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
         }
 
         return await client.SendTextMessageAsync(
