@@ -203,18 +203,13 @@ class Program
                 chatId: telegramUserId,
                 messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
         }
-
-            return await client.SendTextMessageAsync(
+        return await client.SendTextMessageAsync(
                         chatId: telegramUserId,
                          text: result.Text,
                         replyMarkup: result.ReplyMarkup,
                         parseMode: ParseMode.Html);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Ошибка {ex} в методе SendText, файл Programm");
-            return null;
-        }
+
+
     }
 
     private static async Task HandlePollingError(ITelegramBotClient client, Exception exception, CancellationToken token)
