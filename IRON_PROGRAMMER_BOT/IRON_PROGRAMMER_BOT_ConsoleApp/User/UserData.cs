@@ -6,7 +6,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User
         public string? StepiId { get; set; }
 
         public string? UserQuastion { get; set; }
-        public Message? LastMessage { get; set; }
+        public HelperBotMessage? LastMessage { get; set; }
 
         public override string ToString()
         {
