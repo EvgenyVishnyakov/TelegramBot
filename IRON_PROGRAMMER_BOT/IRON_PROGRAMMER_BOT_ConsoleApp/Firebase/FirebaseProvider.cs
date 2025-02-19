@@ -29,6 +29,5 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.Firebase
         {
             await _client.Child(key).PutAsync(item);
         }
-
     }
 }

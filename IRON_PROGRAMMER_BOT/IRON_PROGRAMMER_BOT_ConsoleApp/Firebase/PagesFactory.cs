@@ -9,10 +9,18 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.Firebase
     {
         public static IPage GetPage(string name)
         {
-            var assembly = Assembly.GetExecutingAssembly();
-            var type = assembly.GetTypes().FirstOrDefault(t => t.Name == name && typeof(IPage).IsAssignableFrom(t));
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                var type = assembly.GetTypes().FirstOrDefault(t => t.Name == name && typeof(IPage).IsAssignableFrom(t));
 
-            return (IPage)Activator.CreateInstance(type);
+                return (IPage)Activator.CreateInstance(type);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

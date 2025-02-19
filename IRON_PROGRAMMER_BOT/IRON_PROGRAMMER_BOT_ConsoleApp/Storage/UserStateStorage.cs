@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Firebase;
@@ -13,8 +14,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.Storage
 
         public async Task AddOrUpdateAsync(long telegramUserId, UserState userState)
         {
-            var userStateFirebase = ToUserStateFirebase(userState);
-            await _firebaseProvider.AddOrUpdateAsync($"userstate/{telegramUserId}", userStateFirebase);
+            try
+            {
+                var userStateFirebase = ToUserStateFirebase(userState);
+                await _firebaseProvider.AddOrUpdateAsync($"userstate/{telegramUserId}", userStateFirebase);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private static UserStateFirebase ToUserStateFirebase(UserState userState)
@@ -28,16 +36,32 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.Storage
 
         public async Task<UserState?> TryGetAsync(long telegramUserId)
         {
-            var userStateFirebase = await _firebaseProvider.TryGetAsync<UserStateFirebase>($"userstate/{telegramUserId}");
-            if (userStateFirebase == null)
+            try
+            {
+                var userStateFirebase = await _firebaseProvider.TryGetAsync<UserStateFirebase>($"userstate/{telegramUserId}");
+                if (userStateFirebase == null)
+                    return null;
+                return ToUserState(userStateFirebase);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
                 return null;
-            return ToUserState(userStateFirebase);
+            }
         }
 
         private static UserState? ToUserState(UserStateFirebase userStateFirebase)
         {
-            var pages = userStateFirebase.PageNames.Select(PagesFactory.GetPage).Reverse();
-            return new UserState(new Stack<IPage>(pages), userStateFirebase.UserData);
+            try
+            {
+                var pages = userStateFirebase.PageNames.Select(PagesFactory.GetPage).Reverse();
+                return new UserState(new Stack<IPage>(pages), userStateFirebase.UserData);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return null;
+            }
         }
     }
 }
