@@ -23,6 +23,7 @@ public class InfoByCoursePageTests
                 [InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109")],
                  [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
         };
+
         //Act
         var result = infoByCoursePage.View(null, userState);
 
@@ -45,6 +46,7 @@ public class InfoByCoursePageTests
         var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "HelpByCoursePage" } };
+
         //Act
         var result = startPage.Handle(update, userState);
 
