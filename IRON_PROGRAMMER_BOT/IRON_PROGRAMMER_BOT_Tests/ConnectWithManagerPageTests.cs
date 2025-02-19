@@ -40,7 +40,7 @@ public class ConnectWithManagerPageTests
 
 
     [Test]
-    public void Handle_InfoByCoursePageCallback_StartPage()
+    public void Handle_ConnectWithManagerPageCallback_StartPage()
     {
         //Arrange
         var сonnectWithManagerPage = new ConnectWithManagerPage();

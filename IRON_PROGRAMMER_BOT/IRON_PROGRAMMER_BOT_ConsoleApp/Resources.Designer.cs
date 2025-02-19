@@ -73,6 +73,25 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Онлайн консультация!&lt;/u&gt;&lt;/b&gt;
+        ///
+        ///Получение ответа на вопрос
+        ///Ты находишься в разделе получения информации по интересующему вопросу
+        ///
+        ///&lt;u&gt;&lt;i&gt;В этом разделе помогает мощный интелект всемирной паутины😊&lt;/i&gt;&lt;/u&gt;
+        ///
+        ///Выбери , пожалуйста, какого &lt;em&gt;формата&lt;/em&gt; у тебя вопрос и тебе обязательно помогут.
+        ///
+        ///&lt;b&gt;Совет: спрашивай общее направление, пытайся до глубины задачи дойти сам!&lt;/b&gt;❗️
+        ///Успехов!.
+        /// </summary>
+        public static string HelpByCoursePageText {
+            get {
+                return ResourceManager.GetString("HelpByCoursePageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;Информация о курсах!&lt;/b&gt;  Вы можете перейти на страницу школы &lt;b&gt;&lt;u&gt;IRON PROGRAMMER&lt;/u&gt;&lt;/b&gt;.
         /// </summary>
         public static string InfoByCoursePageText {
