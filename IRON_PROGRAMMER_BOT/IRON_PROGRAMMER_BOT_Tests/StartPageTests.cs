@@ -69,7 +69,25 @@ namespace IRON_PROGRAMMER_BOT_Tests
 
             //Assert           
             Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-            ClassicAssert.IsInstanceOf<IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.InfoByCoursePage>(result.UpdatedUserState.CurrenntPage);
+            ClassicAssert.IsInstanceOf<InfoByCoursePage>(result.UpdatedUserState.CurrenntPage);
+
+            Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void Handle_StartPageCallback_ConnectWithManagerPage()
+        {
+            //Arrange
+            var startPage = new StartPage();
+            var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
+            var userState = new UserState(pages, new UserData());
+            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "ConnectWithManagerPage" } };
+            //Act
+            var result = startPage.Handle(update, userState);
+
+            //Assert           
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+            ClassicAssert.IsInstanceOf<ConnectWithManagerPage>(result.UpdatedUserState.CurrenntPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         }
@@ -81,7 +99,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var startPage = new StartPage();
             var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
             var userState = new UserState(pages, new UserData());
-            var update = new Update() { Message = new Message() { Text = "Невеный текст" } };
+            var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
             var expectedButtons = new InlineKeyboardButton[][]
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage")],

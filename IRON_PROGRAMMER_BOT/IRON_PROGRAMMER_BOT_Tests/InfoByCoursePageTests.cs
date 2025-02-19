@@ -38,69 +38,65 @@ public class InfoByCoursePageTests
     }
 
     [Test]
-    public void Handle_StartPageCallback_HelpByCoursePage()
+    public void Handle_HelpByCoursePageCallback_StepBack()
     {
         //Arrange
-        var startPage = new StartPage();
+        var startPage = new HelpByCoursePage();
         var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "HelpByCoursePage" } };
         //Act
         var result = startPage.Handle(update, userState);
 
-        //Assert
-        //ClassicAssert.IsInstanceOf<VideoPageResult>(result);
+        //Assert        
         Assert.That(result.GetType(), Is.EqualTo(typeof(VideoPageResult)));
         ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrenntPage);
 
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
     }
 
-    //[Test]
-    //public void Handle_StartPageCallback_InfoByCoursePage()
-    //{
-    //    //Arrange
-    //    var startPage = new StartPage();
-    //    var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
-    //    var userState = new UserState(pages, new UserData());
-    //    var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "InfoByCoursePage" } };
-    //    //Act
-    //    var result = startPage.Handle(update, userState);
+    [Test]
+    public void Handle_InfoByCoursePageCallback_StartPage()
+    {
+        //Arrange
+        var infoByCoursePage = new InfoByCoursePage();
+        var pages = new Stack<IPage>([new NotStatedPage(), infoByCoursePage]);
+        var userState = new UserState(pages, new UserData());
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
 
-    //    //Assert
-    //    //ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
-    //    Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-    //    ClassicAssert.IsInstanceOf<IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.InfoByCoursePage>(result.UpdatedUserState.CurrenntPage);
+        //Act
+        var result = infoByCoursePage.Handle(update, userState);
 
-    //    Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
-    //}
+        //Assert        
+        Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
+        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrenntPage);
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+    }
 
-    //[Test]
-    //public void Handle_UnknownMessage_StartPageView()
-    //{
-    //    //Arrange
-    //    var startPage = new StartPage();
-    //    var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
-    //    var userState = new UserState(pages, new UserData());
-    //    var update = new Update() { Message = new Telegram.Bot.Types.Message() { Text = "Невеный текст" } };
-    //    var expectedButtons = new InlineKeyboardButton[][]
-    //    {
-    //            [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage")],
-    //             [InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage"),
-    //              InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage")]
-    //    };
-    //    //Act
-    //    var result = startPage.Handle(update, userState);
+    [Test]
+    public void Handle_UnknownMessage_InfoByCoursePage()
+    {
+        //Arrange
+        var infoByCoursePage = new InfoByCoursePage();
+        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var userState = new UserState(pages, new UserData());
+        var expectedButtons = new InlineKeyboardButton[][]
+        {
+                [InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109")],
+                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+        };
+        //Act
+        var result = infoByCoursePage.View(null, userState);
 
-    //    //Assert
-    //    //ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
-    //    Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(startPage));
-    //    Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        //Assert       
+        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(infoByCoursePage));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
 
-    //    Assert.That(result.Text, Is.EqualTo(Resources.StartPageText));
-    //    Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
+        Assert.That(result.Text, Is.EqualTo(Resources.InfoByCoursePageText));
+        Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
 
-    //    ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
-    //    KeyboardHelper.AssertKeyboard(expectedButtons, (InlineKeyboardMarkup)result.ReplyMarkup);
+        ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
+        KeyboardHelper.AssertKeyboard(expectedButtons, (InlineKeyboardMarkup)result.ReplyMarkup);
+    }
 }
-}
+
