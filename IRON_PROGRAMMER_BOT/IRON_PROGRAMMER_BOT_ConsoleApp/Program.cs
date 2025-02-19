@@ -38,8 +38,8 @@ class Program
             long telegramUserId = GetUserId(update);
             Console.WriteLine($"updateId={update.Id}, telegramUserId={telegramUserId}");
 
-            var isExistUserState = stateStorage.TryGet(telegramUserId, out var userState);
-            if (!isExistUserState)
+            var userState = await stateStorage.TryGetAsync(telegramUserId);
+            if (userState == null)
             {
                 userState = new UserState(new Stack<IPage>([new NotStatedPage()]), new UserData());
             }
@@ -48,10 +48,10 @@ class Program
             var result = userState!.CurrenntPage.Handle(update, userState);
             Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
 
-            var lastMessage = await SendResult(client, telegramUserId, result, update, isExistUserState);
+            var lastMessage = await SendResult(client, telegramUserId, result, update);
 
             result.UpdatedUserState.UserData.LastMessage = new HelperBotMessage(lastMessage.MessageId, result.IsMedia);
-            stateStorage.AddOrUpdate(telegramUserId, result.UpdatedUserState);
+            await stateStorage.AddOrUpdateAsync(telegramUserId, result.UpdatedUserState);
         }
         catch (Exception ex)
         {
@@ -97,7 +97,7 @@ class Program
         }
     }
 
-    private static async Task<Message> SendResult(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update, bool isExistUserState)
+    private static async Task<Message> SendResult(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
     {
         try
         {
@@ -108,7 +108,7 @@ class Program
                 case VideoPageResult videoPageResult:
                     return await SendVideo(client, telegramUserId, videoPageResult);
                 default:
-                    return await SendText(client, telegramUserId, result, update, isExistUserState);
+                    return await SendText(client, telegramUserId, result, update);
             }
         }
         catch (Exception ex)
@@ -184,7 +184,7 @@ class Program
         }
     }
 
-    private static async Task<Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update, bool isExistUserState)
+    private static async Task<Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
     {
         try
         {
