@@ -156,4 +156,7 @@
 &lt;i&gt; - ссылку на Ваше решение&lt;/i&gt;
 &lt;i&gt; - Ваш вопрос&lt;/i&gt;</value>
   </data>
+  <data name="CommonQuestionsPageText" xml:space="preserve">
+    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;</value>
+  </data>
 </root>

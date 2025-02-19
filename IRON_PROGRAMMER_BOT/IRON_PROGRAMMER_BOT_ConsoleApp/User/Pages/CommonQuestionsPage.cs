@@ -12,7 +12,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var text = @"<b><u>Задавайте свой вопрос</u></b>";
+                var text = Resources.CommonQuestionsPageText;
 
                 var path = "Resources//Photos//Фото ИИ.jpg";
 
