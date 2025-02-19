@@ -12,11 +12,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var text = @"<b>Решение задачи! 💻</b>
-<u><i>Отправьте , пожалуйста:</i></u>
-<i> - ссылку на задачу</i>
-<i> - ссылку на Ваше решение</i>
-<i> - Ваш вопрос</i>";
+                var text = Resources.ResolveTaskPageText;
 
                 var path = "Resources//Photos//Фото ИИ.jpg";
                 var replyMarkup = GetKeyboard();
@@ -63,8 +59,6 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-
-
                 var button1 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
                 return new InlineKeyboardMarkup(new[]
         {

@@ -101,6 +101,19 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;Решение задачи! 💻&lt;/b&gt;
+        ///&lt;u&gt;&lt;i&gt;Отправьте , пожалуйста:&lt;/i&gt;&lt;/u&gt;
+        ///&lt;i&gt; - ссылку на задачу&lt;/i&gt;
+        ///&lt;i&gt; - ссылку на Ваше решение&lt;/i&gt;
+        ///&lt;i&gt; - Ваш вопрос&lt;/i&gt;.
+        /// </summary>
+        public static string ResolveTaskPageText {
+            get {
+                return ResourceManager.GetString("ResolveTaskPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;Привет!&lt;/b&gt;
         ///&lt;b&gt;Рад видеть тебя😊&lt;/b&gt;
         ///
