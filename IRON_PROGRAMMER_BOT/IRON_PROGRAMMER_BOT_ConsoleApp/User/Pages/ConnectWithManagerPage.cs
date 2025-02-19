@@ -12,10 +12,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var text = @"<b><u>Обращение к сотрудникам школы!</u></b>
-Задавайте свой вопрос 
-<u>Мы вернемся с обратной связью в ближайшее время!</u>
-<b>Спасибо за Ваш интерес!</b>";
+                var text = Resources.ConnectWithManagerPageText;
 
                 var replyMarkup = GetKeyboard();
                 var path = "Resources//Photos//Обратная связь.png";

@@ -61,6 +61,18 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
+        ///Задавайте свой вопрос 
+        ///&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
+        ///&lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;.
+        /// </summary>
+        public static string ConnectWithManagerPageText {
+            get {
+                return ResourceManager.GetString("ConnectWithManagerPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;Информация о курсах!&lt;/b&gt;  Вы можете перейти на страницу школы &lt;b&gt;&lt;u&gt;IRON PROGRAMMER&lt;/u&gt;&lt;/b&gt;.
         /// </summary>
         public static string InfoByCoursePageText {
