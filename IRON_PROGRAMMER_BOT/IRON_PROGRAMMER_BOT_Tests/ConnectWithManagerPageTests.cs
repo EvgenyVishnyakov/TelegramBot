@@ -16,7 +16,7 @@ public class ConnectWithManagerPageTests
     {
         //Arrange
         var сonnectWithManagerPage = new ConnectWithManagerPage();
-        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage()]);
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
@@ -31,7 +31,7 @@ public class ConnectWithManagerPageTests
         ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
         Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(сonnectWithManagerPage));
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         Assert.That(result.Text, Is.EqualTo(Resources.ConnectWithManagerPageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
@@ -44,7 +44,7 @@ public class ConnectWithManagerPageTests
     {
         //Arrange
         var сonnectWithManagerPage = new ConnectWithManagerPage();
-        var pages = new Stack<IPage>([new NotStatedPage(), сonnectWithManagerPage]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), сonnectWithManagerPage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
 
@@ -62,7 +62,7 @@ public class ConnectWithManagerPageTests
     {
         //Arrange
         var сonnectWithManagerPage = new ConnectWithManagerPage();
-        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage()]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
@@ -75,7 +75,7 @@ public class ConnectWithManagerPageTests
 
         //Assert       
         Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(сonnectWithManagerPage));
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
 
         Assert.That(result.Text, Is.EqualTo(Resources.ConnectWithManagerPageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));

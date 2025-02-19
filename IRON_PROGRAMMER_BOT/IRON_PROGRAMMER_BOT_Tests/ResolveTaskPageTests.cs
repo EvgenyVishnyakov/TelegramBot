@@ -16,7 +16,7 @@ public class ResolveTaskPageTests
     {
         //Arrange
         var resolveTaskPage = new ResolveTaskPage();
-        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage()]);
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
@@ -30,7 +30,7 @@ public class ResolveTaskPageTests
         ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
         Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(resolveTaskPage));
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
         Assert.That(result.Text, Is.EqualTo(Resources.ResolveTaskPageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
@@ -42,7 +42,7 @@ public class ResolveTaskPageTests
     {
         //Arrange
         var resolveTaskPage = new ResolveTaskPage();
-        var pages = new Stack<IPage>([new NotStatedPage(), resolveTaskPage]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage(), resolveTaskPage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
 
@@ -50,17 +50,17 @@ public class ResolveTaskPageTests
         var result = resolveTaskPage.Handle(update, userState);
 
         //Assert        
-        Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
-        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrenntPage);
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.GetType(), Is.EqualTo(typeof(VideoPageResult)));
+        ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrenntPage);
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
     }
 
     [Test]
-    public void Handle_UnknownMessage_HelpByCoursePage()
+    public void Handle_UnknownMessage_ResolveTaskPage()
     {
         //Arrange
         var resolveTaskPage = new ResolveTaskPage();
-        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage()]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
@@ -72,7 +72,7 @@ public class ResolveTaskPageTests
 
         //Assert       
         Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(resolveTaskPage));
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
 
         Assert.That(result.Text, Is.EqualTo(Resources.ResolveTaskPageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));

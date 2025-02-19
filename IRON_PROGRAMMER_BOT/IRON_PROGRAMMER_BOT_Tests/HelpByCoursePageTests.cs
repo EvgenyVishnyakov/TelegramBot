@@ -16,7 +16,7 @@ public class HelpByCoursePageTests
     {
         //Arrange
         var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage()]);
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
@@ -32,7 +32,7 @@ public class HelpByCoursePageTests
         ClassicAssert.IsInstanceOf<VideoPageResult>(result);
 
         Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(helpByCoursePage));
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         Assert.That(result.Text, Is.EqualTo(Resources.HelpByCoursePageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
@@ -44,7 +44,7 @@ public class HelpByCoursePageTests
     {
         //Arrange
         var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), helpByCoursePage]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "CommonQuestionsPage" } };
         //Act
@@ -54,7 +54,7 @@ public class HelpByCoursePageTests
         Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
         ClassicAssert.IsInstanceOf<CommonQuestionsPage>(result.UpdatedUserState.CurrenntPage);
 
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
     }
 
     [Test]
@@ -62,7 +62,7 @@ public class HelpByCoursePageTests
     {
         //Arrange
         var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), helpByCoursePage]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "ResolveTaskPage" } };
         //Act
@@ -72,7 +72,7 @@ public class HelpByCoursePageTests
         Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
         ClassicAssert.IsInstanceOf<ResolveTaskPage>(result.UpdatedUserState.CurrenntPage);
 
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
     }
 
 
@@ -81,7 +81,7 @@ public class HelpByCoursePageTests
     {
         //Arrange
         var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), helpByCoursePage]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
 
@@ -99,7 +99,7 @@ public class HelpByCoursePageTests
     {
         //Arrange
         var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage()]);
+        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage()]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
@@ -113,7 +113,7 @@ public class HelpByCoursePageTests
 
         //Assert       
         Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(helpByCoursePage));
-        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
+        Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
 
         Assert.That(result.Text, Is.EqualTo(Resources.HelpByCoursePageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
