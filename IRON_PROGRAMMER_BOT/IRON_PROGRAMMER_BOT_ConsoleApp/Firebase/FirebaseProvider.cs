@@ -1,29 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.Firebase
 {
-    public class FirebaseProvider
+    public class FirebaseProvider(FirebaseClient client)
     {
-        private readonly FirebaseClient _client;
-
-        public FirebaseProvider()
-        {
-            var _basePath = Environment.GetEnvironmentVariable("basePath");
-            var _secret = Environment.GetEnvironmentVariable("secretFirebase");
-
-            _client = new FirebaseClient(_basePath, new FirebaseOptions
-            {
-                AuthTokenAsyncFactory = () => Task.FromResult(_secret)
-            });
-        }
-
         public async Task<T?> TryGetAsync<T>(string key)
         {
             try
             {
-                return await _client.Child(key).OnceSingleAsync<T>();
+                return await client.Child(key).OnceSingleAsync<T>();
             }
             catch (Exception ex)
             {
@@ -36,7 +24,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.Firebase
         {
             try
             {
-                await _client.Child(key).PutAsync(item);
+                await client.Child(key).PutAsync(item);
             }
             catch (Exception ex)
             {

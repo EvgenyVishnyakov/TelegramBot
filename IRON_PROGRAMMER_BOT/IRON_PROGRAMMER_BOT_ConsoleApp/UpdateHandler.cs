@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using IRON_PROGRAMMER_BOT_ConsoleApp.Storage;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages;
 using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
@@ -10,14 +11,13 @@ using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-public class UpdateHandler : IUpdateHandler
+public class UpdateHandler(UserStateStorage stateStorage) : IUpdateHandler
 {
     public async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken token)
     {
         try
         {
-            var updateType = GetUpdateType(update);
-            if (updateType != UpdateType.Message && updateType != UpdateType.CallbackQuery)
+            if (!GetUpdateType(update))
             {
                 return;
             }
