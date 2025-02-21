@@ -61,6 +61,24 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Назад.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommonQuestionsPage.
+        /// </summary>
+        public static string CommonQuestionsPage {
+            get {
+                return ResourceManager.GetString("CommonQuestionsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;.
         /// </summary>
         public static string CommonQuestionsPageText {
@@ -110,6 +128,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ResolveTaskPage.
+        /// </summary>
+        public static string ResolveTaskPage {
+            get {
+                return ResourceManager.GetString("ResolveTaskPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;Решение задачи! 💻&lt;/b&gt;
         ///&lt;u&gt;&lt;i&gt;Отправьте , пожалуйста:&lt;/i&gt;&lt;/u&gt;
         ///&lt;i&gt; - ссылку на задачу&lt;/i&gt;
@@ -119,6 +146,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         public static string ResolveTaskPageText {
             get {
                 return ResourceManager.GetString("ResolveTaskPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SendQuastion.
+        /// </summary>
+        public static string SendQuastion {
+            get {
+                return ResourceManager.GetString("SendQuastion", resourceCulture);
             }
         }
         
