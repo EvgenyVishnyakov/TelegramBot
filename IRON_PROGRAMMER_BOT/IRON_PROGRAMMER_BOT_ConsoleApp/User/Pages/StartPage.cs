@@ -38,16 +38,16 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 }
                 if (update.CallbackQuery == null)
                     return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
-                if (update.CallbackQuery.Data == "HelpByCoursePage")
+                if (update.CallbackQuery.Data == Resources.HelpByCoursePage)
                 {
                     return new HelpByCoursePage().View(update, userState);
                 }
-                if (update.CallbackQuery.Data == "InfoByCoursePage")
+                if (update.CallbackQuery.Data == Resources.InfoByCoursePage)
                 {
                     return new InfoByCoursePage().View(update, userState);
                 }
 
-                if (update.CallbackQuery.Data == "ConnectWithManagerPage")
+                if (update.CallbackQuery.Data == Resources.ConnectWithManagerPage)
                 {
                     return new ConnectWithManagerPage().View(update, userState);
                 }
@@ -65,9 +65,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var button1 = InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage");
-                var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage");
-                var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage");
+                var button1 = InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage);
+                var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage);
+                var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage);
 
                 return new InlineKeyboardMarkup(new[]
         {
