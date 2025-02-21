@@ -51,23 +51,11 @@ public class UpdateHandler : IUpdateHandler
         Console.WriteLine(exception.Message);
     }
 
-    private static UpdateType GetUpdateType(Update update)
+    private static bool GetUpdateType(Update update)
     {
-        switch (update.Type)
-        {
-            case UpdateType.Message:
-                {
-                    return UpdateType.Message;
-                }
-            case UpdateType.CallbackQuery:
-                {
-                    return UpdateType.CallbackQuery;
-                }
-            default:
-                {
-                    throw new Exception("Неподдерживаемый тип обновления.");
-                }
-        }
+        if (update.Type == UpdateType.Message || update.Type == UpdateType.CallbackQuery)
+            return true;
+        return false;
     }
 
     private static long GetUserId(Update update)

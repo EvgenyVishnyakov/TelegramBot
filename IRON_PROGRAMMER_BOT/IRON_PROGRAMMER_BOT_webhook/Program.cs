@@ -2,6 +2,7 @@ using Firebase.Database;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Configuration;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Firebase;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Storage;
+using IRON_PROGRAMMER_BOT_webhook;
 using Microsoft.Extensions.Options;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
@@ -35,6 +36,8 @@ builder.Services.AddHttpClient("tgBotClient").AddTypedClient<ITelegramBotClient>
 });
 
 builder.Services.AddSingleton<IUpdateHandler, UpdateHandler>();
+
+builder.Services.AddHostedService<WebHookConfigurator>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
