@@ -8,16 +8,14 @@ using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp.Storage
 {
-    public class UserStateStorage
+    public class UserStateStorage(FirebaseProvider firebaseProvider)
     {
-        private readonly FirebaseProvider _firebaseProvider = new();
-
         public async Task AddOrUpdateAsync(long telegramUserId, UserState userState)
         {
             try
             {
                 var userStateFirebase = ToUserStateFirebase(userState);
-                await _firebaseProvider.AddOrUpdateAsync($"userstate/{telegramUserId}", userStateFirebase);
+                await firebaseProvider.AddOrUpdateAsync($"userstate/{telegramUserId}", userStateFirebase);
             }
             catch (Exception ex)
             {
@@ -38,7 +36,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.Storage
         {
             try
             {
-                var userStateFirebase = await _firebaseProvider.TryGetAsync<UserStateFirebase>($"userstate/{telegramUserId}");
+                var userStateFirebase = await firebaseProvider.TryGetAsync<UserStateFirebase>($"userstate/{telegramUserId}");
                 if (userStateFirebase == null)
                     return null;
                 return ToUserState(userStateFirebase);

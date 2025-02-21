@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRON_PROGRAMMER_BOT_Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRON_PROGRAMMER_BOT_Tests", "IRON_PROGRAMMER_BOT_Tests\IRON_PROGRAMMER_BOT_Tests.csproj", "{819A1147-0035-42DF-994A-DEB73E43A831}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRON_PROGRAMMER_BOT_webhook", "IRON_PROGRAMMER_BOT_webhook\IRON_PROGRAMMER_BOT_webhook.csproj", "{BAA4CF29-5B95-4FC8-9EF4-C964D08368AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{819A1147-0035-42DF-994A-DEB73E43A831}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{819A1147-0035-42DF-994A-DEB73E43A831}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{819A1147-0035-42DF-994A-DEB73E43A831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA4CF29-5B95-4FC8-9EF4-C964D08368AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA4CF29-5B95-4FC8-9EF4-C964D08368AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA4CF29-5B95-4FC8-9EF4-C964D08368AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA4CF29-5B95-4FC8-9EF4-C964D08368AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
