@@ -11,7 +11,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
 public class UpdateHandler : IUpdateHandler
-{  
+{
     public async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken token)
     {
         try
@@ -89,7 +89,7 @@ public class UpdateHandler : IUpdateHandler
         }
     }
 
-    private static async Task<Message> SendResult(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
+    private static async Task<Message?> SendResult(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
     {
         try
         {
@@ -110,7 +110,7 @@ public class UpdateHandler : IUpdateHandler
         }
     }
 
-    private static async Task<Message> SendVideo(ITelegramBotClient client, long telegramUserId, VideoPageResult videoPageResult)
+    private static async Task<Message?> SendVideo(ITelegramBotClient client, long telegramUserId, VideoPageResult videoPageResult)
     {
         try
         {
@@ -136,7 +136,7 @@ public class UpdateHandler : IUpdateHandler
         }
     }
 
-    private static async Task<Message> SendPhoto(ITelegramBotClient client, long telegramUserId, PhotoPageResult photoPageResult, Update update)
+    private static async Task<Message?> SendPhoto(ITelegramBotClient client, long telegramUserId, PhotoPageResult photoPageResult, Update update)
     {
         try
         {
@@ -176,7 +176,7 @@ public class UpdateHandler : IUpdateHandler
         }
     }
 
-    private static async Task<Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
+    private static async Task<Message?> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
     {
         try
         {
