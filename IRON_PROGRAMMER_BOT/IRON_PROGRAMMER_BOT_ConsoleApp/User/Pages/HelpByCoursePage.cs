@@ -46,11 +46,10 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             {
                 if (update.Message != null)
                 {
-                    return View(update, userState);
-                }
-                if (update.CallbackQuery == null)
+                    //return View(update, userState);
                     return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
-                if (update.CallbackQuery.Data == "Назад")
+                }
+                if (update.CallbackQuery!.Data == "Назад")
                 {
                     userState.Pages.Pop();
                     return userState.CurrenntPage.View(update, userState);
@@ -77,15 +76,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var button1 = InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", "CommonQuestionsPage");
-                var button2 = InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", "ResolveTaskPage");
-                var button3 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
+                var commonQuestion = InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", "CommonQuestionsPage");
+                var taskQuestion = InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", "ResolveTaskPage");
+                var back = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
 
                 return new InlineKeyboardMarkup(new[]
         {
-        new[] { button1 },
-        new[] { button2 },
-        new[] {button3 }
+        new[] { commonQuestion },
+        new[] { taskQuestion },
+        new[] {back }
         });
             }
             catch (Exception ex)

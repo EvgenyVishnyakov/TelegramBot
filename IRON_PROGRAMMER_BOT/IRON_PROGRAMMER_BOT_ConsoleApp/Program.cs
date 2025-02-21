@@ -9,6 +9,7 @@ using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
 
 class Program
 {
@@ -20,22 +21,21 @@ class Program
         var user = await telegramBotClient.GetMeAsync();
         Console.WriteLine($"Начали слушать updates {user.Username}");
 
-        telegramBotClient.StartReceiving(updateHandler: HandlerUpdate, pollingErrorHandler: HandlePollingError);
+        telegramBotClient.StartReceiving(updateHandler: HandleUpdate, pollingErrorHandler: HandlePollingError);
 
         Console.ReadLine();
     }
 
-    private static async Task HandlerUpdate(ITelegramBotClient client, Update update, CancellationToken token)
+    private static async Task HandleUpdate(ITelegramBotClient client, Update update, CancellationToken token)
     {
         try
         {
-            var updateType = GetUpdateType(update);
-            if (updateType != UpdateType.Message && updateType != UpdateType.CallbackQuery)
+            if (!GetUpdateType(update))
             {
                 return;
             }
 
-            long telegramUserId = GetUserId(update);
+            var telegramUserId = GetUserId(update);
             Console.WriteLine($"updateId={update.Id}, telegramUserId={telegramUserId}");
 
             var isExistUserState = stateStorage.TryGet(telegramUserId, out var userState);
@@ -59,23 +59,11 @@ class Program
         }
     }
 
-    private static UpdateType GetUpdateType(Update update)
+    private static bool GetUpdateType(Update update)
     {
-        switch (update.Type)
-        {
-            case UpdateType.Message:
-                {
-                    return UpdateType.Message;
-                }
-            case UpdateType.CallbackQuery:
-                {
-                    return UpdateType.CallbackQuery;
-                }
-            default:
-                {
-                    throw new Exception("Неподдерживаемый тип обновления.");
-                }
-        }
+        if (update.Type == UpdateType.Message || update.Type == UpdateType.CallbackQuery)
+            return true;
+        return false;
     }
 
     private static long GetUserId(Update update)
@@ -158,7 +146,7 @@ class Program
                          Caption = photoPageResult.Text,
                          ParseMode = ParseMode.Html
                      },
-                     replyMarkup: (Telegram.Bot.Types.ReplyMarkups.InlineKeyboardMarkup?)photoPageResult.ReplyMarkup
+                     replyMarkup: (InlineKeyboardMarkup?)photoPageResult.ReplyMarkup
                     );
             }
 
@@ -194,7 +182,7 @@ class Program
                   chatId: telegramUserId,
                   messageId: result.UpdatedUserState.UserData.LastMessage!.Id,
                   text: result.Text,
-                  replyMarkup: (Telegram.Bot.Types.ReplyMarkups.InlineKeyboardMarkup)result.ReplyMarkup,
+                  replyMarkup: (InlineKeyboardMarkup)result.ReplyMarkup,
                   parseMode: ParseMode.Html
                   );
             }
