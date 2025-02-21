@@ -35,14 +35,16 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                if (update.CallbackQuery == null)
-                    return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
-                if (update.CallbackQuery.Data == "Назад")
+                if (update.Message != null)
+                {
+                    return View(update, userState);
+                }
+                if (update.CallbackQuery.Data == Resources.Back)
                 {
                     userState.Pages.Pop();
                     return userState.CurrenntPage.View(update, userState);
                 }
-                if (update.CallbackQuery.Data == "sendQuastion")//реализовать следующий переход к распределению вопроса
+                if (update.CallbackQuery.Data == Resources.SendQuastion)//реализовать следующий переход к распределению вопроса
                 {
                     return new StartPage().View(update, userState);
                 }
@@ -59,13 +61,13 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var button1 = InlineKeyboardButton.WithCallbackData("Отправить вопрос", "sendQuastion");
+                var sendQuastion = InlineKeyboardButton.WithCallbackData("Отправить вопрос", Resources.SendQuastion);
 
-                var button2 = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
+                var back = InlineKeyboardButton.WithCallbackData(Resources.Back);
 
                 return new InlineKeyboardMarkup(new[]
         {
-        new[] { button1, button2 }
+        new[] { sendQuastion, back }
         });
             }
             catch (Exception ex)

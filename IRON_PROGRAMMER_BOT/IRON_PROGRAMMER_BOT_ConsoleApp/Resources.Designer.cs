@@ -61,11 +61,38 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Назад.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CommonQuestionsPage.
+        /// </summary>
+        public static string CommonQuestionsPage {
+            get {
+                return ResourceManager.GetString("CommonQuestionsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;.
         /// </summary>
         public static string CommonQuestionsPageText {
             get {
                 return ResourceManager.GetString("CommonQuestionsPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConnectWithManagerPage.
+        /// </summary>
+        public static string ConnectWithManagerPage {
+            get {
+                return ResourceManager.GetString("ConnectWithManagerPage", resourceCulture);
             }
         }
         
@@ -78,6 +105,24 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         public static string ConnectWithManagerPageText {
             get {
                 return ResourceManager.GetString("ConnectWithManagerPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://ironprogrammer.ru/#rec460811109.
+        /// </summary>
+        public static string GoToSchool {
+            get {
+                return ResourceManager.GetString("GoToSchool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HelpByCoursePage.
+        /// </summary>
+        public static string HelpByCoursePage {
+            get {
+                return ResourceManager.GetString("HelpByCoursePage", resourceCulture);
             }
         }
         
@@ -101,11 +146,29 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to InfoByCoursePage.
+        /// </summary>
+        public static string InfoByCoursePage {
+            get {
+                return ResourceManager.GetString("InfoByCoursePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;Информация о курсах!&lt;/b&gt;  Вы можете перейти на страницу школы &lt;b&gt;&lt;u&gt;IRON PROGRAMMER&lt;/u&gt;&lt;/b&gt;.
         /// </summary>
         public static string InfoByCoursePageText {
             get {
                 return ResourceManager.GetString("InfoByCoursePageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ResolveTaskPage.
+        /// </summary>
+        public static string ResolveTaskPage {
+            get {
+                return ResourceManager.GetString("ResolveTaskPage", resourceCulture);
             }
         }
         
@@ -119,6 +182,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         public static string ResolveTaskPageText {
             get {
                 return ResourceManager.GetString("ResolveTaskPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SendQuastion.
+        /// </summary>
+        public static string SendQuastion {
+            get {
+                return ResourceManager.GetString("SendQuastion", resourceCulture);
             }
         }
         
