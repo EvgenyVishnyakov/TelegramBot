@@ -6,6 +6,10 @@
       "environmentVariables": {
         "paramBot": "7239844885:AAHDJcHRUexZj1FtxlTPlI7-XoeFN7yByxg"
       }
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
     }
   }
 }
