@@ -11,14 +11,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var text = @"<b>Привет!
-Рад видеть тебя😊</b>
-
-<u>Задай свой вопрос и я тебе обязательно отвечу!</u>
-
-Хочешь получить помощь по курсу?
-Хочешь узнать о нашей школе и курсах или получить консультацию от наших специалистов?
-Нажми одну из <em>кнопок</em> ниже, выбирай направление - я отвечу и помогу тебе😉";
+                var text = Resources.StartPageText;
 
                 var replyMarkup = GetKeyboard();
                 userState.AddPage(this);
@@ -45,26 +38,26 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 }
                 if (update.CallbackQuery == null)
                     return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
-                if (update.CallbackQuery.Data == "HelpByCoursePage")
+                if (update.CallbackQuery.Data == Resources.HelpByCoursePage)
                 {
                     return new HelpByCoursePage().View(update, userState);
                 }
-
-                if (update.CallbackQuery.Data == "InfoByCoursePage")
+                if (update.CallbackQuery.Data == Resources.InfoByCoursePage)
                 {
                     return new InfoByCoursePage().View(update, userState);
                 }
 
-                if (update.CallbackQuery.Data == "ConnectWithManagerPage")
+                if (update.CallbackQuery.Data == Resources.ConnectWithManagerPage)
                 {
                     return new ConnectWithManagerPage().View(update, userState);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе Handle, файл StartPage");
+                Console.WriteLine($"Ошибка {ex} в методе View, файл Handle");
                 return View(update, userState);
             }
+
             return View(update, userState);
         }
 
@@ -72,9 +65,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var button1 = InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage");
-                var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage");
-                var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage");
+                var button1 = InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage);
+                var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage);
+                var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage);
 
                 return new InlineKeyboardMarkup(new[]
         {

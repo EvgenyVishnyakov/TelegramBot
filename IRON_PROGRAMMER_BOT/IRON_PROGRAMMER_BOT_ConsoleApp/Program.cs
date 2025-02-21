@@ -176,25 +176,13 @@ class Program
     {
         try
         {
-            if (update.CallbackQuery != null && (!result.UpdatedUserState.UserData.LastMessage?.IsMedia ?? false))
+            if (result.UpdatedUserState.UserData.LastMessage != null)
             {
-                return await client.EditMessageTextAsync(
-                  chatId: telegramUserId,
-                  messageId: result.UpdatedUserState.UserData.LastMessage!.Id,
-                  text: result.Text,
-                  replyMarkup: (InlineKeyboardMarkup)result.ReplyMarkup,
-                  parseMode: ParseMode.Html
-                  );
+                await client.DeleteMessageAsync(
+                    chatId: telegramUserId,
+                    messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
             }
-            if (update.Message == null)
-            {
-                if (result.UpdatedUserState.UserData.LastMessage != null)
-                {
-                    await client.DeleteMessageAsync(
-                        chatId: telegramUserId,
-                        messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
-                }
-            }
+
 
             return await client.SendTextMessageAsync(
                         chatId: telegramUserId,

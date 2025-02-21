@@ -12,17 +12,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var text = @"<b><u>Онлайн консультация!</u></b>
-
-Получение ответа на вопрос
-Ты находишься в разделе получения информации по интересующему вопросу
-
-<u><i>В этом разделе помогает мощный интелект всемирной паутины😊</i></u>
-
-Выбери , пожалуйста, какого <em>формата</em> у тебя вопрос и тебе обязательно помогут.
-
-<b>Совет: спрашивай общее направление, пытайся до глубины задачи дойти сам!</b>❗️
-Успехов!";
+                var text = Resources.HelpByCoursePageText;
                 var path = "Resources\\Videos\\ИИ.mp4";
                 var replyMarkup = GetKeyboard();
                 var resource = ResourcesService.GetResource(path);
@@ -46,19 +36,18 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             {
                 if (update.Message != null)
                 {
-                    //return View(update, userState);
-                    return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+                    return View(update, userState);
                 }
-                if (update.CallbackQuery!.Data == "Назад")
+                if (update.CallbackQuery!.Data == Resources.Back)
                 {
                     userState.Pages.Pop();
                     return userState.CurrenntPage.View(update, userState);
                 }
-                if (update.CallbackQuery.Data == "CommonQuestionsPage")
+                if (update.CallbackQuery.Data == Resources.CommonQuestionsPage)
                 {
                     return new CommonQuestionsPage().View(update, userState);
                 }
-                if (update.CallbackQuery.Data == "ResolveTaskPage")
+                if (update.CallbackQuery.Data == Resources.ResolveTaskPage)
                 {
                     return new ResolveTaskPage().View(update, userState);
                 }
@@ -76,9 +65,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                var commonQuestion = InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", "CommonQuestionsPage");
-                var taskQuestion = InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", "ResolveTaskPage");
-                var back = InlineKeyboardButton.WithCallbackData("Назад", "Назад");
+                var commonQuestion = InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", Resources.CommonQuestionsPage);
+                var taskQuestion = InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", Resources.ResolveTaskPage);
+                var back = InlineKeyboardButton.WithCallbackData(Resources.Back);
 
                 return new InlineKeyboardMarkup(new[]
         {

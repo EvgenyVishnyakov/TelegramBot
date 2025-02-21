@@ -43,6 +43,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Update="User\Pages\CommonQuestionsPage.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
@@ -52,6 +57,13 @@
     <Compile Update="User\Pages\InfoByCoursePage.cs">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

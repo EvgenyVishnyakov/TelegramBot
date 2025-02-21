@@ -12,7 +12,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
 
         public PageResultBase View(Update update, UserState userState)
         {
-            return null;
+            return new StartPage().View(update, userState);
         }
     }
 }

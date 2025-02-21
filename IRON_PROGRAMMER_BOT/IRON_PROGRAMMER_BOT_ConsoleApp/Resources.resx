@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConnectWithManagerPageText" xml:space="preserve">
+    <value>&lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
+Задавайте свой вопрос 
+&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
+&lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;</value>
+  </data>
+  <data name="InfoByCoursePageText" xml:space="preserve">
+    <value>&lt;b&gt;Информация о курсах!&lt;/b&gt;  Вы можете перейти на страницу школы &lt;b&gt;&lt;u&gt;IRON PROGRAMMER&lt;/u&gt;&lt;/b&gt;</value>
+  </data>
+  <data name="HelpByCoursePageText" xml:space="preserve">
+    <value>&lt;b&gt;&lt;u&gt;Онлайн консультация!&lt;/u&gt;&lt;/b&gt;
+
+Получение ответа на вопрос
+Ты находишься в разделе получения информации по интересующему вопросу
+
+&lt;u&gt;&lt;i&gt;В этом разделе помогает мощный интелект всемирной паутины😊&lt;/i&gt;&lt;/u&gt;
+
+Выбери , пожалуйста, какого &lt;em&gt;формата&lt;/em&gt; у тебя вопрос и тебе обязательно помогут.
+
+&lt;b&gt;Совет: спрашивай общее направление, пытайся до глубины задачи дойти сам!&lt;/b&gt;❗️
+Успехов!</value>
+  </data>
+  <data name="StartPageText" xml:space="preserve">
+    <value>&lt;b&gt;Привет!&lt;/b&gt;
+&lt;b&gt;Рад видеть тебя😊&lt;/b&gt;
+
+&lt;u&gt;Задай свой вопрос и я тебе обязательно отвечу!&lt;/u&gt;
+
+Хочешь получить помощь по курсу?
+Хочешь узнать о нашей школе и курсах или получить консультацию от наших специалистов?
+Нажми одну из &lt;em&gt;кнопок&lt;/em&gt; ниже, выбирай направление - я отвечу и помогу тебе😉</value>
+  </data>
+  <data name="ResolveTaskPageText" xml:space="preserve">
+    <value>&lt;b&gt;Решение задачи! 💻&lt;/b&gt;
+&lt;u&gt;&lt;i&gt;Отправьте , пожалуйста:&lt;/i&gt;&lt;/u&gt;
+&lt;i&gt; - ссылку на задачу&lt;/i&gt;
+&lt;i&gt; - ссылку на Ваше решение&lt;/i&gt;
+&lt;i&gt; - Ваш вопрос&lt;/i&gt;</value>
+  </data>
+  <data name="CommonQuestionsPageText" xml:space="preserve">
+    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;</value>
+  </data>
+  <data name="HelpByCoursePage" xml:space="preserve">
+    <value>HelpByCoursePage</value>
+  </data>
+  <data name="InfoByCoursePage" xml:space="preserve">
+    <value>InfoByCoursePage</value>
+  </data>
+  <data name="ConnectWithManagerPage" xml:space="preserve">
+    <value>ConnectWithManagerPage</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="SendQuastion" xml:space="preserve">
+    <value>SendQuastion</value>
+  </data>
+  <data name="CommonQuestionsPage" xml:space="preserve">
+    <value>CommonQuestionsPage</value>
+  </data>
+  <data name="ResolveTaskPage" xml:space="preserve">
+    <value>ResolveTaskPage</value>
+  </data>
+  <data name="GoToSchool" xml:space="preserve">
+    <value>https://ironprogrammer.ru/#rec460811109</value>
+  </data>
+</root>
