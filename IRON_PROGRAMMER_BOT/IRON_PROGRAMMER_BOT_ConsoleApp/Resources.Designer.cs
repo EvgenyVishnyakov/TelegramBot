@@ -88,6 +88,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ConnectWithManagerPage.
+        /// </summary>
+        public static string ConnectWithManagerPage {
+            get {
+                return ResourceManager.GetString("ConnectWithManagerPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
         ///Задавайте свой вопрос 
         ///&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
@@ -96,6 +105,24 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         public static string ConnectWithManagerPageText {
             get {
                 return ResourceManager.GetString("ConnectWithManagerPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://ironprogrammer.ru/#rec460811109.
+        /// </summary>
+        public static string GoToSchool {
+            get {
+                return ResourceManager.GetString("GoToSchool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HelpByCoursePage.
+        /// </summary>
+        public static string HelpByCoursePage {
+            get {
+                return ResourceManager.GetString("HelpByCoursePage", resourceCulture);
             }
         }
         
@@ -115,6 +142,15 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp {
         public static string HelpByCoursePageText {
             get {
                 return ResourceManager.GetString("HelpByCoursePageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InfoByCoursePage.
+        /// </summary>
+        public static string InfoByCoursePage {
+            get {
+                return ResourceManager.GetString("InfoByCoursePage", resourceCulture);
             }
         }
         

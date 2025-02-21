@@ -35,8 +35,10 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
         {
             try
             {
-                if (update.CallbackQuery == null)
-                    return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
+                if (update.Message != null)
+                {
+                    return View(update, userState);
+                }
                 if (update.CallbackQuery.Data == Resources.Back)
                 {
                     userState.Pages.Pop();

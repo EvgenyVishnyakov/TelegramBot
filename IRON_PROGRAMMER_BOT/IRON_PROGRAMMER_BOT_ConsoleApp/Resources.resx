@@ -159,16 +159,28 @@
   <data name="CommonQuestionsPageText" xml:space="preserve">
     <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;</value>
   </data>
-  <data name="CommonQuestionsPage" xml:space="preserve">
-    <value>CommonQuestionsPage</value>
+  <data name="HelpByCoursePage" xml:space="preserve">
+    <value>HelpByCoursePage</value>
   </data>
-  <data name="ResolveTaskPage" xml:space="preserve">
-    <value>ResolveTaskPage</value>
+  <data name="InfoByCoursePage" xml:space="preserve">
+    <value>InfoByCoursePage</value>
+  </data>
+  <data name="ConnectWithManagerPage" xml:space="preserve">
+    <value>ConnectWithManagerPage</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Назад</value>
   </data>
   <data name="SendQuastion" xml:space="preserve">
     <value>SendQuastion</value>
+  </data>
+  <data name="CommonQuestionsPage" xml:space="preserve">
+    <value>CommonQuestionsPage</value>
+  </data>
+  <data name="ResolveTaskPage" xml:space="preserve">
+    <value>ResolveTaskPage</value>
+  </data>
+  <data name="GoToSchool" xml:space="preserve">
+    <value>https://ironprogrammer.ru/#rec460811109</value>
   </data>
 </root>
