@@ -85,7 +85,7 @@ class Program
         }
     }
 
-    private static async Task<Message> SendResult(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
+    private static async Task<Message?> SendResult(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
     {
         try
         {
@@ -106,7 +106,7 @@ class Program
         }
     }
 
-    private static async Task<Message> SendVideo(ITelegramBotClient client, long telegramUserId, VideoPageResult videoPageResult)
+    private static async Task<Message?> SendVideo(ITelegramBotClient client, long telegramUserId, VideoPageResult videoPageResult)
     {
         try
         {
@@ -132,7 +132,7 @@ class Program
         }
     }
 
-    private static async Task<Message> SendPhoto(ITelegramBotClient client, long telegramUserId, PhotoPageResult photoPageResult, Update update)
+    private static async Task<Message?> SendPhoto(ITelegramBotClient client, long telegramUserId, PhotoPageResult photoPageResult, Update update)
     {
         try
         {
@@ -172,7 +172,7 @@ class Program
         }
     }
 
-    private static async Task<Message> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
+    private static async Task<Message?> SendText(ITelegramBotClient client, long telegramUserId, PageResultBase result, Update update)
     {
         try
         {
