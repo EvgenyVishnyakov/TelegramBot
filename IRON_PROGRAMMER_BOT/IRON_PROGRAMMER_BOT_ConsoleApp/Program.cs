@@ -1,20 +1,22 @@
-﻿using System;
-using System.Threading.Tasks;
-using Telegram.Bot;
+﻿using System.Threading.Tasks;
+using IRON_PROGRAMMER_BOT_ConsoleApp;
+using IRON_PROGRAMMER_BOT_webhook;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 class Program
 {
-    //static UserStateStorage stateStorage = new UserStateStorage();
     static async Task Main(string[] args)
     {
-        string paramBot = Environment.GetEnvironmentVariable("paramBot")!;
-        var telegramBotClient = new TelegramBotClient(paramBot);
-        var user = await telegramBotClient.GetMeAsync();
-        Console.WriteLine($"Начали слушать updates {user.Username}");
+        var host = Host.CreateDefaultBuilder(args).ConfigureServices((context, services) =>
+        {
+            ContainerConfigurator.Configure(context.Configuration, services);
 
-        //telegramBotClient.StartReceiving(updateHandler: HandleUpdate, pollingErrorHandler: HandlePollingError);
+            services.AddHostedService<LongPoolingConfigurator>();
 
-        Console.ReadLine();
+        }).Build();
+
+        await host.RunAsync();
     }
 }
 

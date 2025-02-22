@@ -23,5 +23,11 @@ namespace IRON_PROGRAMMER_BOT_webhook.Controllers
             }
             return Ok();
         }
+
+        [HttpGet("Ping")]
+        public IActionResult Ping()
+        {
+            return Ok("Ok");
+        }
     }
 }
