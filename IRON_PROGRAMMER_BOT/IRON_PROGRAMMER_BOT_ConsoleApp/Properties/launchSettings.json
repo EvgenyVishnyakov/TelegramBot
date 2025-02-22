@@ -4,9 +4,11 @@
       "commandName": "Executable",
       "executablePath": "C:\\Users\\vis-e\\source\\repos\\TG_Bot_stream\\IRON_PROGRAMMER_BOT\\IRON_PROGRAMMER_BOT_ConsoleApp\\bin\\Debug\\net8.0\\IRON_PROGRAMMER_BOT_ConsoleApp.exe",
       "environmentVariables": {
-        "paramBot": "7239844885:AAHDJcHRUexZj1FtxlTPlI7-XoeFN7yByxg",
+        "BotToken": "7239844885:AAHDJcHRUexZj1FtxlTPlI7-XoeFN7yByxg",
         "BasePath": "https://iron-programmer-helper-bot-default-rtdb.firebaseio.com/",
-        "SecretFirebase": "7XPxu3gYsLDNS5MLt53h9QtuD3RLOyRIIwmRbUWu"
+        "Secret": "7XPxu3gYsLDNS5MLt53h9QtuD3RLOyRIIwmRbUWu",
+        "HostAddress": "https://bqBNTBPNas1j.share.zrok.io",
+        "SecretToken": "AAHDJcHRUexZj1FtxlTPlI7-XoeFN7yByxg"
       }
     },
     "WSL": {
