@@ -9,7 +9,6 @@ namespace IRON_PROGRAMMER_BOT_webhook
 {
     public class LongPoolingConfigurator(ITelegramBotClient botClient, IUpdateHandler updateHandler) : BackgroundService
     {
-
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var user = await botClient.GetMeAsync();

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Firebase.Database;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Configuration;
 using IRON_PROGRAMMER_BOT_ConsoleApp.Firebase;
@@ -15,32 +16,39 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp
     {
         public static void Configure(IConfiguration configuration, IServiceCollection service)
         {
-            var firebaseConfigurationSection = configuration.GetSection(FirebaseConfiguration.SectionName);
-            service.Configure<FirebaseConfiguration>(firebaseConfigurationSection);
-
-            var botConfigurationSection = configuration.GetSection(BotConfiguration.SectionName);
-            service.Configure<BotConfiguration>(botConfigurationSection);
-
-            service.AddSingleton<UserStateStorage>();
-            service.AddSingleton<FirebaseProvider>();
-            service.AddSingleton<FirebaseClient>(services =>
+            try
             {
-                var firebaseConfig = services.GetService<IOptions<FirebaseConfiguration>>()!.Value;
+                var firebaseConfigurationSection = configuration.GetSection(FirebaseConfiguration.SectionName);
+                service.Configure<FirebaseConfiguration>(firebaseConfigurationSection);
 
-                return new FirebaseClient(firebaseConfig.BasePath, new FirebaseOptions
+                var botConfigurationSection = configuration.GetSection(BotConfiguration.SectionName);
+                service.Configure<BotConfiguration>(botConfigurationSection);
+
+                service.AddSingleton<UserStateStorage>();
+                service.AddSingleton<FirebaseProvider>();
+                service.AddSingleton<FirebaseClient>(services =>
                 {
-                    AuthTokenAsyncFactory = () => Task.FromResult(firebaseConfig.Secret)
+                    var firebaseConfig = services.GetService<IOptions<FirebaseConfiguration>>()!.Value;
+
+                    return new FirebaseClient(firebaseConfig.BasePath, new FirebaseOptions
+                    {
+                        AuthTokenAsyncFactory = () => Task.FromResult(firebaseConfig.Secret)
+                    });
                 });
-            });
 
-            service.AddHttpClient("tgBotClient").AddTypedClient<ITelegramBotClient>((httpClient, services) =>
+                service.AddHttpClient("tgBotClient").AddTypedClient<ITelegramBotClient>((httpClient, services) =>
+                {
+                    var botConfig = services.GetService<IOptions<BotConfiguration>>()!.Value;
+                    var options = new TelegramBotClientOptions(botConfig.BotToken);
+                    return new TelegramBotClient(options, httpClient);
+                });
+
+                service.AddSingleton<IUpdateHandler, UpdateHandler>();
+            }
+            catch (Exception ex)
             {
-                var botConfig = services.GetService<IOptions<BotConfiguration>>()!.Value;
-                var options = new TelegramBotClientOptions(botConfig.BotToken);
-                return new TelegramBotClient(options, httpClient);
-            });
-
-            service.AddSingleton<IUpdateHandler, UpdateHandler>();
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using IRON_PROGRAMMER_BOT_ConsoleApp;
 using IRON_PROGRAMMER_BOT_webhook;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,15 +9,22 @@ class Program
 {
     static async Task Main(string[] args)
     {
-        var host = Host.CreateDefaultBuilder(args).ConfigureServices((context, services) =>
+        try
         {
-            ContainerConfigurator.Configure(context.Configuration, services);
+            var host = Host.CreateDefaultBuilder(args).ConfigureServices((context, services) =>
+            {
+                ContainerConfigurator.Configure(context.Configuration, services);
 
-            services.AddHostedService<LongPoolingConfigurator>();
+                services.AddHostedService<LongPoolingConfigurator>();
 
-        }).Build();
+            }).Build();
 
-        await host.RunAsync();
+            await host.RunAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
     }
 }
 
