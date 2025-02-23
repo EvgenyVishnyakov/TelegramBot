@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\IRON_PROGRAMMER_BOT_ConsoleApp\IRON_PROGRAMMER_BOT_ConsoleApp.csproj" />
   </ItemGroup>
 
 </Project>
