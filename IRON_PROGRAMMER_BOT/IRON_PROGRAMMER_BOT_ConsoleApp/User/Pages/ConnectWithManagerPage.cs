@@ -15,7 +15,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 var text = Resources.ConnectWithManagerPageText;
 
                 var replyMarkup = GetKeyboard();
-                var path = ResourcesPathe.FeedBackPath();
+                var path = ResourcesPath.FeedBackPath();
                 var resource = ResourcesService.GetResource(path);
                 userState.AddPage(this);
 

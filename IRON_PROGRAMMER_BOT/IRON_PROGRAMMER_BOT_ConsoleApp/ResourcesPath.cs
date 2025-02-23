@@ -1,6 +1,6 @@
 ﻿namespace IRON_PROGRAMMER_BOT_ConsoleApp
 {
-    public static class ResourcesPathe
+    public static class ResourcesPath
     {
         public static string AIPhotoPath()
         {

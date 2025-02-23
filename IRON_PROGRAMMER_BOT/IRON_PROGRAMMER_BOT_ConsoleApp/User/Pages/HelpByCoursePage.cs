@@ -13,7 +13,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             try
             {
                 var text = Resources.HelpByCoursePageText;
-                var path = ResourcesPathe.AIVideoPath();
+                var path = ResourcesPath.AIVideoPath();
                 var replyMarkup = GetKeyboard();
                 var resource = ResourcesService.GetResource(path);
                 userState.AddPage(this);

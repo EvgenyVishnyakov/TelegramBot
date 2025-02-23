@@ -14,7 +14,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             {
                 var text = Resources.CommonQuestionsPageText;
 
-                var path = ResourcesPathe.AIPhotoPath();
+                var path = ResourcesPath.AIPhotoPath();
 
                 var resource = ResourcesService.GetResource(path);
                 var replyMarkup = GetKeyboard();

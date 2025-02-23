@@ -16,7 +16,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 var replyMarkup = GetKeyboard();
                 userState.AddPage(this);
 
-                var path = ResourcesPathe.LogoPath();
+                var path = ResourcesPath.LogoPath();
                 var resource = ResourcesService.GetResource(path);
 
                 return new PhotoPageResult(resource, text, replyMarkup)
