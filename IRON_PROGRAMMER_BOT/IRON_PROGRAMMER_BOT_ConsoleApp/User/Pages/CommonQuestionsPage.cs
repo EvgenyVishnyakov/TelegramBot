@@ -14,7 +14,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             {
                 var text = Resources.CommonQuestionsPageText;
 
-                var path = "C:\\Users\\vis-e\\Source\\Repos\\TG_Bot_stream\\IRON_PROGRAMMER_BOT\\IRON_PROGRAMMER_BOT_ConsoleApp\\Resources\\Photos\\Фото ИИ.jpg";
+                var path = ResourcesPathe.AIPhotoPath();
 
                 var resource = ResourcesService.GetResource(path);
                 var replyMarkup = GetKeyboard();

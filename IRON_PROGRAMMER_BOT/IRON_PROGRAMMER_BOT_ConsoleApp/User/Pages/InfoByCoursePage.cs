@@ -16,7 +16,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 var replyMarkup = GetKeyboard();
                 userState.AddPage(this);
 
-                var path = "C:\\Users\\vis-e\\Source\\Repos\\TG_Bot_stream\\IRON_PROGRAMMER_BOT\\IRON_PROGRAMMER_BOT_ConsoleApp\\Resources\\Photos\\Логотип.png";
+                var path = ResourcesPathe.LogoPath();
                 var resource = ResourcesService.GetResource(path);
 
                 return new PhotoPageResult(resource, text, replyMarkup)
