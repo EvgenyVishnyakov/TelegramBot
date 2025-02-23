@@ -5,21 +5,19 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class CommonQuestionsPage : IPage
+    public class CommonQuestionsPage(ResourcesService resourcesService) : IPage
     {
         public PageResultBase View(Update update, UserState userState)
         {
             try
             {
                 var text = Resources.CommonQuestionsPageText;
-
-                var path = ResourcesPath.AIPhotoPath();
-
-                var resource = ResourcesService.GetResource(path);
+                var path = Resources.Фото_ИИ;
+                var photo = resourcesService.GetResource(path, "Фото ИИ");
                 var replyMarkup = GetKeyboard();
                 userState.AddPage(this);
 
-                return new PhotoPageResult(resource, text, replyMarkup)
+                return new PhotoPageResult(photo, text, replyMarkup)
                 {
                     UpdatedUserState = userState
                 };

@@ -4,7 +4,7 @@ using IRON_PROGRAMMER_BOT_Common.User.Pages;
 
 namespace IRON_PROGRAMMER_BOT_Common.Storage
 {
-    public class UserStateStorage(FirebaseProvider firebaseProvider)
+    public class UserStateStorage(FirebaseProvider firebaseProvider, PagesFactory pagesFactory)
     {
         public async Task AddOrUpdateAsync(long telegramUserId, UserState userState)
         {
@@ -24,7 +24,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Storage
             return new UserStateFirebase
             {
                 UserData = userState.UserData,
-                PageNames = userState.Pages.Select(x => x.GetType().Name).ToList()
+                PageNames = userState.Pages.Select(x => x.GetType().FullName).ToList()
             };
         }
 
@@ -44,11 +44,11 @@ namespace IRON_PROGRAMMER_BOT_Common.Storage
             }
         }
 
-        private static UserState? ToUserState(UserStateFirebase userStateFirebase)
+        private UserState? ToUserState(UserStateFirebase userStateFirebase)
         {
             try
             {
-                var pages = userStateFirebase.PageNames.Select(PagesFactory.GetPage).Reverse();
+                var pages = userStateFirebase.PageNames.Select(x => pagesFactory.GetPage(x)).Reverse();
                 return new UserState(new Stack<IPage>(pages), userStateFirebase.UserData);
             }
             catch (Exception ex)

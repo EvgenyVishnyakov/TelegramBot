@@ -1,10 +1,11 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class StartPage : IPage
+    public class StartPage(IServiceProvider services) : IPage
     {
         public PageResultBase View(Update update, UserState userState)
         {
@@ -39,16 +40,16 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                     return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
                 if (update.CallbackQuery.Data == Resources.HelpByCoursePage)
                 {
-                    return new HelpByCoursePage().View(update, userState);
+                    return services.GetRequiredService<HelpByCoursePage>().View(update, userState);
                 }
                 if (update.CallbackQuery.Data == Resources.InfoByCoursePage)
                 {
-                    return new InfoByCoursePage().View(update, userState);
+                    return services.GetRequiredService<InfoByCoursePage>().View(update, userState);
                 }
 
                 if (update.CallbackQuery.Data == Resources.ConnectWithManagerPage)
                 {
-                    return new ConnectWithManagerPage().View(update, userState);
+                    return services.GetRequiredService<ConnectWithManagerPage>().View(update, userState);
                 }
             }
             catch (Exception ex)

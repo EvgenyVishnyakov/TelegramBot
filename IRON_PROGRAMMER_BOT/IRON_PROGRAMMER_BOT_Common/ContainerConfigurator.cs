@@ -1,7 +1,10 @@
-﻿using Firebase.Database;
+﻿using System.Reflection;
+using Firebase.Database;
 using IRON_PROGRAMMER_BOT_Common.Configuration;
 using IRON_PROGRAMMER_BOT_Common.Firebase;
+using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.Storage;
+using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -24,6 +27,7 @@ namespace IRON_PROGRAMMER_BOT_Common
 
                 service.AddSingleton<UserStateStorage>();
                 service.AddSingleton<FirebaseProvider>();
+                service.AddSingleton<ResourcesService>();
                 service.AddSingleton(services =>
                 {
                     var firebaseConfig = services.GetService<IOptions<FirebaseConfiguration>>()!.Value;
@@ -42,6 +46,16 @@ namespace IRON_PROGRAMMER_BOT_Common
                 });
 
                 service.AddSingleton<IUpdateHandler, UpdateHandler>();
+
+                var assembly = Assembly.GetExecutingAssembly();
+                var types = assembly.GetTypes().Where(t => typeof(IPage).IsAssignableFrom(t) && !t.IsAbstract);
+                foreach (var type in types)
+                {
+                    service.AddSingleton(type);
+                }
+
+                service.AddSingleton<PagesFactory>();
+
             }
             catch (Exception ex)
             {

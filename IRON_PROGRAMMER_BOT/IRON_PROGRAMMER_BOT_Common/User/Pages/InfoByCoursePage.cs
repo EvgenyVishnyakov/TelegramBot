@@ -5,7 +5,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class InfoByCoursePage : IPage
+    public class InfoByCoursePage(ResourcesService resourcesService) : IPage
     {
         public PageResultBase View(Update update, UserState userState)
         {
@@ -15,10 +15,10 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 var replyMarkup = GetKeyboard();
                 userState.AddPage(this);
 
-                var path = ResourcesPath.LogoPath();
-                var resource = ResourcesService.GetResource(path);
+                var path = Resources.Логотип;
+                var photo = resourcesService.GetResource(path, "Логотип");
 
-                return new PhotoPageResult(resource, text, replyMarkup)
+                return new PhotoPageResult(photo, text, replyMarkup)
                 {
                     UpdatedUserState = userState
                 };

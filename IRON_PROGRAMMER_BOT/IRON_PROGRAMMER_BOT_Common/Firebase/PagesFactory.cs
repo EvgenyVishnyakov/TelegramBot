@@ -1,18 +1,16 @@
-﻿using System.Reflection;
-using IRON_PROGRAMMER_BOT_Common.User.Pages;
+﻿using IRON_PROGRAMMER_BOT_Common.User.Pages;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace IRON_PROGRAMMER_BOT_Common.Firebase
 {
-    public static class PagesFactory
+    public class PagesFactory(IServiceProvider services)
     {
-        public static IPage GetPage(string name)
+        public IPage GetPage(string typeName)
         {
             try
             {
-                var assembly = Assembly.GetExecutingAssembly();
-                var type = assembly.GetTypes().FirstOrDefault(t => t.Name == name && typeof(IPage).IsAssignableFrom(t));
-
-                return (IPage)Activator.CreateInstance(type);
+                var type = Type.GetType(typeName) ?? throw new Exception("Такого типа нет в программе");
+                return (IPage)services.GetRequiredService(type);
             }
             catch (Exception ex)
             {

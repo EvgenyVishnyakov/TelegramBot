@@ -2,6 +2,8 @@
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework.Legacy;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -11,12 +13,33 @@ namespace IRON_PROGRAMMER_BOT_Tests;
 
 public class HelpByCoursePageTests
 {
+    private IServiceProvider _services;
+
+    [OneTimeSetUp]
+    public void SetUp()
+    {
+        var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+        var serviceCollection = new ServiceCollection();
+
+        ContainerConfigurator.Configure(configuration, serviceCollection);
+        _services = serviceCollection.BuildServiceProvider();
+    }
+
+    [OneTimeTearDown]
+    public void TearDown()
+    {
+        if (_services is IDisposable disposable)
+        {
+            disposable.Dispose();
+        }
+    }
+
     [Test]
     public void View_Enter_CorrectTextAndKeyboard()
     {
         //Arrange
-        var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage()]);
+        var helpByCoursePage = _services.GetRequiredService<HelpByCoursePage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>()]);
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
@@ -43,8 +66,8 @@ public class HelpByCoursePageTests
     public void Handle_HelpByCoursePageCallback_CommonQuestionsPage()
     {
         //Arrange
-        var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
+        var helpByCoursePage = _services.GetRequiredService<HelpByCoursePage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.CommonQuestionsPage } };
         //Act
@@ -61,8 +84,8 @@ public class HelpByCoursePageTests
     public void Handle_HelpByCoursePageCallback_ResolveTaskPage()
     {
         //Arrange
-        var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
+        var helpByCoursePage = _services.GetRequiredService<HelpByCoursePage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.ResolveTaskPage } };
         //Act
@@ -80,8 +103,8 @@ public class HelpByCoursePageTests
     public void Handle_HelpByCoursePageCallback_StartPage()
     {
         //Arrange
-        var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
+        var helpByCoursePage = _services.GetRequiredService<HelpByCoursePage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
@@ -98,8 +121,8 @@ public class HelpByCoursePageTests
     public void Handle_UnknownMessage_HelpByCoursePage()
     {
         //Arrange
-        var helpByCoursePage = new HelpByCoursePage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage()]);
+        var helpByCoursePage = _services.GetRequiredService<HelpByCoursePage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>()]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]

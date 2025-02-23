@@ -1,20 +1,21 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class HelpByCoursePage : IPage
+    public class HelpByCoursePage(IServiceProvider services, ResourcesService resourcesService) : IPage
     {
         public PageResultBase View(Update update, UserState userState)
         {
             try
             {
                 var text = Resources.HelpByCoursePageText;
-                var path = ResourcesPath.AIVideoPath();
+                var path = Resources.ИИ;
                 var replyMarkup = GetKeyboard();
-                var resource = ResourcesService.GetResource(path);
+                var resource = resourcesService.GetResource(path, "ИИ");
                 userState.AddPage(this);
 
                 return new VideoPageResult(resource, text, replyMarkup)
@@ -44,11 +45,11 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 }
                 if (update.CallbackQuery.Data == Resources.CommonQuestionsPage)
                 {
-                    return new CommonQuestionsPage().View(update, userState);
+                    return services.GetRequiredService<CommonQuestionsPage>().View(update, userState);
                 }
                 if (update.CallbackQuery.Data == Resources.ResolveTaskPage)
                 {
-                    return new ResolveTaskPage().View(update, userState);
+                    return services.GetRequiredService<ResolveTaskPage>().View(update, userState);
                 }
             }
             catch (Exception ex)

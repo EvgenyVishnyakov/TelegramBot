@@ -183,4 +183,17 @@
   <data name="GoToSchool" xml:space="preserve">
     <value>https://ironprogrammer.ru/#rec460811109</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Фото ИИ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Фото ИИ.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Обратная связь" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Обратная связь.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Логотип" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Логотип.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ИИ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ИИ.mp4;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

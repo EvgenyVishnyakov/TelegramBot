@@ -4,13 +4,12 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
 {
     public class ResourcesService
     {
-        public static InputFileStream GetResource(string path)
+        public InputFileStream GetResource(byte[] buffer, string filename)
         {
             try
             {
-                var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
-                var filename = Path.GetFileName(path);
-                return InputFile.FromStream(fileStream, filename);
+                var memmoryStream = new MemoryStream(buffer);
+                return InputFile.FromStream(memmoryStream, filename);
             }
             catch (Exception ex)
             {

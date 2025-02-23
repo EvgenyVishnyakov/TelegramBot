@@ -2,6 +2,8 @@
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework.Legacy;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -11,12 +13,33 @@ namespace IRON_PROGRAMMER_BOT_Tests;
 
 public class CommonQuestionsPageTests
 {
+    private IServiceProvider _services;
+
+    [OneTimeSetUp]
+    public void SetUp()
+    {
+        var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+        var serviceCollection = new ServiceCollection();
+
+        ContainerConfigurator.Configure(configuration, serviceCollection);
+        _services = serviceCollection.BuildServiceProvider();
+    }
+
+    [OneTimeTearDown]
+    public void TearDown()
+    {
+        if (_services is IDisposable disposable)
+        {
+            disposable.Dispose();
+        }
+    }
+
     [Test]
     public void View_Enter_CorrectTextAndKeyboard()
     {
         //Arrange
-        var commonQuestionsPage = new CommonQuestionsPage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage()]);
+        var commonQuestionsPage = _services.GetRequiredService<CommonQuestionsPage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>(), _services.GetRequiredService<HelpByCoursePage>()]);
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
@@ -41,8 +64,8 @@ public class CommonQuestionsPageTests
     public void Handle_CommonQuestionsPageCallback_HelpByCoursePage()
     {
         //Arrange
-        var commonQuestionsPage = new CommonQuestionsPage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage(), commonQuestionsPage]);
+        var commonQuestionsPage = _services.GetRequiredService<CommonQuestionsPage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>(), _services.GetRequiredService<HelpByCoursePage>(), commonQuestionsPage]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
@@ -59,8 +82,8 @@ public class CommonQuestionsPageTests
     public void Handle_UnknownMessage_CommonQuestionsPage()
     {
         //Arrange
-        var commonQuestionsPage = new CommonQuestionsPage();
-        var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage()]);
+        var commonQuestionsPage = _services.GetRequiredService<CommonQuestionsPage>();
+        var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), _services.GetRequiredService<StartPage>(), _services.GetRequiredService<HelpByCoursePage>()]);
         var userState = new UserState(pages, new UserData());
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]

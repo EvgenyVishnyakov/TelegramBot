@@ -2,6 +2,8 @@
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework.Legacy;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -11,12 +13,33 @@ namespace IRON_PROGRAMMER_BOT_Tests
 {
     public class StartPageTests
     {
+        private IServiceProvider _services;
+
+        [OneTimeSetUp]
+        public void SetUp()
+        {
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var serviceCollection = new ServiceCollection();
+
+            ContainerConfigurator.Configure(configuration, serviceCollection);
+            _services = serviceCollection.BuildServiceProvider();
+        }
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            if (_services is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
+        }
+
         [Test]
         public void View_FirstEnter_CorrectTextAndKeyboard()
         {
             //Arrange
-            var startPage = new StartPage();
-            var pages = new Stack<IPage>([new NotStatedPage()]);
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>()]);
             var userState = new UserState(pages, new UserData());
             var expectedButtons = new InlineKeyboardButton[][]
             {
@@ -42,8 +65,8 @@ namespace IRON_PROGRAMMER_BOT_Tests
         public void Handle_StartPageCallback_HelpByCoursePage()
         {
             //Arrange
-            var startPage = new StartPage();
-            var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
             var userState = new UserState(pages, new UserData());
             var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.HelpByCoursePage } };
             //Act
@@ -60,8 +83,8 @@ namespace IRON_PROGRAMMER_BOT_Tests
         public void Handle_StartPageCallback_InfoByCoursePage()
         {
             //Arrange
-            var startPage = new StartPage();
-            var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
             var userState = new UserState(pages, new UserData());
             var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.InfoByCoursePage } };
             //Act
@@ -78,8 +101,8 @@ namespace IRON_PROGRAMMER_BOT_Tests
         public void Handle_StartPageCallback_ConnectWithManagerPage()
         {
             //Arrange
-            var startPage = new StartPage();
-            var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
             var userState = new UserState(pages, new UserData());
             var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.ConnectWithManagerPage } };
             //Act
@@ -96,8 +119,8 @@ namespace IRON_PROGRAMMER_BOT_Tests
         public void Handle_UnknownMessage_StartPageView()
         {
             //Arrange
-            var startPage = new StartPage();
-            var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
             var userState = new UserState(pages, new UserData());
             var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
             var expectedButtons = new InlineKeyboardButton[][]

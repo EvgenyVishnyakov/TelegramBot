@@ -2,6 +2,7 @@
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
@@ -9,7 +10,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace IRON_PROGRAMMER_BOT_Common
 {
-    public class UpdateHandler(UserStateStorage stateStorage) : IUpdateHandler
+    public class UpdateHandler(UserStateStorage stateStorage, IServiceProvider services) : IUpdateHandler
     {
         public async Task HandleUpdateAsync(ITelegramBotClient client, Update update, CancellationToken token)
         {
@@ -26,7 +27,7 @@ namespace IRON_PROGRAMMER_BOT_Common
                 var userState = await stateStorage.TryGetAsync(telegramUserId);
                 if (userState == null)
                 {
-                    userState = new UserState(new Stack<IPage>([new NotStatedPage()]), new UserData());
+                    userState = new UserState(new Stack<IPage>([services.GetRequiredService<NotStatedPage>()]), new UserData());
                 }
                 Console.WriteLine($"updated_Id={update.Id}, userState={userState}");
 
