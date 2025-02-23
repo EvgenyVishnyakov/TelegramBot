@@ -1,6 +1,0 @@
-@IRON_PROGRAMMER_BOT_webhook_HostAddress = http://localhost:5245
-
-GET {{IRON_PROGRAMMER_BOT_webhook_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

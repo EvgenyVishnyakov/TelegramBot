@@ -1,17 +1,22 @@
-using IRON_PROGRAMMER_BOT_ConsoleApp;
-using IRON_PROGRAMMER_BOT_webhook;
-
 var builder = WebApplication.CreateBuilder(args);
 
-ContainerConfigurator.Configure(builder.Configuration, builder.Services);
+// Add services to the container.
 
-builder.Services.AddHostedService<WebHookConfigurator>();
-
-builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddControllers();
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+
 app.UseHttpsRedirection();
+
+app.UseAuthorization();
 
 app.MapControllers();
 
