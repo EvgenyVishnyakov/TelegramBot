@@ -1,4 +1,4 @@
-﻿using IRON_PROGRAMMER_BOT_ConsoleApp.Configuration;
+﻿using IRON_PROGRAMMER_BOT_Common.Configuration;
 using Microsoft.Extensions.Options;
 using Telegram.Bot;
 

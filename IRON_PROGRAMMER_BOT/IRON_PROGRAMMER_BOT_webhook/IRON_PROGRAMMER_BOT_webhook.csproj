@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\IRON_PROGRAMMER_BOT_ConsoleApp\IRON_PROGRAMMER_BOT_ConsoleApp.csproj" />
+    <ProjectReference Include="..\IRON_PROGRAMMER_BOT_Common\IRON_PROGRAMMER_BOT_Common.csproj" />
   </ItemGroup>
 
 </Project>

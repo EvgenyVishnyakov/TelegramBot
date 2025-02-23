@@ -1,4 +1,4 @@
-using IRON_PROGRAMMER_BOT_ConsoleApp;
+using IRON_PROGRAMMER_BOT_Common;
 using IRON_PROGRAMMER_BOT_Webhook;
 
 var builder = WebApplication.CreateBuilder(args);

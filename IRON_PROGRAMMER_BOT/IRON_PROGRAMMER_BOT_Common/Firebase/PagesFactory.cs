@@ -1,0 +1,24 @@
+﻿using System.Reflection;
+using IRON_PROGRAMMER_BOT_Common.User.Pages;
+
+namespace IRON_PROGRAMMER_BOT_Common.Firebase
+{
+    public static class PagesFactory
+    {
+        public static IPage GetPage(string name)
+        {
+            try
+            {
+                var assembly = Assembly.GetExecutingAssembly();
+                var type = assembly.GetTypes().FirstOrDefault(t => t.Name == name && typeof(IPage).IsAssignableFrom(t));
+
+                return (IPage)Activator.CreateInstance(type);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+    }
+}

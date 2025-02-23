@@ -1,7 +1,7 @@
-﻿using IRON_PROGRAMMER_BOT_ConsoleApp;
-using IRON_PROGRAMMER_BOT_ConsoleApp.User;
-using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages;
-using IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages.PagesResult;
+﻿using IRON_PROGRAMMER_BOT_Common;
+using IRON_PROGRAMMER_BOT_Common.User;
+using IRON_PROGRAMMER_BOT_Common.User.Pages;
+using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
 using NUnit.Framework.Legacy;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
