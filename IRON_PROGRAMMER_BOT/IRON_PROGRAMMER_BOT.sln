@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRON_PROGRAMMER_BOT_Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRON_PROGRAMMER_BOT_Webhook", "IRON_PROGRAMMER_BOT_Webhook\IRON_PROGRAMMER_BOT_Webhook.csproj", "{76A8D625-017D-435C-B435-86F52E32E1DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRON_PROGRAMMER_BOT_Common", "IRON_PROGRAMMER_BOT_Common\IRON_PROGRAMMER_BOT_Common.csproj", "{B2E865AC-201B-4989-8511-E9898628B85F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{76A8D625-017D-435C-B435-86F52E32E1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76A8D625-017D-435C-B435-86F52E32E1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76A8D625-017D-435C-B435-86F52E32E1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2E865AC-201B-4989-8511-E9898628B85F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2E865AC-201B-4989-8511-E9898628B85F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2E865AC-201B-4989-8511-E9898628B85F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2E865AC-201B-4989-8511-E9898628B85F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
