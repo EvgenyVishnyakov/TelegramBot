@@ -13,7 +13,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             try
             {
                 var text = Resources.HelpByCoursePageText;
-                var path = "Resources\\Videos\\ИИ.mp4";
+                var path = "C:\\Users\\vis-e\\Source\\Repos\\TG_Bot_stream\\IRON_PROGRAMMER_BOT\\IRON_PROGRAMMER_BOT_ConsoleApp\\Resources\\Videos\\ИИ.mp4";
                 var replyMarkup = GetKeyboard();
                 var resource = ResourcesService.GetResource(path);
                 userState.AddPage(this);

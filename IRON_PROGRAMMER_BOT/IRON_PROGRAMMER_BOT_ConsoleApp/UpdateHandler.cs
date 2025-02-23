@@ -108,6 +108,18 @@ public class UpdateHandler(UserStateStorage stateStorage) : IUpdateHandler
                     chatId: telegramUserId,
                     messageId: videoPageResult.UpdatedUserState.UserData.LastMessage!.Id);
             }
+            else
+            {
+                return await client.SendVideoAsync(
+            chatId: telegramUserId,
+            video: videoPageResult.Video,
+            caption: videoPageResult.Text,
+            replyMarkup: videoPageResult.ReplyMarkup,
+            parseMode: ParseMode.Html);
+
+
+
+            }
 
             return await client.SendVideoAsync(
             chatId: telegramUserId,
@@ -148,6 +160,16 @@ public class UpdateHandler(UserStateStorage stateStorage) : IUpdateHandler
                     chatId: telegramUserId,
                     messageId: photoPageResult.UpdatedUserState.UserData.LastMessage!.Id);
             }
+            else
+            {
+                return await client.SendPhotoAsync(
+               chatId: telegramUserId,
+               photo: photoPageResult.Photo,
+               caption: photoPageResult.Text,
+               replyMarkup: photoPageResult.ReplyMarkup,
+               parseMode: ParseMode.Html
+               );
+            }
 
             return await client.SendPhotoAsync(
                 chatId: telegramUserId,
@@ -173,6 +195,15 @@ public class UpdateHandler(UserStateStorage stateStorage) : IUpdateHandler
                 await client.DeleteMessageAsync(
                     chatId: telegramUserId,
                     messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
+            }
+            else
+            {
+                return await client.SendTextMessageAsync(
+                        chatId: telegramUserId,
+                         text: result.Text,
+                        replyMarkup: result.ReplyMarkup,
+                        parseMode: ParseMode.Html);
+
             }
 
 

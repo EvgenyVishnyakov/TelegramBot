@@ -15,7 +15,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
                 var text = Resources.ConnectWithManagerPageText;
 
                 var replyMarkup = GetKeyboard();
-                var path = "Resources//Photos//Обратная связь.png";
+                var path = "C:\\Users\\vis-e\\Source\\Repos\\TG_Bot_stream\\IRON_PROGRAMMER_BOT\\IRON_PROGRAMMER_BOT_ConsoleApp\\Resources\\Photos\\Обратная связь.png";
                 var resource = ResourcesService.GetResource(path);
                 userState.AddPage(this);
 
