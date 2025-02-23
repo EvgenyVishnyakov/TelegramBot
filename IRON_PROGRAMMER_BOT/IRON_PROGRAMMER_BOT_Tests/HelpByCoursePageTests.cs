@@ -20,9 +20,9 @@ public class HelpByCoursePageTests
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", "CommonQuestionsPage")],
-                [InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", "ResolveTaskPage")],
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                [InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", Resources.CommonQuestionsPage)],
+                [InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", Resources.ResolveTaskPage)],
+                 [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
 
         //Act
@@ -46,7 +46,7 @@ public class HelpByCoursePageTests
         var helpByCoursePage = new HelpByCoursePage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "CommonQuestionsPage" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.CommonQuestionsPage } };
         //Act
         var result = helpByCoursePage.Handle(update, userState);
 
@@ -64,7 +64,7 @@ public class HelpByCoursePageTests
         var helpByCoursePage = new HelpByCoursePage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "ResolveTaskPage" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.ResolveTaskPage } };
         //Act
         var result = helpByCoursePage.Handle(update, userState);
 
@@ -83,7 +83,7 @@ public class HelpByCoursePageTests
         var helpByCoursePage = new HelpByCoursePage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), helpByCoursePage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
         //Act
         var result = helpByCoursePage.Handle(update, userState);
@@ -104,9 +104,9 @@ public class HelpByCoursePageTests
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", "CommonQuestionsPage")],
-                [InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", "ResolveTaskPage")],
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                [InlineKeyboardButton.WithCallbackData("Общий вопрос по изучаемой теме", Resources.CommonQuestionsPage)],
+                [InlineKeyboardButton.WithCallbackData("Вопрос по конкретной задаче", Resources.ResolveTaskPage)],
+                 [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
         //Act
         var result = helpByCoursePage.View(update, userState);

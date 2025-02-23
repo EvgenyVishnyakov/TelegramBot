@@ -35,10 +35,6 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             try
             {
-                //if (update.Message != null)
-                //{
-                //    userState.UserData.UserQuastion = update.Message.Text;//для дальнейшей передачи в ИИ
-                //}
                 if (update.CallbackQuery == null)
                     return View(update, userState);
                 if (update.CallbackQuery.Data == Resources.Back)

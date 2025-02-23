@@ -21,7 +21,7 @@ public class InfoByCoursePageTests
         var expectedButtons = new InlineKeyboardButton[][]
         {
                 [InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109")],
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                 [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
 
         //Act
@@ -45,7 +45,7 @@ public class InfoByCoursePageTests
         var infoByCoursePage = new InfoByCoursePage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), infoByCoursePage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
         //Act
         var result = infoByCoursePage.Handle(update, userState);
@@ -67,7 +67,7 @@ public class InfoByCoursePageTests
         var expectedButtons = new InlineKeyboardButton[][]
         {
                 [InlineKeyboardButton.WithUrl("Переход в школу", "https://ironprogrammer.ru/#rec460811109")],
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                 [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
         //Act
         var result = infoByCoursePage.View(update, userState);

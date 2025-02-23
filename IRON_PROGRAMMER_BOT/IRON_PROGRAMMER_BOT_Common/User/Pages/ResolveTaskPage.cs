@@ -38,7 +38,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 {
                     return View(update, userState);
                 }
-                if (update.CallbackQuery.Data == Resources.Back)
+                if (update.CallbackQuery!.Data == Resources.Back)
                 {
                     userState.Pages.Pop();
                     return userState.CurrenntPage.View(update, userState);

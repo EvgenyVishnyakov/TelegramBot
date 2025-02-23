@@ -20,7 +20,7 @@ public class ResolveTaskPageTests
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                 [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
 
         //Act
@@ -44,7 +44,7 @@ public class ResolveTaskPageTests
         var resolveTaskPage = new ResolveTaskPage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage(), resolveTaskPage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
         //Act
         var result = resolveTaskPage.Handle(update, userState);
@@ -65,7 +65,7 @@ public class ResolveTaskPageTests
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                 [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
         //Act
         var result = resolveTaskPage.View(update, userState);

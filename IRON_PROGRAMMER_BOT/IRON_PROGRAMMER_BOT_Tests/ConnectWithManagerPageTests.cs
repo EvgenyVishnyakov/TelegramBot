@@ -20,8 +20,8 @@ public class ConnectWithManagerPageTests
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Отправить вопрос", "sendQuastion"),
-                InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                [InlineKeyboardButton.WithCallbackData("Отправить вопрос", Resources.SendQuastion),
+                InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
 
         //Act
@@ -46,7 +46,7 @@ public class ConnectWithManagerPageTests
         var сonnectWithManagerPage = new ConnectWithManagerPage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), сonnectWithManagerPage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
         //Act
         var result = сonnectWithManagerPage.Handle(update, userState);
@@ -67,8 +67,8 @@ public class ConnectWithManagerPageTests
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Отправить вопрос", "sendQuastion"),
-                InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                [InlineKeyboardButton.WithCallbackData("Отправить вопрос",Resources.SendQuastion),
+                InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
         //Act
         var result = сonnectWithManagerPage.View(update, userState);

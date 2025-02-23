@@ -20,7 +20,7 @@ public class CommonQuestionsPageTests
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                 [InlineKeyboardButton.WithCallbackData("Назад")]
         };
 
         //Act
@@ -44,7 +44,7 @@ public class CommonQuestionsPageTests
         var commonQuestionsPage = new CommonQuestionsPage();
         var pages = new Stack<IPage>([new NotStatedPage(), new StartPage(), new HelpByCoursePage(), commonQuestionsPage]);
         var userState = new UserState(pages, new UserData());
-        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "Назад" } };
+        var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.Back } };
 
         //Act
         var result = commonQuestionsPage.Handle(update, userState);
@@ -65,7 +65,7 @@ public class CommonQuestionsPageTests
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
          {
-                 [InlineKeyboardButton.WithCallbackData("Назад", "Назад")]
+                 [InlineKeyboardButton.WithCallbackData("Назад")]
          };
         //Act
         var result = commonQuestionsPage.View(update, userState);

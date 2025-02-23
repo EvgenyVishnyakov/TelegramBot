@@ -20,9 +20,9 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var userState = new UserState(pages, new UserData());
             var expectedButtons = new InlineKeyboardButton[][]
             {
-                [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage")],
-                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage"),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage")]
+                [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
+                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
+                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
             };
             //Act
             var result = startPage.View(null, userState);
@@ -45,7 +45,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var startPage = new StartPage();
             var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
             var userState = new UserState(pages, new UserData());
-            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "HelpByCoursePage" } };
+            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.HelpByCoursePage } };
             //Act
             var result = startPage.Handle(update, userState);
 
@@ -63,7 +63,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var startPage = new StartPage();
             var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
             var userState = new UserState(pages, new UserData());
-            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "InfoByCoursePage" } };
+            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.InfoByCoursePage } };
             //Act
             var result = startPage.Handle(update, userState);
 
@@ -81,7 +81,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var startPage = new StartPage();
             var pages = new Stack<IPage>([new NotStatedPage(), startPage]);
             var userState = new UserState(pages, new UserData());
-            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = "ConnectWithManagerPage" } };
+            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.ConnectWithManagerPage } };
             //Act
             var result = startPage.Handle(update, userState);
 
@@ -102,9 +102,9 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
             var expectedButtons = new InlineKeyboardButton[][]
             {
-                [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", "HelpByCoursePage")],
-                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", "InfoByCoursePage"),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", "ConnectWithManagerPage")]
+                [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
+                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
+                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
             };
             //Act
             var result = startPage.Handle(update, userState);
