@@ -52,7 +52,7 @@ public class ResolveTaskPageTests
         //Assert
         ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(resolveTaskPage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(resolveTaskPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
         Assert.That(result.Text, Is.EqualTo(Resources.ResolveTaskPageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
@@ -73,8 +73,8 @@ public class ResolveTaskPageTests
         var result = resolveTaskPage.Handle(update, userState);
 
         //Assert        
-        Assert.That(result.GetType(), Is.EqualTo(typeof(VideoPageResult)));
-        ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrenntPage);
+        Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+        ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrentPage);
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
     }
 
@@ -94,7 +94,7 @@ public class ResolveTaskPageTests
         var result = resolveTaskPage.View(update, userState);
 
         //Assert       
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(resolveTaskPage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(resolveTaskPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
 
         Assert.That(result.Text, Is.EqualTo(Resources.ResolveTaskPageText));

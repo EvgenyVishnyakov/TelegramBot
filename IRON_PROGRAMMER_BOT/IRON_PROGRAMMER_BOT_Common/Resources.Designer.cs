@@ -223,6 +223,16 @@ namespace IRON_PROGRAMMER_BOT_Common {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] ИИ_думает {
+            get {
+                object obj = ResourceManager.GetObject("ИИ_думает", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] Логотип {
             get {
                 object obj = ResourceManager.GetObject("Логотип", resourceCulture);

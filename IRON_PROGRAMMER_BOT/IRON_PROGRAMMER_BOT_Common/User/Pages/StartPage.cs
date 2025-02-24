@@ -1,79 +1,29 @@
-﻿using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+﻿using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class StartPage(IServiceProvider services) : IPage
+    public class StartPage(IServiceProvider services) : CallbackQueryPageBase
     {
-        public PageResultBase View(Update update, UserState userState)
+        public override string GetText(UserState userState)
         {
-            try
-            {
-                var text = Resources.StartPageText;
-
-                var replyMarkup = GetKeyboard();
-                userState.AddPage(this);
-
-                return new PageResultBase(text, replyMarkup)
-                {
-                    UpdatedUserState = userState
-                };
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл StartPage");
-                return View(update, userState);
-            }
+            return Resources.StartPageText;
         }
 
-        public PageResultBase Handle(Update update, UserState userState)
+        public override ButtonLinkPage[][] GetKeyBoard()
         {
             try
             {
-                if (update.Message != null)
-                {
-                    return View(update, userState);
-                }
-                if (update.CallbackQuery == null)
-                    return new PageResultBase("Выберите действие с помощью кнопок", GetKeyboard());
-                if (update.CallbackQuery.Data == Resources.HelpByCoursePage)
-                {
-                    return services.GetRequiredService<HelpByCoursePage>().View(update, userState);
-                }
-                if (update.CallbackQuery.Data == Resources.InfoByCoursePage)
-                {
-                    return services.GetRequiredService<InfoByCoursePage>().View(update, userState);
-                }
-
-                if (update.CallbackQuery.Data == Resources.ConnectWithManagerPage)
-                {
-                    return services.GetRequiredService<ConnectWithManagerPage>().View(update, userState);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл Handle");
-                return View(update, userState);
-            }
-
-            return View(update, userState);
-        }
-
-        private InlineKeyboardMarkup GetKeyboard()
-        {
-            try
-            {
-                var button1 = InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage);
-                var button2 = InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage);
-                var button3 = InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage);
-
-                return new InlineKeyboardMarkup(new[]
-        {
-        new[] { button1 },
-        new[] { button2, button3 }
-        });
+                return [
+                    [
+                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу",Resources.HelpByCoursePage), services.GetRequiredService<HelpByCoursePage>())
+                        ],
+                        [
+                    new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage), services.GetRequiredService<InfoByCoursePage>()),
+                    new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage), services.GetRequiredService<ConnectWithManagerPage>())
+                            ]
+                    ];
             }
             catch (Exception ex)
             {

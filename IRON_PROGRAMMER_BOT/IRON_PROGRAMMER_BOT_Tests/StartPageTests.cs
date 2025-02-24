@@ -53,7 +53,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             //Assert
             ClassicAssert.IsInstanceOf<PageResultBase>(result);
 
-            Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(startPage));
+            Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(startPage));
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
             Assert.That(result.Text, Is.EqualTo(Resources.StartPageText));
             Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
@@ -73,8 +73,8 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert            
-            Assert.That(result.GetType(), Is.EqualTo(typeof(VideoPageResult)));
-            ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrenntPage);
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+            ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         }
@@ -92,7 +92,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
 
             //Assert           
             Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-            ClassicAssert.IsInstanceOf<InfoByCoursePage>(result.UpdatedUserState.CurrenntPage);
+            ClassicAssert.IsInstanceOf<InfoByCoursePage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         }
@@ -110,7 +110,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
 
             //Assert           
             Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-            ClassicAssert.IsInstanceOf<ConnectWithManagerPage>(result.UpdatedUserState.CurrenntPage);
+            ClassicAssert.IsInstanceOf<ConnectWithManagerPage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         }
@@ -133,7 +133,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert            
-            Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(startPage));
+            Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(startPage));
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
 
             Assert.That(result.Text, Is.EqualTo(Resources.StartPageText));

@@ -1,72 +1,41 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Services;
-using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class ResolveTaskPage(ResourcesService resourcesService) : IPage
+    public class ResolveTaskPage(IServiceProvider services, ResourcesService resourcesService) : MessagePhotoPageBase(resourcesService)
     {
-        public PageResultBase View(Update update, UserState userState)
+        public override byte[] GetPhoto()
         {
-            try
-            {
-                var text = Resources.ResolveTaskPageText;
-
-                var path = Resources.Фото_ИИ;
-                var replyMarkup = GetKeyboard();
-                var resource = resourcesService.GetResource(path, "Фото ИИ");
-                userState.AddPage(this);
-
-                return new PhotoPageResult(resource, text, replyMarkup)
-                {
-                    UpdatedUserState = userState
-                };
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл ResolveTaskPage");
-                return View(update, userState);
-            }
+            return Resources.Фото_ИИ;
         }
 
-        public PageResultBase Handle(Update update, UserState userState)
+        public override string GetText(UserState userState)
         {
-            try
-            {
-                if (update.Message != null)
-                {
-                    return View(update, userState);
-                }
-                if (update.CallbackQuery!.Data == Resources.Back)
-                {
-                    userState.Pages.Pop();
-                    return userState.CurrenntPage.View(update, userState);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка {ex} в методе Handle, файл ResolveTaskPage");
-                return View(update, userState);
-            }
-            return View(update, userState);
+            return Resources.ResolveTaskPageText;
         }
 
-        private InlineKeyboardMarkup GetKeyboard()
+        public override ButtonLinkPage[][] GetKeyBoard()
         {
-            try
-            {
-                var back = InlineKeyboardButton.WithCallbackData(Resources.Back);
-                return new InlineKeyboardMarkup(new[]
+            return [
+                [
+                        new ButtonLinkPage(InlineKeyboardButton.WithCallbackData(Resources.Back),services.GetRequiredService<BackwardDummyPage>())
+                        ]
+                ];
+        }
+
+        public override UserState ProcessMessage(Message message, UserState userState)
         {
-        new[] { back }
-        });
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка {ex} в методе GetKeyboard, файл ResolveTaskPage");
-                return null;
-            }
+            userState.UserData.StepiId = message.Text;// реализовать поход в ИИ
+            return userState;
+        }
+
+        public override IPage CetNextPage()
+        {
+            return services.GetRequiredService<BackwardDummyPage>();//страница получения ответа на вопрос
         }
     }
 }

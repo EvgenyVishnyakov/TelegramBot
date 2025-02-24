@@ -53,7 +53,7 @@ public class InfoByCoursePageTests
         //Assert
         ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(infoByCoursePage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(infoByCoursePage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         Assert.That(result.Text, Is.EqualTo(Resources.InfoByCoursePageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
@@ -75,7 +75,7 @@ public class InfoByCoursePageTests
 
         //Assert        
         Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
-        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrenntPage);
+        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrentPage);
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
     }
 
@@ -96,7 +96,7 @@ public class InfoByCoursePageTests
         var result = infoByCoursePage.View(update, userState);
 
         //Assert       
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(infoByCoursePage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(infoByCoursePage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
 
         Assert.That(result.Text, Is.EqualTo(Resources.InfoByCoursePageText));

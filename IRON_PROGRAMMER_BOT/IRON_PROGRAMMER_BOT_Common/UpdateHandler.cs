@@ -31,7 +31,7 @@ namespace IRON_PROGRAMMER_BOT_Common
                 }
                 Console.WriteLine($"updated_Id={update.Id}, userState={userState}");
 
-                var result = userState!.CurrenntPage.Handle(update, userState);
+                var result = userState!.CurrentPage.Handle(update, userState);
                 Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
 
                 var lastMessage = await SendResult(client, telegramUserId, result, update);

@@ -53,7 +53,7 @@ public class ConnectWithManagerPageTests
         //Assert
         ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(сonnectWithManagerPage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(сonnectWithManagerPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         Assert.That(result.Text, Is.EqualTo(Resources.ConnectWithManagerPageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
@@ -76,7 +76,7 @@ public class ConnectWithManagerPageTests
 
         //Assert        
         Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
-        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrenntPage);
+        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrentPage);
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
     }
 
@@ -97,7 +97,7 @@ public class ConnectWithManagerPageTests
         var result = сonnectWithManagerPage.View(update, userState);
 
         //Assert       
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(сonnectWithManagerPage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(сonnectWithManagerPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
 
         Assert.That(result.Text, Is.EqualTo(Resources.ConnectWithManagerPageText));

@@ -52,9 +52,9 @@ public class HelpByCoursePageTests
         var result = helpByCoursePage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<VideoPageResult>(result);
+        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(helpByCoursePage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(helpByCoursePage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         Assert.That(result.Text, Is.EqualTo(Resources.HelpByCoursePageText));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
@@ -75,7 +75,7 @@ public class HelpByCoursePageTests
 
         //Assert           
         Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-        ClassicAssert.IsInstanceOf<CommonQuestionsPage>(result.UpdatedUserState.CurrenntPage);
+        ClassicAssert.IsInstanceOf<CommonQuestionsPage>(result.UpdatedUserState.CurrentPage);
 
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
     }
@@ -93,7 +93,7 @@ public class HelpByCoursePageTests
 
         //Assert           
         Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
-        ClassicAssert.IsInstanceOf<ResolveTaskPage>(result.UpdatedUserState.CurrenntPage);
+        ClassicAssert.IsInstanceOf<ResolveTaskPage>(result.UpdatedUserState.CurrentPage);
 
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
     }
@@ -113,7 +113,7 @@ public class HelpByCoursePageTests
 
         //Assert        
         Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
-        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrenntPage);
+        ClassicAssert.IsInstanceOf<StartPage>(result.UpdatedUserState.CurrentPage);
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(2));
     }
 
@@ -135,7 +135,7 @@ public class HelpByCoursePageTests
         var result = helpByCoursePage.View(update, userState);
 
         //Assert       
-        Assert.That(result.UpdatedUserState.CurrenntPage, Is.EqualTo(helpByCoursePage));
+        Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(helpByCoursePage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
 
         Assert.That(result.Text, Is.EqualTo(Resources.HelpByCoursePageText));

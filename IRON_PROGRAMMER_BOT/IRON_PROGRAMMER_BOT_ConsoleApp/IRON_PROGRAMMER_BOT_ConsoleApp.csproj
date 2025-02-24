@@ -15,26 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\Photos\Логотип.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Photos\Обратная связь.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Photos\Фото ИИ.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Videos\ИИ.mp4">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\Audios\" />
-    <Folder Include="Resources\Documents\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\IRON_PROGRAMMER_BOT_Common\IRON_PROGRAMMER_BOT_Common.csproj" />
   </ItemGroup>
 

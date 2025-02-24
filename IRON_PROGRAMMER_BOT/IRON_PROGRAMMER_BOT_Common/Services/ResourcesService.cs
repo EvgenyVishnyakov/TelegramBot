@@ -4,7 +4,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
 {
     public class ResourcesService
     {
-        public InputFileStream GetResource(byte[] buffer, string filename)
+        public InputFileStream GetResource(byte[] buffer, string filename = "filename")
         {
             try
             {
