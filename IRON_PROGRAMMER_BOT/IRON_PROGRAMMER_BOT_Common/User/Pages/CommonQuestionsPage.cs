@@ -19,7 +19,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             return Resources.CommonQuestionsPageText;
         }
 
-        public override ButtonLinkPage[][] GetKeyBoard()
+        public override ButtonLinkPage[][] GetKeyBoardAsync()
         {
             return [
                 [

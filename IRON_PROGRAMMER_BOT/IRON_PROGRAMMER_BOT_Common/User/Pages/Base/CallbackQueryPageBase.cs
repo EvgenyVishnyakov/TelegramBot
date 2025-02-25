@@ -7,7 +7,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
     public abstract class CallbackQueryPageBase : IPage
     {
         public abstract string GetText(UserState userState);
-        public abstract ButtonLinkPage[][] GetKeyBoard();
+        public abstract ButtonLinkPage[][] GetKeyBoardAsync();
 
         public virtual PageResultBase View(Update update, UserState userState)
         {
@@ -37,7 +37,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
                     return View(update, userState);
                 }
 
-                var buttons = GetKeyBoard().SelectMany(x => x);
+                var buttons = GetKeyBoardAsync().SelectMany(x => x);
                 var pressedButton = buttons.FirstOrDefault(x => x.Button.CallbackData == update.CallbackQuery.Data);
                 return pressedButton!.Page.View(update, userState);
             }
@@ -50,7 +50,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 
         protected InlineKeyboardMarkup GetInlineKeyboardMarkup()
         {
-            return new InlineKeyboardMarkup(GetKeyBoard().Select(page => page.Select(x => x.Button)));
+            return new InlineKeyboardMarkup(GetKeyBoardAsync().Select(page => page.Select(x => x.Button)));
         }
     }
 }

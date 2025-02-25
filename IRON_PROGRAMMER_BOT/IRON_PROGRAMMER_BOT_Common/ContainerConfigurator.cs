@@ -3,6 +3,7 @@ using Firebase.Database;
 using IRON_PROGRAMMER_BOT_Common.Configuration;
 using IRON_PROGRAMMER_BOT_Common.Firebase;
 using IRON_PROGRAMMER_BOT_Common.Services;
+using IRON_PROGRAMMER_BOT_Common.StepikAPI;
 using IRON_PROGRAMMER_BOT_Common.Storage;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using Microsoft.Extensions.Configuration;
@@ -15,20 +16,20 @@ namespace IRON_PROGRAMMER_BOT_Common
 {
     public static class ContainerConfigurator
     {
-        public static void Configure(IConfiguration configuration, IServiceCollection service)
+        public static void Configure(IConfiguration configuration, IServiceCollection services)
         {
             try
             {
                 var firebaseConfigurationSection = configuration.GetSection(FirebaseConfiguration.SectionName);
-                service.Configure<FirebaseConfiguration>(firebaseConfigurationSection);
+                services.Configure<FirebaseConfiguration>(firebaseConfigurationSection);
 
                 var botConfigurationSection = configuration.GetSection(BotConfiguration.SectionName);
-                service.Configure<BotConfiguration>(botConfigurationSection);
+                services.Configure<BotConfiguration>(botConfigurationSection);
 
-                service.AddSingleton<UserStateStorage>();
-                service.AddSingleton<FirebaseProvider>();
-                service.AddSingleton<ResourcesService>();
-                service.AddSingleton(services =>
+                services.AddSingleton<UserStateStorage>();
+                services.AddSingleton<FirebaseProvider>();
+                services.AddSingleton<ResourcesService>();
+                services.AddSingleton(services =>
                 {
                     var firebaseConfig = services.GetService<IOptions<FirebaseConfiguration>>()!.Value;
 
@@ -38,23 +39,25 @@ namespace IRON_PROGRAMMER_BOT_Common
                     });
                 });
 
-                service.AddHttpClient("tgBotClient").AddTypedClient<ITelegramBotClient>((httpClient, services) =>
+                services.AddHttpClient("tgBotClient").AddTypedClient<ITelegramBotClient>((httpClient, services) =>
                 {
                     var botConfig = services.GetService<IOptions<BotConfiguration>>()!.Value;
                     var options = new TelegramBotClientOptions(botConfig.BotToken);
                     return new TelegramBotClient(options, httpClient);
                 });
 
-                service.AddSingleton<IUpdateHandler, UpdateHandler>();
+                services.AddSingleton<IUpdateHandler, UpdateHandler>();
 
                 var assembly = Assembly.GetExecutingAssembly();
                 var types = assembly.GetTypes().Where(t => typeof(IPage).IsAssignableFrom(t) && !t.IsAbstract);
                 foreach (var type in types)
                 {
-                    service.AddSingleton(type);
+                    services.AddSingleton(type);
                 }
 
-                service.AddSingleton<PagesFactory>();
+                services.AddSingleton<StepikApiProvider>();//что значит замокать?
+
+                services.AddSingleton<PagesFactory>();
 
             }
             catch (Exception ex)

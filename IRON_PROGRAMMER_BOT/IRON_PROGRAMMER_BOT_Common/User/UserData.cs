@@ -7,6 +7,8 @@
 
         public string? UserQuastion { get; set; }
         public HelperBotMessage? LastMessage { get; set; }
+        public string? SelectedCourseId { get; set; }
+        public string? NameCourse { get; set; }
 
         public override string ToString()
         {

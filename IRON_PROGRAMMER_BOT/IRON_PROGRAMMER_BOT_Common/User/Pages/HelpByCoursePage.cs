@@ -18,7 +18,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             return Resources.HelpByCoursePageText;
         }
 
-        public override ButtonLinkPage[][] GetKeyBoard()
+        public override ButtonLinkPage[][] GetKeyBoardAsync()
         {
             try
             {

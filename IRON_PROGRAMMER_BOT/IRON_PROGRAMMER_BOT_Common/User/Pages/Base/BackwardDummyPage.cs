@@ -11,7 +11,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
             return userState.CurrentPage.View(update, userState);
         }
 
-        public override ButtonLinkPage[][] GetKeyBoard()
+        public override ButtonLinkPage[][] GetKeyBoardAsync()
         {
             throw new NotImplementedException();
         }
