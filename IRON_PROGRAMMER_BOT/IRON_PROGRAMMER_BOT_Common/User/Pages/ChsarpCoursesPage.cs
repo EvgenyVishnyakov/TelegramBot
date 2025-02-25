@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class CsarpCoursesPage(IServiceProvider services)
+    public class ChsarpCoursesPage(IServiceProvider services)
     {
         public async Task<List<Course>> GetKeyBoardAsync()
         {

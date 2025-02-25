@@ -109,6 +109,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DeepLinksPage.
+        /// </summary>
+        public static string DeepLinksPage {
+            get {
+                return ResourceManager.GetString("DeepLinksPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://ironprogrammer.ru/#rec460811109.
         /// </summary>
         public static string GoToSchool {

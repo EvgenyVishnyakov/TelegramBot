@@ -45,7 +45,9 @@ namespace IRON_PROGRAMMER_BOT_Tests
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
                  [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
+                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)],
+                 [
+                      InlineKeyboardButton.WithCallbackData("Переход для преподавателей", Resources.DeepLinksPage)]
             };
             //Act
             var result = startPage.View(null, userState);
@@ -116,6 +118,24 @@ namespace IRON_PROGRAMMER_BOT_Tests
         }
 
         [Test]
+        public void Handle_StartPageCallback_DeepLinksPage()
+        {
+            //Arrange
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
+            var userState = new UserState(pages, new UserData());
+            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.DeepLinksPage } };
+            //Act
+            var result = startPage.Handle(update, userState);
+
+            //Assert           
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
+            ClassicAssert.IsInstanceOf<DeepLinksPage>(result.UpdatedUserState.CurrentPage);
+
+            Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
+        }
+
+        [Test]
         public void Handle_UnknownMessage_StartPageView()
         {
             //Arrange
@@ -127,7 +147,10 @@ namespace IRON_PROGRAMMER_BOT_Tests
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
                  [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
+                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)],
+                 [
+                    InlineKeyboardButton.WithCallbackData("Переход для преподавателей", Resources.DeepLinksPage)
+                      ]
             };
             //Act
             var result = startPage.Handle(update, userState);
