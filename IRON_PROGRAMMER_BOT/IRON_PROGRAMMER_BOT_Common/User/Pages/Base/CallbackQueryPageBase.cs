@@ -32,7 +32,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
-                if (update.Message != null || update.CallbackQuery == null)
+                if (update.Message != null)
                 {
                     return View(update, userState);
                 }

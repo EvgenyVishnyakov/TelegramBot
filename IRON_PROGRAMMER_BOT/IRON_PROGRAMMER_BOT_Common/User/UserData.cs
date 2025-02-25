@@ -1,8 +1,9 @@
 ﻿namespace IRON_PROGRAMMER_BOT_Common.User
 {
-    public class UserData
+    public class UserData()
     {
         public string? StepiId { get; set; }
+        public long TelegramId { get; set; }
 
         public string? UserQuastion { get; set; }
         public HelperBotMessage? LastMessage { get; set; }
