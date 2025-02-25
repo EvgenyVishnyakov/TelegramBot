@@ -9,7 +9,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
     {
         public abstract UserState ProcessMessage(Message message, UserState userState);
 
-        public abstract IPage CetNextPage();
+        public abstract IPage GetNextPage();
 
         public override PageResultBase Handle(Update update, UserState userState)
         {
@@ -18,7 +18,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
                 if (update.Message == null)
                     return base.Handle(update, userState);
                 var updateUserState = ProcessMessage(update.Message, userState);
-                var nextPage = CetNextPage();
+                var nextPage = GetNextPage();
 
                 return nextPage.View(update, updateUserState);
             }

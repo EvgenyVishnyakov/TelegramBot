@@ -35,7 +35,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             return userState;
         }
 
-        public override IPage CetNextPage()
+        public override IPage GetNextPage()
         {
             return services.GetRequiredService<BackwardDummyPage>();
         }
