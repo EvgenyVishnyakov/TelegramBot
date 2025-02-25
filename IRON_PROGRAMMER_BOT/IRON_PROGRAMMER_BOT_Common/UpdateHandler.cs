@@ -24,8 +24,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                 long telegramUserId = GetUserId(update);
                 Console.WriteLine($"updateId={update.Id}, telegramUserId={telegramUserId}");
 
-                await client.SendChatActionAsync(chatId: telegramUserId, chatAction: ChatAction.Typing);
-
                 var userState = await stateStorage.TryGetAsync(telegramUserId);
                 if (userState == null)
                 {
