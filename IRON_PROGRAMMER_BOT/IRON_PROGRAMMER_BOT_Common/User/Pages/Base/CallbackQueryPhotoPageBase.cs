@@ -25,6 +25,5 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
                 UpdatedUserState = userState
             };
         }
-
     }
 }

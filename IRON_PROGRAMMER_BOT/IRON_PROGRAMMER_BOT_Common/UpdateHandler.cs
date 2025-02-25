@@ -115,9 +115,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                 caption: videoPageResult.Text,
                 replyMarkup: videoPageResult.ReplyMarkup,
                 parseMode: ParseMode.Html);
-
-
-
                 }
 
                 return await client.SendVideoAsync(
@@ -202,7 +199,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                              text: result.Text,
                             replyMarkup: result.ReplyMarkup,
                             parseMode: ParseMode.Html);
-
                 }
 
 
