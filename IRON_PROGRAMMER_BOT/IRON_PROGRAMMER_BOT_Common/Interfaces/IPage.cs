@@ -1,7 +1,8 @@
-﻿using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+﻿using IRON_PROGRAMMER_BOT_Common.User;
+using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
 using Telegram.Bot.Types;
 
-namespace IRON_PROGRAMMER_BOT_Common.User.Pages
+namespace IRON_PROGRAMMER_BOT_Common.Interfaces
 {
     public interface IPage
     {

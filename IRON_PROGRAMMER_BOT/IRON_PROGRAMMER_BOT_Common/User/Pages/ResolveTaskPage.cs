@@ -1,13 +1,13 @@
-﻿using IRON_PROGRAMMER_BOT_Common.Services;
+﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
-using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class ResolveTaskPage(IServiceProvider services, ResourcesService resourcesService, ITelegramBotClient client) : MessagePhotoPageBase(resourcesService, client)
+    public class ResolveTaskPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService) : MessagePhotoPageBase(resourcesService, telegramService)
     {
         public override byte[] GetPhoto()
         {
@@ -30,7 +30,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 
         public override UserState ProcessMessage(Message message, UserState userState)
         {
-            userState.UserData.StepiId = message.Text;// реализовать поход в ИИ
+            userState.UserData.UserQuastion = message.Text;// реализовать поход в ИИ
             return userState;
         }
 

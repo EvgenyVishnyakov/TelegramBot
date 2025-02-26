@@ -1,12 +1,12 @@
-﻿using IRON_PROGRAMMER_BOT_Common.Services;
+﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
-using Telegram.Bot;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class InfoByCoursePage(IServiceProvider services, ResourcesService resourcesService, ITelegramBotClient client) : CallbackQueryPhotoPageBase(resourcesService, client)
+    public class InfoByCoursePage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService) : CallbackQueryPhotoPageBase(resourcesService, telegramService)
     {
         public override byte[] GetPhoto()
         {

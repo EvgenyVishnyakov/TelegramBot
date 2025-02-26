@@ -2,10 +2,10 @@
 using Firebase.Database;
 using IRON_PROGRAMMER_BOT_Common.Configuration;
 using IRON_PROGRAMMER_BOT_Common.Firebase;
+using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.StepikAPI;
 using IRON_PROGRAMMER_BOT_Common.Storage;
-using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -56,7 +56,7 @@ namespace IRON_PROGRAMMER_BOT_Common
                 }
 
                 services.AddSingleton<StepikApiProvider>();//что значит замокать?
-
+                services.AddSingleton<ITelegramService, TelegramService>();
                 services.AddSingleton<PagesFactory>();
 
             }

@@ -1,4 +1,4 @@
-﻿using IRON_PROGRAMMER_BOT_Common.User.Pages;
+﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 
 namespace IRON_PROGRAMMER_BOT_Common.User
 {

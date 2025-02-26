@@ -1,18 +1,17 @@
-﻿using IRON_PROGRAMMER_BOT_Common.Services;
+﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
-using Telegram.Bot;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 {
-    public abstract class CallbackQueryPhotoPageBase(ResourcesService service, ITelegramBotClient client) : CallbackQueryPageBase
+    public abstract class CallbackQueryPhotoPageBase(ResourcesService service, ITelegramService telegramService) : CallbackQueryPageBase
     {
         public abstract byte[] GetPhoto();
 
         public override PageResultBase View(Update update, UserState userState)
         {
-            client.SendChatActionAsync(update.CallbackQuery!.Message!.Chat.Id, ChatAction.UploadPhoto).Wait();
+            telegramService.SendChatActionAsync(update).GetAwaiter();
 
             var text = GetText(userState);
             var keyboard = GetInlineKeyboardMarkup();
