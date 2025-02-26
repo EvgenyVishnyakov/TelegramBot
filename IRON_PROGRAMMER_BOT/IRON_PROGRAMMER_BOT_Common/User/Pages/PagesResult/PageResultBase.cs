@@ -20,10 +20,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult
         }
 
         public bool IsMedia => this is PhotoPageResult ||
-                                 this is VideoPageResult ||
-                                 this is AudioPageResult ||
-                                 this is DocumentPageResult;
-
+                                 this is AudioPageResult;
     }
 }
 

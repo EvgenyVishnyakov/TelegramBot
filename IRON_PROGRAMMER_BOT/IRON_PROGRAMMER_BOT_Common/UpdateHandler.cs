@@ -85,8 +85,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                 {
                     case PhotoPageResult photoPageResult:
                         return await SendPhoto(client, telegramUserId, photoPageResult, update);
-                    case VideoPageResult videoPageResult:
-                        return await SendVideo(client, telegramUserId, videoPageResult);
                     default:
                         return await SendText(client, telegramUserId, result, update);
                 }
@@ -94,41 +92,6 @@ namespace IRON_PROGRAMMER_BOT_Common
             catch (Exception ex)
             {
                 Console.WriteLine($"Ошибка {ex} в методе SendResult, файл Programm");
-                return null;
-            }
-        }
-
-        private static async Task<Message?> SendVideo(ITelegramBotClient client, long telegramUserId, VideoPageResult videoPageResult)
-        {
-            try
-            {
-                if (videoPageResult.UpdatedUserState.UserData.LastMessage != null)
-                {
-                    await client.DeleteMessageAsync(
-                        chatId: telegramUserId,
-                        messageId: videoPageResult.UpdatedUserState.UserData.LastMessage!.Id);
-                }
-                else
-                {
-                    return await client.SendVideoAsync(
-                chatId: telegramUserId,
-                video: videoPageResult.Video,
-                caption: videoPageResult.Text,
-                replyMarkup: videoPageResult.ReplyMarkup,
-                parseMode: ParseMode.Html);
-                }
-
-                return await client.SendVideoAsync(
-                chatId: telegramUserId,
-                video: videoPageResult.Video,
-                caption: videoPageResult.Text,
-                replyMarkup: videoPageResult.ReplyMarkup,
-                parseMode: ParseMode.Html
-                );
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Ошибка {ex} в методе SendVideo, файл Programm");
                 return null;
             }
         }
