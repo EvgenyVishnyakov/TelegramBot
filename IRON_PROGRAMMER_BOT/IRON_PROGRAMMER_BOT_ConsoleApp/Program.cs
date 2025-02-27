@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using IRON_PROGRAMMER_BOT_Common;
-using IRON_PROGRAMMER_BOT_webhook;
+using IRON_PROGRAMMER_BOT_ConsoleApp;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -18,11 +18,14 @@ class Program
             }).Build();
 
             await host.RunAsync();
+
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
         }
     }
+
+
 }
 

@@ -2,6 +2,7 @@
 using Firebase.Database;
 using IRON_PROGRAMMER_BOT_Common.Configuration;
 using IRON_PROGRAMMER_BOT_Common.Firebase;
+using IRON_PROGRAMMER_BOT_Common.GigaChatApi;
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.StepikAPI;
@@ -25,6 +26,9 @@ namespace IRON_PROGRAMMER_BOT_Common
 
                 var botConfigurationSection = configuration.GetSection(BotConfiguration.SectionName);
                 services.Configure<BotConfiguration>(botConfigurationSection);
+
+                var gigaChatApiConfigurationSection = configuration.GetSection(GigaChatApiConfiguration.SectionName);
+                services.Configure<GigaChatApiConfiguration>(gigaChatApiConfigurationSection);
 
                 services.AddSingleton<UserStateStorage>();
                 services.AddSingleton<FirebaseProvider>();
@@ -55,6 +59,7 @@ namespace IRON_PROGRAMMER_BOT_Common
                     services.AddSingleton(type);
                 }
 
+                services.AddSingleton<GigaChatApiProvider>();
                 services.AddSingleton<StepikApiProvider>();//что значит замокать?
                 services.AddSingleton<ITelegramService, TelegramService>();
                 services.AddSingleton<PagesFactory>();
