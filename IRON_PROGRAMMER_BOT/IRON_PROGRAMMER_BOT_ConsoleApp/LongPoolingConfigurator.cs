@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using IRON_PROGRAMMER_BOT_Common.GigaChatApi;
+using IRON_PROGRAMMER_BOT_Common.Services;
 using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
 using Telegram.Bot.Polling;

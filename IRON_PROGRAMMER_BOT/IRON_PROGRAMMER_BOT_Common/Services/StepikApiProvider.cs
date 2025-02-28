@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Json;
+using IRON_PROGRAMMER_BOT_Common.StepikAPI;
 
-namespace IRON_PROGRAMMER_BOT_Common.StepikAPI
+namespace IRON_PROGRAMMER_BOT_Common.Services
 {
     public class StepikApiProvider(HttpClient httpClient)
     {

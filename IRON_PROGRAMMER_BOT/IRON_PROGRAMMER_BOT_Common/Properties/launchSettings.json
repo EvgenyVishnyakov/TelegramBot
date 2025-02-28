@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "IRON_PROGRAMMER_BOT_Common": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "SecretKey": "YzY0M2QwY2EtM2M5YS00NGE1LWIwOGMtYTA0NWRjZjA5Y2YyOjQ5MThjMzRlLTRhMjAtNGU0NC04NDJhLTc2ZTI1MWNlODU3NQ=="
+      }
+    }
+  }
+}

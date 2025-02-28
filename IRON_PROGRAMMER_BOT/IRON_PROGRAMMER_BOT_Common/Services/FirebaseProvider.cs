@@ -1,7 +1,7 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
 
-namespace IRON_PROGRAMMER_BOT_Common.Firebase
+namespace IRON_PROGRAMMER_BOT_Common.Services
 {
     public class FirebaseProvider(FirebaseClient client)
     {

@@ -2,10 +2,8 @@
 using Firebase.Database;
 using IRON_PROGRAMMER_BOT_Common.Configuration;
 using IRON_PROGRAMMER_BOT_Common.Firebase;
-using IRON_PROGRAMMER_BOT_Common.GigaChatApi;
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
-using IRON_PROGRAMMER_BOT_Common.StepikAPI;
 using IRON_PROGRAMMER_BOT_Common.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -59,8 +57,8 @@ namespace IRON_PROGRAMMER_BOT_Common
                     services.AddSingleton(type);
                 }
 
-                services.AddSingleton<GigaChatApiProvider>();
-                services.AddSingleton<StepikApiProvider>();//что значит замокать?
+                services.AddSingleton<IGigaChatApiProvider, GigaChatApiProvider>();
+                services.AddSingleton<StepikApiProvider>();
                 services.AddSingleton<ITelegramService, TelegramService>();
                 services.AddSingleton<PagesFactory>();
 
