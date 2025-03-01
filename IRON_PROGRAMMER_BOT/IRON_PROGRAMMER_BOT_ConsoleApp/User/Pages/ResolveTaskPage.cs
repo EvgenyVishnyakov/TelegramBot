@@ -14,7 +14,7 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp.User.Pages
             {
                 var text = Resources.ResolveTaskPageText;
 
-                var path = "Resources//Photos//Фото ИИ.jpg";
+                var path = ResourcesPath.AIPhotoPath();
                 var replyMarkup = GetKeyboard();
                 var resource = ResourcesService.GetResource(path);
                 userState.AddPage(this);
