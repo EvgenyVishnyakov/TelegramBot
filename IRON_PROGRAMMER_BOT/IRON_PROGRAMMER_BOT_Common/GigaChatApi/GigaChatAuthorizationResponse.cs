@@ -4,7 +4,6 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
 {
     public class GigaChatAuthorizationResponse
     {
-
         [JsonPropertyName("access_token")]
         public string AccessToken { get; set; }
 

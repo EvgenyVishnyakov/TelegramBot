@@ -70,6 +70,33 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;u&gt;У тебя есть возможность для &lt;b&gt;{counter}&lt;/b&gt; вопросов!&lt;/u&gt;.
+        /// </summary>
+        public static string CommonQuestionPageAttempts {
+            get {
+                return ResourceManager.GetString("CommonQuestionPageAttempts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;u&gt;&lt;b&gt;Это заключительный ответ. Попыток больше нет!!!&lt;/b&gt;&lt;/u&gt;.
+        /// </summary>
+        public static string CommonQuestionPageFinalTrying {
+            get {
+                return ResourceManager.GetString("CommonQuestionPageFinalTrying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;u&gt;&lt;b&gt;Осталась возможность только для 1 вопроса!!!&lt;/b&gt;&lt;/u&gt;.
+        /// </summary>
+        public static string CommonQuestionPagePenultimateQuestion {
+            get {
+                return ResourceManager.GetString("CommonQuestionPagePenultimateQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CommonQuestionsPage.
         /// </summary>
         public static string CommonQuestionsPage {
@@ -79,7 +106,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                                                   &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;.
+        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                &lt;b&gt;У тебя есть возможность задать вопросы не более 3 раз!&lt;/b&gt;                                                                                                                                                 &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;                                                    .
         /// </summary>
         public static string CommonQuestionsPageText {
             get {
@@ -109,6 +136,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;&lt;b&gt;Возможностей задавать вопросы больше нет...увы&lt;/b&gt;)&quot;.
+        /// </summary>
+        public static string CoomQuestionPageStopAI {
+            get {
+                return ResourceManager.GetString("CoomQuestionPageStopAI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DeepLinksPage.
         /// </summary>
         public static string DeepLinksPage {
@@ -123,6 +159,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         public static string GoToSchool {
             get {
                 return ResourceManager.GetString("GoToSchool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов..
+        /// </summary>
+        public static string HeaderPromtForAI {
+            get {
+                return ResourceManager.GetString("HeaderPromtForAI", resourceCulture);
             }
         }
         

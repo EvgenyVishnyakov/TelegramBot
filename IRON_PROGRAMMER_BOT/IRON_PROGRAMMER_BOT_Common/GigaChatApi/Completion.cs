@@ -8,7 +8,7 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
         public CompletionResponse LastResponse { get; private set; }
         public List<GigaChatMessage> History { get; set; } = new List<GigaChatMessage>();
 
-        public async Task<CompletionResponse> SendRequest(string Token, string Message, bool useHistory = true, CompletionSettings requestSettings = null)
+        public async Task<CompletionResponse> SendRequest(string token, string message, bool useHistory = true, CompletionSettings requestSettings = null)
         {
             CompletionRequest request = null;
 
@@ -16,15 +16,15 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
             {
                 History.Add(new GigaChatMessage()
                 {
-                    Content = Message,
+                    Content = message,
                     Role = CompletionRolesEnum.system.ToString()
                 });
 
-                request = new CompletionRequest(Token, History, requestSettings);
+                request = new CompletionRequest(token, History, requestSettings);
             }
             else
             {
-                request = new CompletionRequest(Token, Message, requestSettings);
+                request = new CompletionRequest(token, message, requestSettings);
             }
 
             LastRequest = request;
@@ -33,11 +33,10 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
 
         private async Task<CompletionResponse> SendRequestToService(CompletionRequest request, bool useHistory)
         {
-            HttpClient client = new HttpClient();
-
+            var client = new HttpClient();
             client.DefaultRequestHeaders.Add(RequestConstants.AuthorizationHeaderTitle, $"Bearer {request.AccessToken}");
 
-            string data = JsonSerializer.Serialize(request.RequestData, typeof(GigaChatCompletionRequest));
+            var data = JsonSerializer.Serialize(request.RequestData, typeof(GigaChatCompletionRequest));
             var response = await client.PostAsync(EndPoints.CompletionURL, new StringContent(data));
 
             CompletionResponse result = new CompletionResponse(response);

@@ -5,7 +5,6 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
 {
     public class GigaChatApiProvider(HttpClient httpClient, AuthorizationRequest lastRequest) : IGigaChatApiProvider
     {
-        private TimeSpan tokenExpiration;
         public AuthorizationRequest LastRequest { get; set; } = lastRequest;
         public AuthorizationResponse? LastResponse { get; set; }
 
@@ -38,21 +37,6 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
             }
 
             return LastResponse;
-        }
-
-        public async Task<string> GetAnswer(string text)
-        {
-            try
-            {
-                await EnsureAuthenticatedAsync();
-                //var answer = await _httpClient.GetStringAsync();
-                return string.Empty;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return string.Empty;
-            }
         }
     }
 }

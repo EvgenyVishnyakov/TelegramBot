@@ -157,7 +157,7 @@
 &lt;i&gt; - Ваш вопрос&lt;/i&gt;</value>
   </data>
   <data name="CommonQuestionsPageText" xml:space="preserve">
-    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                                                   &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;</value>
+    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                &lt;b&gt;У тебя есть возможность задать вопросы не более 3 раз!&lt;/b&gt;                                                                                                                                                 &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;                                                    </value>
   </data>
   <data name="HelpByCoursePage" xml:space="preserve">
     <value>HelpByCoursePage</value>
@@ -201,5 +201,20 @@
   </data>
   <data name="DeepLinksPage" xml:space="preserve">
     <value>DeepLinksPage</value>
+  </data>
+  <data name="CoomQuestionPageStopAI" xml:space="preserve">
+    <value>"&lt;b&gt;Возможностей задавать вопросы больше нет...увы&lt;/b&gt;)"</value>
+  </data>
+  <data name="CommonQuestionPageFinalTrying" xml:space="preserve">
+    <value>&lt;u&gt;&lt;b&gt;Это заключительный ответ. Попыток больше нет!!!&lt;/b&gt;&lt;/u&gt;</value>
+  </data>
+  <data name="CommonQuestionPagePenultimateQuestion" xml:space="preserve">
+    <value>&lt;u&gt;&lt;b&gt;Осталась возможность только для 1 вопроса!!!&lt;/b&gt;&lt;/u&gt;</value>
+  </data>
+  <data name="CommonQuestionPageAttempts" xml:space="preserve">
+    <value>&lt;u&gt;У тебя есть возможность для &lt;b&gt;{counter}&lt;/b&gt; вопросов!&lt;/u&gt;</value>
+  </data>
+  <data name="HeaderPromtForAI" xml:space="preserve">
+    <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов.</value>
   </data>
 </root>

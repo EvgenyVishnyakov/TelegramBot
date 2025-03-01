@@ -6,6 +6,5 @@ namespace IRON_PROGRAMMER_BOT_Common.Interfaces
     {
         Task<AuthorizationResponse> AuthenticateAsync();
         Task<AuthorizationResponse> EnsureAuthenticatedAsync(Guid? RqUId = null, TimeSpan? reserveTime = null);
-        Task<string> GetAnswer(string text);
     }
 }

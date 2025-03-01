@@ -5,19 +5,15 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
 {
     public class AuthorizationResponse
     {
-
         public HttpResponseMessage HttpResponse { get; set; }
-
         public GigaChatAuthorizationResponse? GigaChatAuthorizationResponse { get; set; }
-
         public bool AuthorizationSuccess { get; set; }
-
         public string ErrorTextIfFailed { get; set; }
 
         public AuthorizationResponse(HttpResponseMessage httpResponse)
         {
             HttpResponse = httpResponse;
-            string responseVal = httpResponse.Content.ReadAsStringAsync().Result;
+            var responseVal = httpResponse.Content.ReadAsStringAsync().Result;
 
             if (HttpResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {

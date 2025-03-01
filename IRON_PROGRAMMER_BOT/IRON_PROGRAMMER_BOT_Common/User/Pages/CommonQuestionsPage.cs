@@ -9,7 +9,8 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
     public class CommonQuestionsPage : MessagePageBase
     {
-        private string text1 { get; set; }
+        int attemptCounter = 3;
+        private string answerAI { get; set; }
         private readonly IServiceProvider _services;
         private readonly IGigaChatApiProvider _gigaChatApiProvider;
 
@@ -19,15 +20,17 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             _gigaChatApiProvider = gigaChatApiProvider;
         }
 
-        //public override byte[] GetPhoto()
-        //{
-        //    return Resources.Фото_ИИ;
-        //}
-
         public override string GetText(UserState userState)
         {
             var text = Resources.CommonQuestionsPageText;
-            return $"{text}{Environment.NewLine}{Environment.NewLine}{text1}";
+            if (attemptCounter < 0)
+                return answerAI = Resources.CoomQuestionPageStopAI;
+            if (attemptCounter == 0)
+                return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPageFinalTrying}{Environment.NewLine}{Environment.NewLine}{answerAI}";
+            if (attemptCounter == 1)
+                return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPagePenultimateQuestion}{Environment.NewLine}{Environment.NewLine}{answerAI}";
+
+            return $"{text}{Environment.NewLine}{Environment.NewLine}<u>У тебя есть возможность для <b>{attemptCounter}</b> вопросов!</u>{Environment.NewLine}{Environment.NewLine}{answerAI}";
         }
 
         public override ButtonLinkPage[][] GetKeyBoardAsync()
@@ -43,22 +46,17 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             Completion completion = new Completion();
             var auth = _gigaChatApiProvider.EnsureAuthenticatedAsync().Result;
-            var counter = 3;
-            //var auth = _gigaChatApiProvider.AuthenticateAsync().Result;
-            //userState.UserData.UserQuestion = message.Text;
-            var inputTask = $"Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 600 символов.{Environment.NewLine}";
-            var prompt = inputTask + message.Text;// реализовать поход в ИИ
+            var prompt = Resources.HeaderPromtForAI + Environment.NewLine + message.Text;
+
             CompletionSettings settings = new CompletionSettings("GigaChat:latest", 1f, null, 4);
-            var result = completion.SendRequest(auth.GigaChatAuthorizationResponse?.AccessToken!, prompt).Result;//response.GigaChatAuthorizationResponse!.AccessToken
-            if (counter == 0)
-                return (UserState)GetNextPage();
+            var result = completion.SendRequest(auth.GigaChatAuthorizationResponse?.AccessToken!, prompt).Result;
+
             if (result.RequestSuccessed)
             {
                 foreach (var it in result.GigaChatCompletionResponse!.Choices)
                 {
-                    text1 += $"{it.Message.Content}{Environment.NewLine}";
-                    counter--;
-                    Console.WriteLine(it.Message.Content);
+                    answerAI += $"{it.Message.Content}{Environment.NewLine}";
+                    userState.requestCounter = attemptCounter--;
                 }
             }
             else
@@ -70,7 +68,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 
         public override IPage GetNextPage()
         {
-            return _services.GetRequiredService<BackwardDummyPage>();//страница получения ответа на вопрос
+            return _services.GetRequiredService<BackwardDummyPage>();
         }
     }
 }

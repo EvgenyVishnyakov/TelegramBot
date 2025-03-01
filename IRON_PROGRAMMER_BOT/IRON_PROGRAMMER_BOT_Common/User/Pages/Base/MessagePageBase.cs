@@ -14,12 +14,13 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
-                if (update.Message == null)//update.Message.Text == null || 
+                if (update.Message == null)
                     return base.Handle(update, userState);
                 var updateUserState = ProcessMessageAsync(update.Message, userState);
-                //var nextPage = GetNextPage();
-                return base.Handle(update, userState);
-                //return nextPage.View(update, updateUserState);
+                if (updateUserState.requestCounter > 0)
+                    return base.Handle(update, userState);
+                var nextPage = GetNextPage();
+                return nextPage.View(update, updateUserState);
             }
             catch (Exception ex)
             {

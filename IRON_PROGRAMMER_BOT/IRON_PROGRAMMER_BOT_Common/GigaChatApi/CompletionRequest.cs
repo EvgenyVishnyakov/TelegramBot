@@ -3,7 +3,7 @@
     public class CompletionRequest
     {
         public string AccessToken { get; private set; }
-        public string ContentType { get; set; } = "application/json";
+        //public string ContentType { get; set; } = "application/json";
         public GigaChatCompletionRequest RequestData { get; set; }
 
         public CompletionRequest(string AccessToken, string Prompt, CompletionSettings settings) : this(AccessToken, new List<GigaChatMessage>(), settings)
@@ -18,16 +18,16 @@
             };
         }
 
-        public CompletionRequest(string AccessToken, IEnumerable<GigaChatMessage> MessageHistory, CompletionSettings settings)
+        public CompletionRequest(string accessToken, IEnumerable<GigaChatMessage> messageHistory, CompletionSettings settings)
         {
-            if (string.IsNullOrEmpty(AccessToken))
+            if (string.IsNullOrEmpty(accessToken))
             {
                 throw new ArgumentNullException(nameof(AccessToken));
             }
 
-            this.AccessToken = AccessToken;
+            AccessToken = accessToken;
 
-            RequestData = new GigaChatCompletionRequest() { MessageCollection = MessageHistory };
+            RequestData = new GigaChatCompletionRequest() { MessageCollection = messageHistory };
 
             if (settings != null)
             {
@@ -38,15 +38,15 @@
             }
         }
 
-        public CompletionRequest(string accessToken, GigaChatCompletionRequest requestData)
-        {
-            if (string.IsNullOrEmpty(AccessToken))
-            {
-                throw new ArgumentNullException(nameof(AccessToken));
-            }
+        //public CompletionRequest(string accessToken, GigaChatCompletionRequest requestData)
+        //{
+        //    if (string.IsNullOrEmpty(AccessToken))
+        //    {
+        //        throw new ArgumentNullException(nameof(AccessToken));
+        //    }
 
-            AccessToken = accessToken;
-            RequestData = requestData;
-        }
+        //    AccessToken = accessToken;
+        //    RequestData = requestData;
+        //}
     }
 }
