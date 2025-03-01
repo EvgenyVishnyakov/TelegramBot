@@ -14,7 +14,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
-                if (update.CallbackQuery != null)
+                if (update?.CallbackQuery != null || update?.Message?.Text != null)
                     telegramService.SendChatTypingActionAsync(update).GetAwaiter();
                 var text = GetText(userState);
                 var replyMarkup = GetInlineKeyboardMarkup();
