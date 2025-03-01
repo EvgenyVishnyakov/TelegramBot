@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using IRON_PROGRAMMER_BOT_Common.Services;
+using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 
 namespace IRON_PROGRAMMER_BOT_ConsoleApp
 {
-    public class LongPoolingConfigurator(ITelegramBotClient botClient, IUpdateHandler updateHandler, GigaChatApiProvider gigaChatApiProvider) : BackgroundService
+    public class LongPoolingConfigurator(ITelegramBotClient botClient, IUpdateHandler updateHandler, IGigaChatApiProvider gigaChatApiProvider) : BackgroundService
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {

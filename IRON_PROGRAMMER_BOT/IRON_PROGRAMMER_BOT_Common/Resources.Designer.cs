@@ -79,7 +79,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;.
+        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                                                   &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;.
         /// </summary>
         public static string CommonQuestionsPageText {
             get {

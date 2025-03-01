@@ -11,7 +11,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
 
         public async Task<AuthorizationResponse> AuthenticateAsync()
         {
-            httpClient.DefaultRequestHeaders.Add(RequestConstants.AuthorizationHeaderTitle, $"Bearer {LastRequest.AuthorizationID}");
+            httpClient.DefaultRequestHeaders.Add(name: RequestConstants.AuthorizationHeaderTitle, value: $"Bearer {LastRequest.AuthorizationID}");
             httpClient.DefaultRequestHeaders.Add(RequestConstants.RequestIDHeaderTitle, LastRequest.RqUID.ToString());
 
             var data = new[]
@@ -26,7 +26,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
             return response;
         }
 
-        private async Task<AuthorizationResponse> EnsureAuthenticatedAsync(Guid? RqUId = null, TimeSpan? reserveTime = null)
+        public async Task<AuthorizationResponse> EnsureAuthenticatedAsync(Guid? RqUId = null, TimeSpan? reserveTime = null)
         {
             TimeSpan expiredTimeSpan = reserveTime ?? TimeSpan.Zero;
             if (LastResponse == null || LastResponse.GigaChatAuthorizationResponse?.ExpiresAtDateTime - expiredTimeSpan < DateTime.Now)
@@ -44,8 +44,6 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
         {
             try
             {
-
-
                 await EnsureAuthenticatedAsync();
                 //var answer = await _httpClient.GetStringAsync();
                 return string.Empty;
@@ -55,11 +53,6 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
                 Console.WriteLine(ex);
                 return string.Empty;
             }
-        }
-
-        private async Task EnsureAuthenticatedAsync(object value)
-        {
-            throw new NotImplementedException();
         }
     }
 }

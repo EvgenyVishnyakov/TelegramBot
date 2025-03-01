@@ -116,19 +116,22 @@ namespace IRON_PROGRAMMER_BOT_Common
 
                 if (photoPageResult.UpdatedUserState.UserData.LastMessage != null)
                 {
-                    await client.DeleteMessageAsync(
+                    try
+                    {
+                        await client.DeleteMessageAsync(
                         chatId: telegramUserId,
                         messageId: photoPageResult.UpdatedUserState.UserData.LastMessage!.Id);
-                }
-                else
-                {
-                    return await client.SendPhotoAsync(
-                   chatId: telegramUserId,
-                   photo: photoPageResult.Photo,
-                   caption: photoPageResult.Text,
-                   replyMarkup: photoPageResult.ReplyMarkup,
-                   parseMode: ParseMode.Html
-                   );
+                    }
+                    catch
+                    {
+                        return await client.SendPhotoAsync(
+                    chatId: telegramUserId,
+                    photo: photoPageResult.Photo,
+                    caption: photoPageResult.Text,
+                    replyMarkup: photoPageResult.ReplyMarkup,
+                    parseMode: ParseMode.Html
+                    );
+                    }
                 }
 
                 return await client.SendPhotoAsync(
@@ -152,17 +155,20 @@ namespace IRON_PROGRAMMER_BOT_Common
             {
                 if (result.UpdatedUserState.UserData.LastMessage != null)
                 {
-                    await client.DeleteMessageAsync(
+                    try
+                    {
+                        await client.DeleteMessageAsync(
                         chatId: telegramUserId,
                         messageId: result.UpdatedUserState.UserData.LastMessage!.Id);
-                }
-                else
-                {
-                    return await client.SendTextMessageAsync(
+                    }
+                    catch
+                    {
+                        return await client.SendTextMessageAsync(
                             chatId: telegramUserId,
                              text: result.Text,
                             replyMarkup: result.ReplyMarkup,
                             parseMode: ParseMode.Html);
+                    };
                 }
 
 

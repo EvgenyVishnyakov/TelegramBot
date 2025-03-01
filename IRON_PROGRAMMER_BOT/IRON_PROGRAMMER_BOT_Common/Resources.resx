@@ -157,7 +157,7 @@
 &lt;i&gt; - Ваш вопрос&lt;/i&gt;</value>
   </data>
   <data name="CommonQuestionsPageText" xml:space="preserve">
-    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;</value>
+    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                                                   &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;</value>
   </data>
   <data name="HelpByCoursePage" xml:space="preserve">
     <value>HelpByCoursePage</value>

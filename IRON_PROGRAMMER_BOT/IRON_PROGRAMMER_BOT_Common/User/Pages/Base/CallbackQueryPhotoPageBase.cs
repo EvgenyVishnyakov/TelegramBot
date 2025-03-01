@@ -11,7 +11,8 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 
         public override PageResultBase View(Update update, UserState userState)
         {
-            telegramService.SendChatActionAsync(update).GetAwaiter();
+            if (update.CallbackQuery != null)
+                telegramService.SendChatActionAsync(update).GetAwaiter();
 
             var text = GetText(userState);
             var keyboard = GetInlineKeyboardMarkup();

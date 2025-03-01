@@ -28,7 +28,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 ];
         }
 
-        public override UserState ProcessMessage(Message message, UserState userState)
+        public override UserState ProcessMessageAsync(Message message, UserState userState)
         {
             userState.UserData.UserQuestion = message.Text;// реализовать поход в ИИ
             return userState;

@@ -2,6 +2,7 @@
 using Firebase.Database;
 using IRON_PROGRAMMER_BOT_Common.Configuration;
 using IRON_PROGRAMMER_BOT_Common.Firebase;
+using IRON_PROGRAMMER_BOT_Common.GigaChatApi;
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.Storage;
@@ -56,7 +57,9 @@ namespace IRON_PROGRAMMER_BOT_Common
                 {
                     services.AddSingleton(type);
                 }
-
+                services.AddSingleton<ResourcesService>();
+                services.AddSingleton<AuthorizationRequest>();
+                services.AddSingleton<EndPoints>();
                 services.AddSingleton<IGigaChatApiProvider, GigaChatApiProvider>();
                 services.AddSingleton<StepikApiProvider>();
                 services.AddSingleton<ITelegramService, TelegramService>();

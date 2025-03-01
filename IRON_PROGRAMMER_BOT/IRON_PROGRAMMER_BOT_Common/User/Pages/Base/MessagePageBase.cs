@@ -1,11 +1,10 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
-using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
 using Telegram.Bot.Types;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 {
-    public abstract class MessagePhotoPageBase(ResourcesService resourcesService, ITelegramService telegramService) : CallbackQueryPhotoPageBase(resourcesService, telegramService)
+    public abstract class MessagePageBase : CallbackQueryPageBase
     {
         public abstract UserState ProcessMessageAsync(Message message, UserState userState);
 
