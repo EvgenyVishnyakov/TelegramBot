@@ -4,13 +4,13 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
 {
     public class Completion
     {
-        public CompletionRequest LastRequest { get; private set; }
-        public CompletionResponse LastResponse { get; private set; }
+        public CompletionRequest? LastRequest { get; private set; }
+        public CompletionResponse? LastResponse { get; private set; }
         public List<GigaChatMessage> History { get; set; } = new List<GigaChatMessage>();
 
         public async Task<CompletionResponse> SendRequest(string token, string message, bool useHistory = true, CompletionSettings requestSettings = null)
         {
-            CompletionRequest request = null;
+            CompletionRequest? request = null;
 
             if (useHistory)
             {
@@ -46,12 +46,12 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
             {
                 if (useHistory)
                 {
-                    foreach (var it in LastResponse.GigaChatCompletionResponse?.Choices)
+                    foreach (var choice in LastResponse.GigaChatCompletionResponse!.Choices!)
                     {
-                        var msg = it.Message;
+                        var message = choice.Message;
 
-                        if (msg != null)
-                            History.Add(msg);
+                        if (message != null)
+                            History.Add(message);
                     }
                 }
             }

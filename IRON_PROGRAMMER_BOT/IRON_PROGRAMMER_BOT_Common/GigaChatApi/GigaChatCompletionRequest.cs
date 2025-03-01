@@ -34,16 +34,7 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
             set => _count = value == null ? null : value < 1 ? 1 : value > 4 ? 4 : value;
         }
 
-        private long? _maxTokens;
-
-        //[JsonPropertyName("max_tokens")]
-        //public long? MaxTokens
-        //{
-        //    get => _maxTokens;
-        //    set => _maxTokens = value == null ? null : value < 1 ? 1 : value;
-        //}
-
         [JsonPropertyName("messages")]
-        public IEnumerable<GigaChatMessage> MessageCollection { get; set; }
+        public IEnumerable<GigaChatMessage>? MessageCollection { get; set; }
     }
 }

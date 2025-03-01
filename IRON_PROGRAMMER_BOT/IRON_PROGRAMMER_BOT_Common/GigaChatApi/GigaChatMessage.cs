@@ -8,6 +8,6 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
         public string Role { get; set; } = "system";
 
         [JsonPropertyName("content")]
-        public string Content { get; set; }
+        public string? Content { get; set; }
     }
 }

@@ -5,7 +5,7 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
     public class GigaChatAuthorizationResponse
     {
         [JsonPropertyName("access_token")]
-        public string AccessToken { get; set; }
+        public string? AccessToken { get; set; }
 
         [JsonPropertyName("expires_at")]
         public long? ExpiresAt { get; set; }
