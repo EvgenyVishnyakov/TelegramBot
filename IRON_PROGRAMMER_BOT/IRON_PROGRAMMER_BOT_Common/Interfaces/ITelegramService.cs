@@ -4,6 +4,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Interfaces
 {
     public interface ITelegramService
     {
-        Task SendChatActionAsync(Update update);
+        Task SendChatPhotoActionAsync(Update update);
+        Task SendChatTypingActionAsync(Update update);
     }
 }

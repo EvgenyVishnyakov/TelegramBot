@@ -4,7 +4,7 @@ using Telegram.Bot.Types;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 {
-    public abstract class MessagePageBase : CallbackQueryPageBase
+    public abstract class MessagePageBase(ITelegramService telegramService) : CallbackQueryPageBase(telegramService)
     {
         public abstract UserState ProcessMessageAsync(Message message, UserState userState);
 

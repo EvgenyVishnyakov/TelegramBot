@@ -11,7 +11,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
     {
         public override byte[] GetPhoto()
         {
-            return Resources.Обратная_связь;
+            return Resources.FeedBack;
         }
 
         public override string GetText(UserState userState)

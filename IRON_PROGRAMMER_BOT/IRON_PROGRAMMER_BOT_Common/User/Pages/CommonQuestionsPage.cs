@@ -7,18 +7,12 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class CommonQuestionsPage : MessagePageBase
+    public class CommonQuestionsPage(IServiceProvider services, IGigaChatApiProvider gigaChatApiProvider, ITelegramService telegramService) : MessagePageBase(telegramService)
     {
         int attemptCounter = 3;
         private string answerAI { get; set; }
-        private readonly IServiceProvider _services;
-        private readonly IGigaChatApiProvider _gigaChatApiProvider;
-
-        public CommonQuestionsPage(IServiceProvider services, IGigaChatApiProvider gigaChatApiProvider) : base()
-        {
-            _services = services;
-            _gigaChatApiProvider = gigaChatApiProvider;
-        }
+        private readonly IServiceProvider _services = services;
+        private readonly IGigaChatApiProvider _gigaChatApiProvider = gigaChatApiProvider;
 
         public override string GetText(UserState userState)
         {
@@ -30,7 +24,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             if (attemptCounter == 1)
                 return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPagePenultimateQuestion}{Environment.NewLine}{Environment.NewLine}{answerAI}";
 
-            return $"{text}{Environment.NewLine}{Environment.NewLine}<u>У тебя есть возможность для <b>{attemptCounter}</b> вопросов!</u>{Environment.NewLine}{Environment.NewLine}{answerAI}";
+            return $"{text}{Environment.NewLine}{Environment.NewLine}_У тебя есть возможность для **{attemptCounter}** вопросов!_{Environment.NewLine}{Environment.NewLine}{answerAI}";
         }
 
         public override ButtonLinkPage[][] GetKeyBoardAsync()
@@ -53,9 +47,9 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 
             if (result.RequestSuccessed)
             {
-                foreach (var it in result.GigaChatCompletionResponse!.Choices)
+                foreach (var it in result.GigaChatCompletionResponse!.Choices!)
                 {
-                    answerAI += $"{it.Message.Content}{Environment.NewLine}";
+                    answerAI += $"{it.Message!.Content}{Environment.NewLine}";
                     userState.requestCounter = attemptCounter--;
                 }
             }

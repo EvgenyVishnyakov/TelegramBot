@@ -11,7 +11,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 
         public override byte[] GetPhoto()
         {
-            return Resources.ИИ_думает;
+            return Resources.ThinlingAI;
         }
 
         public override string GetText(UserState userState)

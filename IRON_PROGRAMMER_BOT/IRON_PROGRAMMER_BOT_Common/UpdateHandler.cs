@@ -167,7 +167,7 @@ namespace IRON_PROGRAMMER_BOT_Common
                             chatId: telegramUserId,
                              text: result.Text,
                             replyMarkup: result.ReplyMarkup,
-                            parseMode: ParseMode.Html);
+                            parseMode: ParseMode.Markdown);
                     };
                 }
 
@@ -176,7 +176,7 @@ namespace IRON_PROGRAMMER_BOT_Common
                             chatId: telegramUserId,
                              text: result.Text,
                             replyMarkup: result.ReplyMarkup,
-                            parseMode: ParseMode.Html);
+                            parseMode: ParseMode.Markdown);
             }
             catch (Exception ex)
             {

@@ -61,6 +61,16 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] AI {
+            get {
+                object obj = ResourceManager.GetObject("AI", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Назад.
         /// </summary>
         public static string Back {
@@ -79,7 +89,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;u&gt;&lt;b&gt;Это заключительный ответ. Попыток больше нет!!!&lt;/b&gt;&lt;/u&gt;.
+        ///   Looks up a localized string similar to _**Это заключительный ответ. Попыток больше нет!!!**_.
         /// </summary>
         public static string CommonQuestionPageFinalTrying {
             get {
@@ -88,7 +98,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;u&gt;&lt;b&gt;Осталась возможность только для 1 вопроса!!!&lt;/b&gt;&lt;/u&gt;.
+        ///   Looks up a localized string similar to _**Осталась возможность только для 1 вопроса!!!**_.
         /// </summary>
         public static string CommonQuestionPagePenultimateQuestion {
             get {
@@ -106,7 +116,12 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                &lt;b&gt;У тебя есть возможность задать вопросы не более 3 раз!&lt;/b&gt;                                                                                                                                                 &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;                                                    .
+        ///   Looks up a localized string similar to **_Задавайте свой вопрос_**
+        ///
+        ///**У тебя есть возможность задать вопросы не более 3 раз!**
+        ///
+        ///_Важно задать вопрос очень конкретно и по теме!_
+        ///                                      .
         /// </summary>
         public static string CommonQuestionsPageText {
             get {
@@ -136,7 +151,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;&lt;b&gt;Возможностей задавать вопросы больше нет...увы&lt;/b&gt;)&quot;.
+        ///   Looks up a localized string similar to **Возможностей задавать вопросы больше нет...увы**.
         /// </summary>
         public static string CoomQuestionPageStopAI {
             get {
@@ -150,6 +165,16 @@ namespace IRON_PROGRAMMER_BOT_Common {
         public static string DeepLinksPage {
             get {
                 return ResourceManager.GetString("DeepLinksPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] FeedBack {
+            get {
+                object obj = ResourceManager.GetObject("FeedBack", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -218,6 +243,26 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Logo {
+            get {
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] PhotoAI {
+            get {
+                object obj = ResourceManager.GetObject("PhotoAI", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ResolveTaskPage.
         /// </summary>
         public static string ResolveTaskPage {
@@ -227,11 +272,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;Решение задачи! 💻&lt;/b&gt;
-        ///&lt;u&gt;&lt;i&gt;Отправьте , пожалуйста:&lt;/i&gt;&lt;/u&gt;
-        ///&lt;i&gt; - ссылку на задачу&lt;/i&gt;
-        ///и
-        ///&lt;i&gt; - Ваш вопрос&lt;/i&gt;.
+        ///   Looks up a localized string similar to **Решение задачи! 💻**
+        ///
+        ///_**Задавайте свой вопрос**_
+        ///
+        ///**У тебя есть возможность задать один вопрос!**
+        ///
+        ///_Не спрашивай решение, спроси направление_
+        ///
+        ///_Рекомендую спрашивать по следующему образцу: что я делаю не так? краткое условие задачи:  мой код:   _.
         /// </summary>
         public static string ResolveTaskPageText {
             get {
@@ -249,14 +298,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;Привет!&lt;/b&gt;
-        ///&lt;b&gt;Рад видеть тебя😊&lt;/b&gt;
+        ///   Looks up a localized string similar to **Привет!**
         ///
-        ///&lt;u&gt;Задай свой вопрос и я тебе обязательно отвечу!&lt;/u&gt;
+        ///**Рад видеть тебя😊**
+        ///
+        ///_Задай свой вопрос и я тебе обязательно отвечу!_
         ///
         ///Хочешь получить помощь по курсу?
         ///Хочешь узнать о нашей школе и курсах или получить консультацию от наших специалистов?
-        ///Нажми одну из &lt;em&gt;кнопок&lt;/em&gt; ниже, выбирай направление - я отвечу и помогу тебе😉.
+        ///Нажми одну из *кнопок* ниже, выбирай направление - я отвечу и помогу тебе😉.
         /// </summary>
         public static string StartPageText {
             get {
@@ -265,51 +315,20 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
+        ///   Looks up a localized string similar to Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку, которую надо поменять/поправить/объяснить!!!.
         /// </summary>
-        public static byte[] ИИ {
+        public static string TaskPromt {
             get {
-                object obj = ResourceManager.GetObject("ИИ", resourceCulture);
-                return ((byte[])(obj));
+                return ResourceManager.GetString("TaskPromt", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] ИИ_думает {
+        public static byte[] ThinlingAI {
             get {
-                object obj = ResourceManager.GetObject("ИИ_думает", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Логотип {
-            get {
-                object obj = ResourceManager.GetObject("Логотип", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Обратная_связь {
-            get {
-                object obj = ResourceManager.GetObject("Обратная связь", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Фото_ИИ {
-            get {
-                object obj = ResourceManager.GetObject("Фото ИИ", resourceCulture);
+                object obj = ResourceManager.GetObject("ThinlingAI", resourceCulture);
                 return ((byte[])(obj));
             }
         }

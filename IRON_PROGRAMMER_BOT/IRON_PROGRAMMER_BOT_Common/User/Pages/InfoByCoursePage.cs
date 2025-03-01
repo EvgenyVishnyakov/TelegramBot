@@ -10,7 +10,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
     {
         public override byte[] GetPhoto()
         {
-            return Resources.Логотип;
+            return Resources.Logo;
         }
 
         public override string GetText(UserState userState)

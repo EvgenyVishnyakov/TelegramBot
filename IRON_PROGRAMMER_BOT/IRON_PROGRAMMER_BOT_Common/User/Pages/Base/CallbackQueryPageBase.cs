@@ -5,7 +5,7 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 {
-    public abstract class CallbackQueryPageBase : IPage
+    public abstract class CallbackQueryPageBase(ITelegramService telegramService) : IPage
     {
         public abstract string GetText(UserState userState);
         public abstract ButtonLinkPage[][] GetKeyBoardAsync();
@@ -14,6 +14,8 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
+                if (update.CallbackQuery != null)
+                    telegramService.SendChatTypingActionAsync(update).GetAwaiter();
                 var text = GetText(userState);
                 var replyMarkup = GetInlineKeyboardMarkup();
                 userState.AddPage(this);

@@ -140,24 +140,34 @@
 Успехов!</value>
   </data>
   <data name="StartPageText" xml:space="preserve">
-    <value>&lt;b&gt;Привет!&lt;/b&gt;
-&lt;b&gt;Рад видеть тебя😊&lt;/b&gt;
+    <value>**Привет!**
 
-&lt;u&gt;Задай свой вопрос и я тебе обязательно отвечу!&lt;/u&gt;
+**Рад видеть тебя😊**
+
+_Задай свой вопрос и я тебе обязательно отвечу!_
 
 Хочешь получить помощь по курсу?
 Хочешь узнать о нашей школе и курсах или получить консультацию от наших специалистов?
-Нажми одну из &lt;em&gt;кнопок&lt;/em&gt; ниже, выбирай направление - я отвечу и помогу тебе😉</value>
+Нажми одну из *кнопок* ниже, выбирай направление - я отвечу и помогу тебе😉</value>
   </data>
   <data name="ResolveTaskPageText" xml:space="preserve">
-    <value>&lt;b&gt;Решение задачи! 💻&lt;/b&gt;
-&lt;u&gt;&lt;i&gt;Отправьте , пожалуйста:&lt;/i&gt;&lt;/u&gt;
-&lt;i&gt; - ссылку на задачу&lt;/i&gt;
-и
-&lt;i&gt; - Ваш вопрос&lt;/i&gt;</value>
+    <value>**Решение задачи! 💻**
+
+_**Задавайте свой вопрос**_
+
+**У тебя есть возможность задать один вопрос!**
+
+_Не спрашивай решение, спроси направление_
+
+_Рекомендую спрашивать по следующему образцу: что я делаю не так? краткое условие задачи:  мой код:   _</value>
   </data>
   <data name="CommonQuestionsPageText" xml:space="preserve">
-    <value>&lt;b&gt;&lt;u&gt;Задавайте свой вопрос&lt;/u&gt;&lt;/b&gt;                                                                                                                &lt;b&gt;У тебя есть возможность задать вопросы не более 3 раз!&lt;/b&gt;                                                                                                                                                 &lt;i&gt;Важно задать вопрос очень конкретно и по теме!&lt;/i&gt;                                                    </value>
+    <value>**_Задавайте свой вопрос_**
+
+**У тебя есть возможность задать вопросы не более 3 раз!**
+
+_Важно задать вопрос очень конкретно и по теме!_
+                                      </value>
   </data>
   <data name="HelpByCoursePage" xml:space="preserve">
     <value>HelpByCoursePage</value>
@@ -184,37 +194,40 @@
     <value>https://ironprogrammer.ru/#rec460811109</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Фото ИИ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="PhotoAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Фото ИИ.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Обратная связь" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="FeedBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Обратная связь.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Логотип" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Логотип.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ИИ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="AI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ИИ.mp4;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ИИ_думает" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="ThinlingAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ИИ_думает.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="DeepLinksPage" xml:space="preserve">
     <value>DeepLinksPage</value>
   </data>
   <data name="CoomQuestionPageStopAI" xml:space="preserve">
-    <value>"&lt;b&gt;Возможностей задавать вопросы больше нет...увы&lt;/b&gt;)"</value>
+    <value>**Возможностей задавать вопросы больше нет...увы**</value>
   </data>
   <data name="CommonQuestionPageFinalTrying" xml:space="preserve">
-    <value>&lt;u&gt;&lt;b&gt;Это заключительный ответ. Попыток больше нет!!!&lt;/b&gt;&lt;/u&gt;</value>
+    <value>_**Это заключительный ответ. Попыток больше нет!!!**_</value>
   </data>
   <data name="CommonQuestionPagePenultimateQuestion" xml:space="preserve">
-    <value>&lt;u&gt;&lt;b&gt;Осталась возможность только для 1 вопроса!!!&lt;/b&gt;&lt;/u&gt;</value>
+    <value>_**Осталась возможность только для 1 вопроса!!!**_</value>
   </data>
   <data name="CommonQuestionPageAttempts" xml:space="preserve">
     <value>&lt;u&gt;У тебя есть возможность для &lt;b&gt;{counter}&lt;/b&gt; вопросов!&lt;/u&gt;</value>
   </data>
   <data name="HeaderPromtForAI" xml:space="preserve">
     <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов.</value>
+  </data>
+  <data name="TaskPromt" xml:space="preserve">
+    <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку, которую надо поменять/поправить/объяснить!!!</value>
   </data>
 </root>
