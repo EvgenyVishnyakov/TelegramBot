@@ -12,9 +12,9 @@ namespace IRON_PROGRAMMER_BOT_ConsoleApp
     {
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var user = await botClient.GetMeAsync();
+            var bot = await botClient.GetMeAsync();
 
-            Console.WriteLine($"Начали слушать апдейты с {user.Username}");
+            Console.WriteLine($"Начали слушать апдейты с {bot.Username}");
             await gigaChatApiProvider.AuthenticateAsync();
 
             await botClient.ReceiveAsync(updateHandler: updateHandler);

@@ -14,12 +14,12 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 
         public override ButtonLinkPage[][] GetKeyBoardAsync()
         {
-            throw new NotImplementedException();
+            return [];
         }
 
         public override string GetText(UserState userState)
         {
-            throw new NotImplementedException();
+            return string.Empty;
         }
     }
 }

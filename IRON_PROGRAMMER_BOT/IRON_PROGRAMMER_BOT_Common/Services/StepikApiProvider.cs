@@ -9,7 +9,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
         {
             try
             {
-                var root = await httpClient.GetFromJsonAsync<GetCoursesRoot>($"http://stepik.org/api/courses?is_censored=false&is_unsuitable=false&order=-popularity&page=1&teacher={teacherId}");
+                var root = await httpClient.GetFromJsonAsync<GetCoursesRoot>($"http://stepik.org/api/courses?order=-popularity&page=1&teacher={teacherId}");
                 return root?.Courses ?? [];
             }
             catch (Exception ex)
