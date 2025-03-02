@@ -6,5 +6,6 @@ namespace IRON_PROGRAMMER_BOT_Common.Interfaces
     {
         Task SendChatPhotoActionAsync(Update update);
         Task SendChatTypingActionAsync(Update update);
+        Task SendChatTypingCallbackQueryActionAsync(Update update);
     }
 }

@@ -14,6 +14,11 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
 
         public async Task SendChatTypingActionAsync(Update update)
         {
+            await botClient.SendChatActionAsync(update.Message!.Chat.Id, ChatAction.Typing);
+        }
+
+        public async Task SendChatTypingCallbackQueryActionAsync(Update update)
+        {
             await botClient.SendChatActionAsync(update.CallbackQuery!.Message!.Chat.Id, ChatAction.Typing);
         }
     }

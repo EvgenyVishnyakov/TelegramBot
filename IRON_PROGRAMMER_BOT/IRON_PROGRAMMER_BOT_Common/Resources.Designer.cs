@@ -89,7 +89,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _**Это заключительный ответ. Попыток больше нет!!!**_.
+        ///   Looks up a localized string similar to _*Это заключительный ответ. Попыток больше нет!!!*_.
         /// </summary>
         public static string CommonQuestionPageFinalTrying {
             get {
@@ -98,7 +98,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _**Осталась возможность только для 1 вопроса!!!**_.
+        ///   Looks up a localized string similar to _*Осталась возможность только для 1 вопроса!*_.
         /// </summary>
         public static string CommonQuestionPagePenultimateQuestion {
             get {
@@ -118,7 +118,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         /// <summary>
         ///   Looks up a localized string similar to **_Задавайте свой вопрос_**
         ///
-        ///**У тебя есть возможность задать вопросы не более 3 раз!**
+        ///__**У тебя есть возможность задать вопросы не более  3 раз!**__
         ///
         ///_Важно задать вопрос очень конкретно и по теме!_
         ///                                      .
