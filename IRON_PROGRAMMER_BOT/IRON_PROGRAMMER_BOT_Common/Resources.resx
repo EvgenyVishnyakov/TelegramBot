@@ -119,9 +119,11 @@
   </resheader>
   <data name="ConnectWithManagerPageText" xml:space="preserve">
     <value>&lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
-Задавайте свой вопрос 
-&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
-&lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;</value>
+                                                                                                                               
+ Задавайте свой вопрос.                                                                                                       &lt;b&gt;Важно&lt;/b&gt;: напишите свое имя и связь с Вами, а затем ваш вопрос.                                        
+                                                                                                                                                       &lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;                                                        
+                                                                                                                                                                             &lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;
+</value>
   </data>
   <data name="InfoByCoursePageText" xml:space="preserve">
     <value>&lt;b&gt;Информация о курсах!&lt;/b&gt;  Вы можете перейти на страницу школы &lt;b&gt;&lt;u&gt;IRON PROGRAMMER&lt;/u&gt;&lt;/b&gt;</value>

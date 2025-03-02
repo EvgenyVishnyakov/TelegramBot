@@ -34,14 +34,20 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             Random random = new Random();
             var userMessage = message.Text;
-            var userName = message.Chat.Username;
-
+            var userName = message.From?.Username;
+            var userFirstName = message.From!.FirstName;
             var managers = FeedbackStorage.GetManagers();
             var randomIndex = random.Next(managers.Count);
             var chosenManager = managers[randomIndex];
-            client.SendTextMessageAsync(chosenManager, $"Сообщение от пользователя:{userName}: {userMessage}");
+            Task task = SendMessageRequestAsync(chosenManager, userName, userMessage, userFirstName);
+
             userState.requestCounter = 0;
             return userState;
+        }
+
+        private async Task SendMessageRequestAsync(long chosenManager, string? userName, string? userMessage, string? user)
+        {
+            await client.SendTextMessageAsync(chosenManager, $"Сообщение от пользователя:{user}/{userName} {userMessage}");
         }
 
         public override IPage GetNextPage()

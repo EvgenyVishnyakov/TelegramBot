@@ -28,9 +28,9 @@ namespace IRON_PROGRAMMER_BOT_Common.Feedback
             }
         };
 
-        public static List<string> Managers = new List<string>() { "@eovtelega" };//, "@Alexey_G_M", "@BeauMalheur" 
+        public static List<long> Managers = new List<long>() { 125185438, 1142309198, 243336774 };
 
-        public static List<string> GetManagers()
+        public static List<long> GetManagers()
         {
             return Managers;
         }

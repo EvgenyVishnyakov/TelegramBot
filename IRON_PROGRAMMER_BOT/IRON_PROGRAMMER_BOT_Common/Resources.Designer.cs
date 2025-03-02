@@ -140,9 +140,9 @@ namespace IRON_PROGRAMMER_BOT_Common {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
-        ///Задавайте свой вопрос 
-        ///&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
-        ///&lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;.
+        ///                                                                                                                               
+        /// Задавайте свой вопрос.                                                                                                       &lt;b&gt;Важно&lt;/b&gt;: напишите свое имя и связь с Вами, а затем ваш вопрос.                                        
+        ///                                                                                                       [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ConnectWithManagerPageText {
             get {
