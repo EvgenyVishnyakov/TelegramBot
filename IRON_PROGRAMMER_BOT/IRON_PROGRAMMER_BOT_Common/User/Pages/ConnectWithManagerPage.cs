@@ -3,12 +3,13 @@ using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class ConnectWithManagerPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService) : MessagePhotoPageBase(resourcesService, telegramService)
+    public class ConnectWithManagerPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService, ITelegramBotClient client) : MessagePhotoPageBase(resourcesService, telegramService)
     {
         public override byte[] GetPhoto()
         {
@@ -32,12 +33,14 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         public override UserState ProcessMessageAsync(Message message, UserState userState)
         {
             Random random = new Random();
-            var userMessage = message.Text;// реализовать страницу с вопросом к кураторам
+            var userMessage = message.Text;
+            var userName = message.Chat.Username;
+
             var managers = FeedbackStorage.GetManagers();
             var randomIndex = random.Next(managers.Count);
             var chosenManager = managers[randomIndex];
-
-
+            client.SendTextMessageAsync(chosenManager, $"Сообщение от пользователя:{userName}: {userMessage}");
+            userState.requestCounter = 0;
             return userState;
         }
 
