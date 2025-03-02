@@ -1,4 +1,5 @@
-﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+﻿using IRON_PROGRAMMER_BOT_Common.Feedback;
+using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +24,6 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             return [
                 [
-                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Отправить вопрос", Resources.SendQuastion), services.GetRequiredService<StartPage>()),//реализовать следующий переход к распределению вопроса                
                      new ButtonLinkPage(InlineKeyboardButton.WithCallbackData(Resources.Back),services.GetRequiredService<BackwardDummyPage>())
                         ]
                 ];
@@ -31,7 +31,13 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 
         public override UserState ProcessMessageAsync(Message message, UserState userState)
         {
-            userState.UserData.StepiId = message.Text;// реализовать страницу с вопросом к кураторам
+            Random random = new Random();
+            var userMessage = message.Text;// реализовать страницу с вопросом к кураторам
+            var managers = FeedbackStorage.GetManagers();
+            var randomIndex = random.Next(managers.Count);
+            var chosenManager = managers[randomIndex];
+
+
             return userState;
         }
 
