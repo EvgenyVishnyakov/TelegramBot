@@ -38,16 +38,16 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             var userFirstName = message.From!.FirstName;
             var managers = FeedbackStorage.GetManagers();
             var randomIndex = random.Next(managers.Count);
-            var chosenManager = managers[randomIndex];
+            var chosenManager = randomIndex;
             Task task = SendMessageRequestAsync(chosenManager, userName, userMessage, userFirstName);
 
             userState.requestCounter = 0;
             return userState;
         }
 
-        private async Task SendMessageRequestAsync(long chosenManager, string? userName, string? userMessage, string? user)
+        private async Task SendMessageRequestAsync(long chosenManager, string? userName, string? userMessage, string? userFirstName)
         {
-            await client.SendTextMessageAsync(chosenManager, $"Сообщение от пользователя:{user}/{userName} {userMessage}");
+            await client.SendTextMessageAsync(chosenManager, $"Сообщение от пользователя:{userFirstName},/tg://resolve?domain={userName} {userMessage}");
         }
 
         public override IPage GetNextPage()

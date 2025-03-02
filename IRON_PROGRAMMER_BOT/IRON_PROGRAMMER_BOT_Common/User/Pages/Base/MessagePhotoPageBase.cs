@@ -18,11 +18,11 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
                 if (update.Message == null)
                     return base.Handle(update, userState);
                 var updateUserState = ProcessMessageAsync(update.Message, userState);
-                if (updateUserState.requestCounter == 0)
-                {
-                    var nextPage = GetNextPage();
-                    return nextPage.View(update, updateUserState);
-                }
+                //if (updateUserState.requestCounter == 0)
+                //{
+                //    var nextPage = GetNextPage();
+                //    return nextPage.View(update, updateUserState);
+                //}
                 return base.Handle(update, userState);
             }
             catch (Exception ex)
