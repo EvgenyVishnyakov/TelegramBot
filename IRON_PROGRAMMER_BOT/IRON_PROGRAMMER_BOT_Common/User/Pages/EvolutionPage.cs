@@ -10,16 +10,16 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 {
-    public class ConnectWithManagerPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService, ITelegramBotClient client) : MessagePhotoPageBase(resourcesService, telegramService)
+    public class EvolutionPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService, ITelegramBotClient client) : MessagePhotoPageBase(resourcesService, telegramService)
     {
         public override byte[] GetPhoto()
         {
-            return Resources.FeedBack;
+            return Resources.Evolution;
         }
 
         public override string GetText(UserState userState)
         {
-            return Resources.ConnectWithManagerPageText;
+            return Resources.CommonTutorText;
         }
 
         public override ButtonLinkPage[][] GetKeyBoardAsync()
@@ -38,36 +38,31 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             var userMessage = message.Text;
             var userName = message.From?.Username;
             var userFirstName = message.From!.FirstName;
-            var userChatId = message.Chat.Id;
 
-            var managers = FeedbackStorage.GetManagers();
-            var randomIndex = random.Next(managers.Count);
+            var listCoursesAndTutors = FeedbackStorage.Tutors;
+            var course = listCoursesAndTutors["EvolutionPage"];
+            var randomIndex = random.Next(course.Count);
+            var managerChatId = course.ElementAt(randomIndex);
 
-            var chosenManager = managers.ElementAt(randomIndex);
-            var managerUserName = chosenManager.Key;
-            var managerDate = chosenManager.Value.FirstOrDefault();
-            var managerName = managerDate.Item1;
-            var managerChatId = managerDate.Item2;
-
-            Task task = SendMessageRequestAsync(managerChatId, managerUserName, managerName, userName, userFirstName, userMessage, userChatId);
+            Task task = SendMessageRequestAsync(managerChatId, userName, userFirstName, userMessage);
 
             userState.requestCounter = 0;
             return userState;
         }
 
-        private async Task SendMessageRequestAsync(long managerChatId, string? managerUserName, string managerName, string? userName, string? userFirstName, string? userMessage, long userChatId)
+        private async Task SendMessageRequestAsync(long managerChatId, string? userName, string? userFirstName, string? userMessage)
         {
             if (userName == string.Empty)
             {
                 await client.SendTextMessageAsync(
-                    chatId: userChatId,
-                    text: $"Просьба прислать ваш username для связи с Вами, так как действующего username телеграмма у Вас нет либо можете написать напрямую нашему менеджеру:[{managerName}](http://t\\.me/{managerUserName})",
+                    chatId: managerChatId,
+                    text: $"Студент {userFirstName} просит в курсе Эволюция языка ответить на следующий вопрос:{Environment.NewLine}{userMessage}",
                     parseMode: ParseMode.MarkdownV2);
             }
             else
                 await client.SendTextMessageAsync(
                     chatId: managerChatId,
-                    $"Пользователь [{userFirstName}](http://t\\.me/{userName}) прислал сообщение{Environment.NewLine}{userMessage}",
+                    $"Пользователь [{userFirstName}](http://t\\.me/{userName}) в курсе Эволюция языка прислал сообщение{Environment.NewLine}{userMessage}",
                     parseMode: ParseMode.MarkdownV2);
         }
 

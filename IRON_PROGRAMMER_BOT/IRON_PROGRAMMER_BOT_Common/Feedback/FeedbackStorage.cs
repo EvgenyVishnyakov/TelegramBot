@@ -3,11 +3,43 @@ namespace IRON_PROGRAMMER_BOT_Common.Feedback
 {
     public static class FeedbackStorage
     {
-        public static Dictionary<string, List<long>> listTutors = new Dictionary<string, List<long>>()
+        public static Dictionary<string, List<long>> Tutors = new Dictionary<string, List<long>>()
     {
-        { "Основы программирования", new List<long>() { 125185438, 1142309198, 243336774 } },
-        { "Для продвинутых", new List<long>() { 125185438, 1142309198, 243336774 } },
-        { "LINQ", new List<long>() { 125185438, 1142309198, 243336774 } }
+        { "BasicsProgrammingPage", new List<long>()
+        {
+            125185438, 1142309198,243336774
+        }
+            },
+        { "AdvancedPage", new List<long>()
+        {
+            125185438, 1142309198,243336774
+        }
+            },
+        { "LINQ", new List<long>()
+        {
+            125185438, 1142309198,243336774
+        }
+            },
+         { "CollectionPage", new List<long>()
+         {
+             125185438, 1142309198,243336774
+         }
+            },
+          { "AlgorithmPage", new List<long>()
+          {
+              125185438, 1142309198,243336774
+          }
+            },
+           { "CodePage", new List<long>()
+           {
+               125185438, 1142309198,243336774
+           }
+            },
+            { "EvolutionPage", new List<long>()
+            {
+               125185438, 1142309198,243336774
+            }
+            }
     };
 
         public static Dictionary<string, List<(string, long)>> Managers = new Dictionary<string, List<(string, long)>>()
@@ -25,12 +57,17 @@ namespace IRON_PROGRAMMER_BOT_Common.Feedback
         }
     },
     {
-        "@BeauMalheur", new List<(string, long)>
+        "BeauMalheur", new List<(string, long)>
         {
             ("Иван Поваляев", 125185438)
         }
     }
 };
+
+        public static Dictionary<string, List<long>> GetTutors()
+        {
+            return Tutors;
+        }
 
         public static Dictionary<string, List<(string, long)>> GetManagers()
         {
