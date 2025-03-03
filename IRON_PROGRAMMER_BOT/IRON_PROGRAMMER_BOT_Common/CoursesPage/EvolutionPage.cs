@@ -1,6 +1,7 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Feedback;
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
+using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
@@ -8,13 +9,13 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
-namespace IRON_PROGRAMMER_BOT_Common.User.Pages
+namespace IRON_PROGRAMMER_BOT_Common.CoursesPage
 {
-    public class CollectionPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService, ITelegramBotClient client) : MessagePhotoPageBase(resourcesService, telegramService)
+    public class EvolutionPage(IServiceProvider services, ResourcesService resourcesService, ITelegramService telegramService, ITelegramBotClient client) : MessagePhotoPageBase(resourcesService, telegramService)
     {
         public override byte[] GetPhoto()
         {
-            return Resources.Collections;
+            return Resources.Evolution;
         }
 
         public override string GetText(UserState userState)
@@ -40,7 +41,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             var userFirstName = message.From!.FirstName;
 
             var listCoursesAndTutors = FeedbackStorage.Tutors;
-            var course = listCoursesAndTutors["CollectionPage"];
+            var course = listCoursesAndTutors["EvolutionPage"];
             var randomIndex = random.Next(course.Count);
             var managerChatId = course.ElementAt(randomIndex);
 
@@ -56,13 +57,13 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             {
                 await client.SendTextMessageAsync(
                     chatId: managerChatId,
-                    text: $"Студент {userFirstName} просит в курсе Коллекции ответить на следующий вопрос:{Environment.NewLine}{userMessage}",
+                    text: $"Студент {userFirstName} просит в курсе Эволюция языка ответить на следующий вопрос:{Environment.NewLine}{Environment.NewLine}{userMessage}",
                     parseMode: ParseMode.MarkdownV2);
             }
             else
                 await client.SendTextMessageAsync(
                     chatId: managerChatId,
-                    $"Пользователь [{userFirstName}](http://t\\.me/{userName}) в курсе Коллекции прислал сообщение{Environment.NewLine}{userMessage}",
+                    $"Пользователь [{userFirstName}](http://t\\.me/{userName}) в курсе Эволюция языка прислал сообщение: {Environment.NewLine}{Environment.NewLine}{userMessage}",
                     parseMode: ParseMode.MarkdownV2);
         }
 

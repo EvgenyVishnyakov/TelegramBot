@@ -1,4 +1,5 @@
-﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+﻿using IRON_PROGRAMMER_BOT_Common.CoursesPage;
+using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
