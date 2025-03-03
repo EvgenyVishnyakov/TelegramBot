@@ -287,4 +287,13 @@ _Важно задать вопрос очень конкретно и по те
   <data name="EvolutionPage" xml:space="preserve">
     <value>EvolutionPage</value>
   </data>
+  <data name="PasswordPage" xml:space="preserve">
+    <value>PasswordPage</value>
+  </data>
+  <data name="Password" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\password.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PasswordPageText" xml:space="preserve">
+    <value>&lt;b&gt;Введите пароль! При неверном вводе вы будете перенсены на начальную страницу!&lt;/b&gt;</value>
+  </data>
 </root>

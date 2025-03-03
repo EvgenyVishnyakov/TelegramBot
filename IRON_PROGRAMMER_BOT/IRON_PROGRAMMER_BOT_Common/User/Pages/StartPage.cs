@@ -26,7 +26,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage), services.GetRequiredService<ConnectWithManagerPage>())
                             ],
                             [
-                                new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Переход для преподавателей", Resources.DeepLinksPage), services.GetRequiredService<DeepLinksPage>())
+                                new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Переход для преподавателей", Resources.PasswordPage), services.GetRequiredService<PasswordPage>())//DeepLinksPage
                                 ]
 
                     ];
