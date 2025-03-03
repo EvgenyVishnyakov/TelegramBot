@@ -18,10 +18,11 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             {
                 return [
                     [
-                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу",Resources.HelpByCoursePage), services.GetRequiredService<HelpByCoursePage>())
+                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу",Resources.HelpByCoursePage), services.GetRequiredService<HelpByCoursePage>()),
+                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage), services.GetRequiredService<InfoByCoursePage>())
                         ],
                         [
-                    new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage), services.GetRequiredService<InfoByCoursePage>()),
+                    new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Обратиться к кураторам курсов", Resources.InfoByCoursePage), services.GetRequiredService<ConnectWithTutors>()),
                     new ButtonLinkPage(InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage), services.GetRequiredService<ConnectWithManagerPage>())
                             ],
                             [

@@ -5,6 +5,7 @@ using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
@@ -33,21 +34,42 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         public override UserState ProcessMessageAsync(Message message, UserState userState)
         {
             Random random = new Random();
+
             var userMessage = message.Text;
             var userName = message.From?.Username;
             var userFirstName = message.From!.FirstName;
+            var userChatId = message.Chat.Id;
+            var update = client.GetUpdatesAsync();
+
             var managers = FeedbackStorage.GetManagers();
             var randomIndex = random.Next(managers.Count);
-            var chosenManager = randomIndex;
-            Task task = SendMessageRequestAsync(chosenManager, userName, userMessage, userFirstName);
+
+            var chosenManager = managers.ElementAt(randomIndex);
+            var managerUserName = chosenManager.Key;
+            var managerDate = chosenManager.Value.FirstOrDefault();
+            var managerName = managerDate.Item1;
+            var managerChatId = managerDate.Item2;
+
+            Task task = SendMessageRequestAsync(managerChatId, managerUserName, managerName, userName, userFirstName, userMessage, userChatId);
 
             userState.requestCounter = 0;
             return userState;
         }
 
-        private async Task SendMessageRequestAsync(long chosenManager, string? userName, string? userMessage, string? userFirstName)
+        private async Task SendMessageRequestAsync(long managerChatId, string? managerUserName, string managerName, string? userName, string? userFirstName, string? userMessage, long userChatId)
         {
-            await client.SendTextMessageAsync(chosenManager, $"Сообщение от пользователя:{userFirstName},/tg://resolve?domain={userName} {userMessage}");
+            if (userName == string.Empty)
+            {
+                await client.SendTextMessageAsync(
+                    chatId: userChatId,
+                    text: $"Просьба прислать ваш username для связи с Вами, так как действующего username телеграмма у Вас нет либо можете написать напрямую нашему менеджеру:[{managerName}](http://t\\.me/{managerUserName})",
+                    parseMode: ParseMode.MarkdownV2);
+            }
+            else
+                await client.SendTextMessageAsync(
+                    chatId: managerChatId,
+                    $"Пользователь [{userFirstName}](http://t\\.me/eovtelega) прислал сообщение{Environment.NewLine}{userMessage}",
+                    parseMode: ParseMode.MarkdownV2);
         }
 
         public override IPage GetNextPage()

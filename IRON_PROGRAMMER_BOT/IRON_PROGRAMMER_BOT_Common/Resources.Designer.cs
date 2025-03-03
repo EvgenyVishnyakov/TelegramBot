@@ -197,6 +197,16 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Help {
+            get {
+                object obj = ResourceManager.GetObject("Help", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HelpByCoursePage.
         /// </summary>
         public static string HelpByCoursePage {

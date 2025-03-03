@@ -9,9 +9,30 @@ namespace IRON_PROGRAMMER_BOT_Common.Feedback
         { "Для продвинутых", new List<long>() { 125185438, 1142309198, 243336774 } },
         { "LINQ", new List<long>() { 125185438, 1142309198, 243336774 } }
     };
-        public static List<long> Managers = new List<long>() { 125185438, 1142309198, 243336774 };
 
-        public static List<long> GetManagers()
+        public static Dictionary<string, List<(string, long)>> Managers = new Dictionary<string, List<(string, long)>>()
+{
+    {
+        "eovtelega", new List<(string, long)>
+        {
+            ("Евгений Вишняков", 125185438)
+        }
+    },
+    {
+        "Alexey_G_M", new List<(string, long)>
+        {
+            ("Алексей Миронов", 1142309198)
+        }
+    },
+    {
+        "@BeauMalheur", new List<(string, long)>
+        {
+            ("Иван Поваляев", 125185438)
+        }
+    }
+};
+
+        public static Dictionary<string, List<(string, long)>> GetManagers()
         {
             return Managers;
         }

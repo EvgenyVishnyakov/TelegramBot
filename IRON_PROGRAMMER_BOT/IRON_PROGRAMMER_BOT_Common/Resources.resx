@@ -232,4 +232,7 @@ _Важно задать вопрос очень конкретно и по те
   <data name="TaskPromt" xml:space="preserve">
     <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку!(это важно), которую надо либо поменять, либо поправить, либо объяснить!!!</value>
   </data>
+  <data name="Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Help.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
