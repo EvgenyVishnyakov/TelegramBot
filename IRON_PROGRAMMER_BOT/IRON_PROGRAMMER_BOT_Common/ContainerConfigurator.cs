@@ -61,7 +61,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                 services.AddSingleton<AuthorizationRequest>();
                 services.AddSingleton<EndPoints>();
                 services.AddSingleton<IGigaChatApiProvider, GigaChatApiProvider>();
-                services.AddSingleton<StepikApiProvider>();
                 services.AddSingleton<ITelegramService, TelegramService>();
                 services.AddSingleton<PagesFactory>();
 
