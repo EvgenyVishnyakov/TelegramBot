@@ -273,15 +273,6 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DeepLinksPage.
-        /// </summary>
-        public static string DeepLinksPage {
-            get {
-                return ResourceManager.GetString("DeepLinksPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] Evolution {
@@ -420,34 +411,6 @@ namespace IRON_PROGRAMMER_BOT_Common {
             get {
                 object obj = ResourceManager.GetObject("Logo_basics", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Password {
-            get {
-                object obj = ResourceManager.GetObject("Password", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to PasswordPage.
-        /// </summary>
-        public static string PasswordPage {
-            get {
-                return ResourceManager.GetString("PasswordPage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;Введите пароль! При неверном вводе вы будете перенсены на начальную страницу!&lt;/b&gt;.
-        /// </summary>
-        public static string PasswordPageText {
-            get {
-                return ResourceManager.GetString("PasswordPageText", resourceCulture);
             }
         }
         
