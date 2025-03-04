@@ -26,7 +26,8 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             }
             catch (Exception ex)
             {
-                Log.Error($"Ошибка {ex.ToString()} в методе GetText в классе ResolveTaskPage")
+                Log.Error($"Ошибка {ex.ToString()} в методе GetText в классе ResolveTaskPage");
+                return null;
             }
         }
 
