@@ -1,4 +1,5 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+using Serilog;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -9,17 +10,38 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
     {
         public async Task SendChatPhotoActionAsync(Update update)
         {
-            await botClient.SendChatActionAsync(update.CallbackQuery!.Message!.Chat.Id, ChatAction.UploadPhoto);
+            try
+            {
+                await botClient.SendChatActionAsync(update.CallbackQuery!.Message!.Chat.Id, ChatAction.UploadPhoto);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+            }
         }
 
         public async Task SendChatTypingActionAsync(Update update)
         {
-            await botClient.SendChatActionAsync(update.Message!.Chat.Id, ChatAction.Typing);
+            try
+            {
+                await botClient.SendChatActionAsync(update.Message!.Chat.Id, ChatAction.Typing);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+            }
         }
 
         public async Task SendChatTypingCallbackQueryActionAsync(Update update)
         {
-            await botClient.SendChatActionAsync(update.CallbackQuery!.Message!.Chat.Id, ChatAction.Typing);
+            try
+            {
+                await botClient.SendChatActionAsync(update.CallbackQuery!.Message!.Chat.Id, ChatAction.Typing);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+            }
         }
     }
 }
