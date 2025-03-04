@@ -2,6 +2,7 @@
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
@@ -37,7 +38,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе GetKeyboard, файл HelpByCoursePage");
+                Log.Error($"Ошибка {ex} в методе GetKeyboard, файл HelpByCoursePage");
                 return null;
             }
         }

@@ -28,7 +28,6 @@ catch (Exception ex)
 {
     Log.Fatal(ex, "server terminated unexpectedly");
 }
-
 finally
 {
     Log.CloseAndFlush();

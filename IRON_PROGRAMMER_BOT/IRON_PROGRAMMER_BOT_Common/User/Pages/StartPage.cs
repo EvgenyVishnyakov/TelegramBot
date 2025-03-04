@@ -10,7 +10,6 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
     {
         public override string GetText(UserState userState)
         {
-            Log.Information("Стартовая страница запущена");
             return Resources.StartPageText;
         }
 
@@ -35,7 +34,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе GetKeyboard, файл StartPage");
+                Log.Error($"Ошибка {ex} в методе GetKeyboard, файл StartPage");
                 return null;
             }
         }
