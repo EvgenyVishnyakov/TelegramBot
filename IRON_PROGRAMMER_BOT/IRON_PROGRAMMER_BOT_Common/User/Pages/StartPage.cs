@@ -1,6 +1,7 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages
@@ -9,6 +10,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
     {
         public override string GetText(UserState userState)
         {
+            Log.Information("Стартовая страница запущена");
             return Resources.StartPageText;
         }
 

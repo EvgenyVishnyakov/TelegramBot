@@ -3,6 +3,7 @@ using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -33,26 +34,35 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
 
         public override UserState ProcessMessageAsync(Message message, UserState userState)
         {
-            Random random = new Random();
+            try
+            {
+                Random random = new Random();
 
-            var userMessage = message.Text;
-            var userName = message.From?.Username;
-            var userFirstName = message.From!.FirstName;
-            var userChatId = message.Chat.Id;
+                var userMessage = message.Text;
+                var userName = message.From?.Username;
+                var userFirstName = message.From!.FirstName;
+                var userChatId = message.Chat.Id;
 
-            var managers = FeedbackStorage.GetManagers();
-            var randomIndex = random.Next(managers.Count);
+                var managers = FeedbackStorage.GetManagers();
+                var randomIndex = random.Next(managers.Count);
 
-            var chosenManager = managers.ElementAt(randomIndex);
-            var managerUserName = chosenManager.Key;
-            var managerDate = chosenManager.Value.FirstOrDefault();
-            var managerName = managerDate.Item1;
-            var managerChatId = managerDate.Item2;
+                var chosenManager = managers.ElementAt(randomIndex);
+                var managerUserName = chosenManager.Key;
+                var managerDate = chosenManager.Value.FirstOrDefault();
+                var managerName = managerDate.Item1;
+                var managerChatId = managerDate.Item2;
 
-            Task task = SendMessageRequestAsync(managerChatId, managerUserName, managerName, userName, userFirstName, userMessage, userChatId);
+                Task task = SendMessageRequestAsync(managerChatId, managerUserName, managerName, userName, userFirstName, userMessage, userChatId);
 
-            userState.requestCounter = 0;
-            return userState;
+                userState.requestCounter = 0;
+                Log.Information($"");
+                return userState;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e, $"Ошибка {e} в методе ProcessMessageAsync на странице ConnectWithManagerPage");
+                return userState;
+            }
         }
 
         private async Task SendMessageRequestAsync(long managerChatId, string? managerUserName, string managerName, string? userName, string? userFirstName, string? userMessage, long userChatId)
