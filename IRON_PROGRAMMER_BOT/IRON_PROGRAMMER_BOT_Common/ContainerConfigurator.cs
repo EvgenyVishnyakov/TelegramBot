@@ -69,7 +69,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                 services.AddSingleton<IGigaChatApiProvider, GigaChatApiProvider>();
                 services.AddSingleton<ITelegramService, TelegramService>();
                 services.AddSingleton<PagesFactory>();
-
             }
             catch (Exception ex)
             {
