@@ -51,11 +51,11 @@ public class ResolveTaskPageTests
         var result = resolveTaskPage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
+        ClassicAssert.IsInstanceOf<PageResultBase>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(resolveTaskPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
-        Assert.That(result.Text, Is.EqualTo(Resources.ResolveTaskPageText));
+        Assert.That(result.Text, Is.EqualTo($"{Resources.ResolveTaskPageText}{Environment.NewLine}{Environment.NewLine}"));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
         KeyboardHelper.AssertKeyboard(expectedButtons, (InlineKeyboardMarkup)result.ReplyMarkup);
@@ -74,7 +74,7 @@ public class ResolveTaskPageTests
         var result = resolveTaskPage.Handle(update, userState);
 
         //Assert        
-        Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+        Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
         ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrentPage);
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
     }
@@ -98,7 +98,7 @@ public class ResolveTaskPageTests
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(resolveTaskPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
 
-        Assert.That(result.Text, Is.EqualTo(Resources.ResolveTaskPageText));
+        Assert.That(result.Text, Is.EqualTo($"{Resources.ResolveTaskPageText}{Environment.NewLine}{Environment.NewLine}"));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
 
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);

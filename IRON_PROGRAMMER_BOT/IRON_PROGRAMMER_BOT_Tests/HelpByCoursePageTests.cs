@@ -53,7 +53,7 @@ public class HelpByCoursePageTests
         var result = helpByCoursePage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
+        ClassicAssert.IsInstanceOf<PageResultBas>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(helpByCoursePage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -75,7 +75,7 @@ public class HelpByCoursePageTests
         var result = helpByCoursePage.Handle(update, userState);
 
         //Assert           
-        Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+        Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
         ClassicAssert.IsInstanceOf<CommonQuestionsPage>(result.UpdatedUserState.CurrentPage);
 
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
@@ -93,7 +93,7 @@ public class HelpByCoursePageTests
         var result = helpByCoursePage.Handle(update, userState);
 
         //Assert           
-        Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+        Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
         ClassicAssert.IsInstanceOf<ResolveTaskPage>(result.UpdatedUserState.CurrentPage);
 
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));

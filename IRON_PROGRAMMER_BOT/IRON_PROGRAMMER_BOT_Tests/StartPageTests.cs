@@ -45,9 +45,9 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var expectedButtons = new InlineKeyboardButton[][]
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
-                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)],
-
+                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage)],
+                  [InlineKeyboardButton.WithCallbackData("Обратиться к кураторам курсов", Resources.ConnectWithTutorPage)],
+                  [InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
             };
             //Act
             var result = startPage.View(null, userState);
@@ -75,7 +75,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert            
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
             ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -93,8 +93,26 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert           
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
             ClassicAssert.IsInstanceOf<InfoByCoursePage>(result.UpdatedUserState.CurrentPage);
+
+            Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void Handle_StartPageCallback_ConnectWithTutorPage()
+        {
+            //Arrange
+            var startPage = _services.GetRequiredService<StartPage>();
+            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
+            var userState = new UserState(pages, new UserData());
+            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.ConnectWithTutorPage } };
+            //Act
+            var result = startPage.Handle(update, userState);
+
+            //Assert           
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
+            ClassicAssert.IsInstanceOf<ConnectWithTutorPage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
         }
@@ -111,7 +129,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert           
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
             ClassicAssert.IsInstanceOf<ConnectWithManagerPage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -127,9 +145,10 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
             var expectedButtons = new InlineKeyboardButton[][]
             {
-                [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
-                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)],
+                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
+                 [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage)],
+                  [InlineKeyboardButton.WithCallbackData("Обратиться к кураторам курсов", Resources.ConnectWithTutorPage)],
+                  [InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
 
             };
             //Act

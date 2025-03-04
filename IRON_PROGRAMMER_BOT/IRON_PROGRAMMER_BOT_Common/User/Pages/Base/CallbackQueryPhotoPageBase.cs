@@ -14,7 +14,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
-                if (update.CallbackQuery != null)
+                if (update?.CallbackQuery != null)
                     telegramService.SendChatPhotoActionAsync(update).GetAwaiter();
 
                 var text = GetText(userState);
@@ -24,7 +24,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 
                 var path = Resources.Logo;
 
-                return new PhotoPageResult(photo, text, keyboard)
+                return new PageResultBas(photo, text, keyboard)
                 {
                     UpdatedUserState = userState
                 };

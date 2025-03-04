@@ -44,15 +44,14 @@ public class ConnectWithManagerPageTests
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Отправить вопрос", Resources.SendQuastion),
-                InlineKeyboardButton.WithCallbackData(Resources.Back)]
+                [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
 
         //Act
         var result = сonnectWithManagerPage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
+        ClassicAssert.IsInstanceOf<PageResultBas>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(сonnectWithManagerPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -91,8 +90,7 @@ public class ConnectWithManagerPageTests
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Отправить вопрос",Resources.SendQuastion),
-                InlineKeyboardButton.WithCallbackData(Resources.Back)]
+                [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
         //Act
         var result = сonnectWithManagerPage.View(update, userState);
