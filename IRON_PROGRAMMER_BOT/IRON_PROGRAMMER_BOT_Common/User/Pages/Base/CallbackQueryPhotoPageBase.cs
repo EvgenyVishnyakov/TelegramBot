@@ -24,7 +24,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
 
                 var path = Resources.Logo;
 
-                return new PageResultBas(photo, text, keyboard)
+                return new PhotoPageResult(photo, text, keyboard)
                 {
                     UpdatedUserState = userState
                 };

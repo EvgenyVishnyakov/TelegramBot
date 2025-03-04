@@ -75,7 +75,7 @@ public class CommonQuestionsPageTests
         var result = commonQuestionsPage.Handle(update, userState);
 
         //Assert        
-        Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
+        Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
         ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrentPage);
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
     }

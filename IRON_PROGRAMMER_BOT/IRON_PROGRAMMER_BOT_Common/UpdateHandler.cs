@@ -84,7 +84,7 @@ namespace IRON_PROGRAMMER_BOT_Common
             {
                 switch (result)
                 {
-                    case PageResultBas photoPageResult:
+                    case PhotoPageResult photoPageResult:
                         return await SendPhoto(client, telegramUserId, photoPageResult, update);
                     default:
                         return await SendText(client, telegramUserId, result, update);
@@ -97,7 +97,7 @@ namespace IRON_PROGRAMMER_BOT_Common
             }
         }
 
-        private static async Task<Message?> SendPhoto(ITelegramBotClient client, long telegramUserId, PageResultBas photoPageResult, Update update)
+        private static async Task<Message?> SendPhoto(ITelegramBotClient client, long telegramUserId, PhotoPageResult photoPageResult, Update update)
         {
             try
             {

@@ -19,7 +19,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult
             ReplyMarkup = replyMarkup;
         }
 
-        public bool IsMedia => this is PageResultBas ||
+        public bool IsMedia => this is PhotoPageResult ||
                                  this is AudioPageResult;
     }
 }

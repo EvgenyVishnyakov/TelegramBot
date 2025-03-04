@@ -75,7 +75,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert            
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
             ClassicAssert.IsInstanceOf<HelpByCoursePage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -93,7 +93,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert           
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
             ClassicAssert.IsInstanceOf<InfoByCoursePage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -111,7 +111,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert           
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
             ClassicAssert.IsInstanceOf<ConnectWithTutorPage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -129,7 +129,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = startPage.Handle(update, userState);
 
             //Assert           
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBas)));
+            Assert.That(result.GetType(), Is.EqualTo(typeof(PhotoPageResult)));
             ClassicAssert.IsInstanceOf<ConnectWithManagerPage>(result.UpdatedUserState.CurrentPage);
 
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));

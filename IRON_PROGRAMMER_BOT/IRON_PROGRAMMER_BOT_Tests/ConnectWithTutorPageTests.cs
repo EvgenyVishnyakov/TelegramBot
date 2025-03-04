@@ -58,7 +58,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var result = connectWithTutorPage.View(null, userState);
 
             //Assert
-            ClassicAssert.IsInstanceOf<PageResultBas>(result);
+            ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
             Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(connectWithTutorPage));
             Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
@@ -67,7 +67,6 @@ namespace IRON_PROGRAMMER_BOT_Tests
             ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
             KeyboardHelper.AssertKeyboard(expectedButtons, (InlineKeyboardMarkup)result.ReplyMarkup);
         }
-
 
         [Test]
         public void Handle_ConnectWithTutorPageCallback_StartPage()

@@ -53,7 +53,7 @@ public class HelpByCoursePageTests
         var result = helpByCoursePage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<PageResultBas>(result);
+        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(helpByCoursePage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));

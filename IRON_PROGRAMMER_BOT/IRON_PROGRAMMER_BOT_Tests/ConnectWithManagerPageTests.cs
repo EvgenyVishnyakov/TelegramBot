@@ -51,7 +51,7 @@ public class ConnectWithManagerPageTests
         var result = сonnectWithManagerPage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<PageResultBas>(result);
+        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(сonnectWithManagerPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
