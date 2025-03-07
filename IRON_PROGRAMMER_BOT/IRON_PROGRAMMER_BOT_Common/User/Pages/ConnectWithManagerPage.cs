@@ -36,7 +36,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             try
             {
-                Random random = new Random();
+                var random = new Random();
 
                 var userMessage = message.Text;
                 var userName = message.From?.Username;
