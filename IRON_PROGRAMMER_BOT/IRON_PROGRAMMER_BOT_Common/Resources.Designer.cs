@@ -63,10 +63,48 @@ namespace IRON_PROGRAMMER_BOT_Common {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] Advanced {
+            get {
+                object obj = ResourceManager.GetObject("Advanced", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AdvancedPage.
+        /// </summary>
+        public static string AdvancedPage {
+            get {
+                return ResourceManager.GetString("AdvancedPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] AI {
             get {
                 object obj = ResourceManager.GetObject("AI", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Alghoritms {
+            get {
+                object obj = ResourceManager.GetObject("Alghoritms", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AlgorithmPage.
+        /// </summary>
+        public static string AlgorithmPage {
+            get {
+                return ResourceManager.GetString("AlgorithmPage", resourceCulture);
             }
         }
         
@@ -80,6 +118,53 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BasicsProgrammingPage.
+        /// </summary>
+        public static string BasicsProgrammingPage {
+            get {
+                return ResourceManager.GetString("BasicsProgrammingPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Code {
+            get {
+                object obj = ResourceManager.GetObject("Code", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CodePage.
+        /// </summary>
+        public static string CodePage {
+            get {
+                return ResourceManager.GetString("CodePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CollectionPage.
+        /// </summary>
+        public static string CollectionPage {
+            get {
+                return ResourceManager.GetString("CollectionPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Collections {
+            get {
+                object obj = ResourceManager.GetObject("Collections", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;u&gt;У тебя есть возможность для &lt;b&gt;{counter}&lt;/b&gt; вопросов!&lt;/u&gt;.
         /// </summary>
         public static string CommonQuestionPageAttempts {
@@ -89,7 +174,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _**Это заключительный ответ. Попыток больше нет!!!**_.
+        ///   Looks up a localized string similar to _*Это заключительный ответ. Попыток больше нет!!!*_.
         /// </summary>
         public static string CommonQuestionPageFinalTrying {
             get {
@@ -98,7 +183,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _**Осталась возможность только для 1 вопроса!!!**_.
+        ///   Looks up a localized string similar to _*Осталась возможность только для 1 вопроса!*_.
         /// </summary>
         public static string CommonQuestionPagePenultimateQuestion {
             get {
@@ -118,7 +203,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         /// <summary>
         ///   Looks up a localized string similar to **_Задавайте свой вопрос_**
         ///
-        ///**У тебя есть возможность задать вопросы не более 3 раз!**
+        ///__**У тебя есть возможность задать вопросы не более  3 раз!**__
         ///
         ///_Важно задать вопрос очень конкретно и по теме!_
         ///                                      .
@@ -126,6 +211,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         public static string CommonQuestionsPageText {
             get {
                 return ResourceManager.GetString("CommonQuestionsPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;Задавай свой вопрос! Мы тебе на него ответим в ближайшее время в чате курса. Не забудь написать свое имя!&lt;/b&gt;.
+        /// </summary>
+        public static string CommonTutorText {
+            get {
+                return ResourceManager.GetString("CommonTutorText", resourceCulture);
             }
         }
         
@@ -139,14 +233,33 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
-        ///Задавайте свой вопрос 
-        ///&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
-        ///&lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;.
+        ///   Looks up a localized string similar to &lt;b&gt;&lt;u&gt;Обращение к менеджерам школы Iron Programmer!&lt;/u&gt;&lt;/b&gt;
+        ///                                                                                                                               
+        /// Задавайте свой вопрос.                                                                                                       &lt;b&gt;Важно&lt;/b&gt;: напишите свое имя и связь с Вами, а затем ваш вопрос.                                        
+        ///                                                                                        [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ConnectWithManagerPageText {
             get {
                 return ResourceManager.GetString("ConnectWithManagerPageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;b&gt;&lt;i&gt;Выбирай курс и жмакай кнопочку😊&lt;/i&gt;&lt;/b&gt;
+        ///.
+        /// </summary>
+        public static string ConnectWithTutor {
+            get {
+                return ResourceManager.GetString("ConnectWithTutor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ConnectWithTutorPage.
+        /// </summary>
+        public static string ConnectWithTutorPage {
+            get {
+                return ResourceManager.GetString("ConnectWithTutorPage", resourceCulture);
             }
         }
         
@@ -160,11 +273,21 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DeepLinksPage.
+        ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static string DeepLinksPage {
+        public static byte[] Evolution {
             get {
-                return ResourceManager.GetString("DeepLinksPage", resourceCulture);
+                object obj = ResourceManager.GetObject("Evolution", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EvolutionPage.
+        /// </summary>
+        public static string EvolutionPage {
+            get {
+                return ResourceManager.GetString("EvolutionPage", resourceCulture);
             }
         }
         
@@ -193,6 +316,16 @@ namespace IRON_PROGRAMMER_BOT_Common {
         public static string HeaderPromtForAI {
             get {
                 return ResourceManager.GetString("HeaderPromtForAI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Help {
+            get {
+                object obj = ResourceManager.GetObject("Help", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -245,9 +378,38 @@ namespace IRON_PROGRAMMER_BOT_Common {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        public static byte[] LINQ {
+            get {
+                object obj = ResourceManager.GetObject("LINQ", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LINQPage.
+        /// </summary>
+        public static string LINQPage {
+            get {
+                return ResourceManager.GetString("LINQPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         public static byte[] Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Logo_basics {
+            get {
+                object obj = ResourceManager.GetObject("Logo_basics", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -315,7 +477,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку, которую надо поменять/поправить/объяснить!!!.
+        ///   Looks up a localized string similar to Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку!(это важно), которую надо либо поменять, либо поправить, либо объяснить!!!.
         /// </summary>
         public static string TaskPromt {
             get {

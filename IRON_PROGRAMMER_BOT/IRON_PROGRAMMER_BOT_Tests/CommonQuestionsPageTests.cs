@@ -2,6 +2,7 @@
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
+using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -51,7 +52,7 @@ public class CommonQuestionsPageTests
         var result = commonQuestionsPage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<PhotoPageResult>(result);
+        ClassicAssert.IsInstanceOf<MessagePageBase>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(commonQuestionsPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));

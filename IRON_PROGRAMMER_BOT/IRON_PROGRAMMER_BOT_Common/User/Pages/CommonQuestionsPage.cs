@@ -24,7 +24,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
             if (attemptCounter == 1)
                 return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPagePenultimateQuestion}{Environment.NewLine}{Environment.NewLine}{answerAI}";
 
-            return $"{text}{Environment.NewLine}{Environment.NewLine}_У тебя есть возможность для **{attemptCounter}** вопросов!_{Environment.NewLine}{Environment.NewLine}{answerAI}";
+            return $"{text}{Environment.NewLine}{Environment.NewLine}**У тебя есть возможность для **__{attemptCounter}__** вопросов!**{Environment.NewLine}{Environment.NewLine}{answerAI}";
         }
 
         public override ButtonLinkPage[][] GetKeyBoardAsync()

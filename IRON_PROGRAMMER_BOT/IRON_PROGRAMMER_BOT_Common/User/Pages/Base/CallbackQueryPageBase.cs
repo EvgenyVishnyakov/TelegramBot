@@ -14,8 +14,13 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
-                if (update.CallbackQuery != null)
-                    telegramService.SendChatTypingActionAsync(update).GetAwaiter();
+                if (update?.CallbackQuery != null || update?.Message?.Text != null)
+                {
+                    if (update?.CallbackQuery != null)
+                        telegramService.SendChatTypingCallbackQueryActionAsync(update).GetAwaiter();
+                    else
+                        telegramService.SendChatTypingActionAsync(update).GetAwaiter();
+                }
                 var text = GetText(userState);
                 var replyMarkup = GetInlineKeyboardMarkup();
                 userState.AddPage(this);

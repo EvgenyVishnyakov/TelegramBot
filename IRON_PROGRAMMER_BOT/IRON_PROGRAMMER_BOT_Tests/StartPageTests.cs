@@ -119,24 +119,6 @@ namespace IRON_PROGRAMMER_BOT_Tests
         }
 
         [Test]
-        public void Handle_StartPageCallback_DeepLinksPage()
-        {
-            //Arrange
-            var startPage = _services.GetRequiredService<StartPage>();
-            var pages = new Stack<IPage>([_services.GetRequiredService<NotStatedPage>(), startPage]);
-            var userState = new UserState(pages, new UserData());
-            var update = new Update() { CallbackQuery = new CallbackQuery() { Data = Resources.DeepLinksPage } };
-            //Act
-            var result = startPage.Handle(update, userState);
-
-            //Assert           
-            Assert.That(result.GetType(), Is.EqualTo(typeof(PageResultBase)));
-            ClassicAssert.IsInstanceOf<DeepLinksPage>(result.UpdatedUserState.CurrentPage);
-
-            Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(3));
-        }
-
-        [Test]
         public void Handle_UnknownMessage_StartPageView()
         {
             //Arrange
