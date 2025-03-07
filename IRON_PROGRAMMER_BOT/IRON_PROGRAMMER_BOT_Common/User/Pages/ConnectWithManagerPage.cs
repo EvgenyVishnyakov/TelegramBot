@@ -52,7 +52,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 var managerName = managerDate.Item1;
                 var managerChatId = managerDate.Item2;
 
-                Task task = SendMessageRequestAsync(managerChatId, managerUserName, managerName, userName, userFirstName, userMessage, userChatId);
+                SendMessageRequestAsync(managerChatId, managerUserName, managerName, userName, userFirstName, userMessage, userChatId).Wait();
 
                 userState.requestCounter = 0;
                 return userState;

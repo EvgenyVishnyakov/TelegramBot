@@ -47,7 +47,7 @@ namespace IRON_PROGRAMMER_BOT_Common.CoursesPage
                 var randomIndex = random.Next(course.Count);
                 var managerChatId = course.ElementAt(randomIndex);
 
-                Task task = SendMessageRequestAsync(managerChatId, userName, userFirstName, userMessage);
+                SendMessageRequestAsync(managerChatId, userName, userFirstName, userMessage).Wait();
 
                 userState.requestCounter = 0;
                 return userState;
