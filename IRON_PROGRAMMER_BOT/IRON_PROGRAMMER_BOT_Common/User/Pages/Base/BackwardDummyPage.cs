@@ -1,5 +1,6 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Serilog;
 using Telegram.Bot.Types;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
@@ -8,8 +9,16 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
     {
         public override PageResultBase View(Update update, UserState userState)
         {
-            userState.Pages.Pop();
-            return userState.CurrentPage.View(update, userState);
+            try
+            {
+                userState.Pages.Pop();
+                return userState.CurrentPage.View(update, userState);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex.ToString());
+                return null;
+            }
         }
 
         public override ButtonLinkPage[][] GetKeyBoardAsync()

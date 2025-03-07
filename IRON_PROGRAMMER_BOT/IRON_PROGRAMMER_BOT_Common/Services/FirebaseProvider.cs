@@ -1,5 +1,6 @@
 ﻿using Firebase.Database;
 using Firebase.Database.Query;
+using Serilog;
 
 namespace IRON_PROGRAMMER_BOT_Common.Services
 {
@@ -13,7 +14,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Исключение в методе TryGetAsync в FirebaseProvider: {ex.ToString()}");
+                Log.Error($"Исключение в методе TryGetAsync в FirebaseProvider: {ex.ToString()}");
                 return default;
             }
         }
@@ -26,7 +27,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
             }
         }
     }

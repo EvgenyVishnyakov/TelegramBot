@@ -1,4 +1,5 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
+using Serilog;
 
 namespace IRON_PROGRAMMER_BOT_Common.User
 {
@@ -20,7 +21,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
             }
         }
     }

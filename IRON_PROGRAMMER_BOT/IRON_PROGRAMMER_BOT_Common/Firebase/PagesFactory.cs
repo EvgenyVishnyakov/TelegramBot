@@ -1,5 +1,6 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 
 namespace IRON_PROGRAMMER_BOT_Common.Firebase
 {
@@ -14,7 +15,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Firebase
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Log.Error($"{ex.Message} в файле PagesFactory");
                 return null;
             }
         }

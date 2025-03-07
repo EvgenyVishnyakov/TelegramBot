@@ -2,6 +2,7 @@
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User;
+using Serilog;
 
 namespace IRON_PROGRAMMER_BOT_Common.Storage
 {
@@ -16,7 +17,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Storage
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
             }
         }
 
@@ -40,7 +41,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Storage
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
                 return null;
             }
         }
@@ -54,7 +55,7 @@ namespace IRON_PROGRAMMER_BOT_Common.Storage
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Error(ex.ToString());
                 return null;
             }
         }

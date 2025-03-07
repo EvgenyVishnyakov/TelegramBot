@@ -1,5 +1,6 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Serilog;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
@@ -31,7 +32,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл StartPage");
+                Log.Error($"Ошибка {ex} в методе View, файл StartPage");
                 return View(update, userState);
             }
         }
@@ -51,7 +52,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл Handle");
+                Log.Error($"Ошибка {ex} в методе View, файл Handle");
                 return View(update, userState);
             }
         }

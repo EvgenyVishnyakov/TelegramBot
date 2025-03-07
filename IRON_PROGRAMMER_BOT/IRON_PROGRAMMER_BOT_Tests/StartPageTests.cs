@@ -46,9 +46,7 @@ namespace IRON_PROGRAMMER_BOT_Tests
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
                  [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)],
-                 [
-                      InlineKeyboardButton.WithCallbackData("Переход для преподавателей", Resources.DeepLinksPage)]
+                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
             };
             //Act
             var result = startPage.View(null, userState);
@@ -130,10 +128,8 @@ namespace IRON_PROGRAMMER_BOT_Tests
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
                  [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage),
-                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)],
-                 [
-                    InlineKeyboardButton.WithCallbackData("Переход для преподавателей", Resources.DeepLinksPage)
-                      ]
+                  InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
+
             };
             //Act
             var result = startPage.Handle(update, userState);

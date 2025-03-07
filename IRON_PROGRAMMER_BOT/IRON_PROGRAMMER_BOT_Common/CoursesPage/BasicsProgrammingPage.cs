@@ -4,6 +4,7 @@ using IRON_PROGRAMMER_BOT_Common.Services;
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -34,37 +35,53 @@ namespace IRON_PROGRAMMER_BOT_Common.CoursesPage
 
         public override UserState ProcessMessageAsync(Message message, UserState userState)
         {
-            Random random = new Random();
+            try
+            {
+                Random random = new Random();
 
-            var userMessage = message.Text;
-            var userName = message.From?.Username;
-            var userFirstName = message.From!.FirstName;
+                var userMessage = message.Text;
+                var userName = message.From?.Username;
+                var userFirstName = message.From!.FirstName;
 
-            var listCoursesAndTutors = FeedbackStorage.Tutors;
-            var course = listCoursesAndTutors["BasicsProgrammingPage"];
-            var randomIndex = random.Next(course.Count);
-            var managerChatId = course.ElementAt(randomIndex);
+                var listCoursesAndTutors = FeedbackStorage.Tutors;
+                var course = listCoursesAndTutors["BasicsProgrammingPage"];
+                var randomIndex = random.Next(course.Count);
+                var managerChatId = course.ElementAt(randomIndex);
 
-            Task task = SendMessageRequestAsync(managerChatId, userName, userFirstName, userMessage);
+                Task task = SendMessageRequestAsync(managerChatId, userName, userFirstName, userMessage);
 
-            userState.requestCounter = 0;
-            return userState;
+                userState.requestCounter = 0;
+                return userState;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Ошибка {ex} на странице BasicsProgrammingPage");
+                userState.requestCounter = 0;
+                return userState;
+            }
         }
 
         private async Task SendMessageRequestAsync(long managerChatId, string? userName, string? userFirstName, string? userMessage)
         {
-            if (userName == string.Empty)
+            try
             {
-                await client.SendTextMessageAsync(
-                    chatId: managerChatId,
-                    text: $"Студент {userFirstName} просит в курсе Основы программирования ответить на следующий вопрос:{Environment.NewLine}{Environment.NewLine}{userMessage}",
-                    parseMode: ParseMode.MarkdownV2);
+                if (userName == string.Empty)
+                {
+                    await client.SendTextMessageAsync(
+                        chatId: managerChatId,
+                        text: $"Студент {userFirstName} просит в курсе Основы программирования ответить на следующий вопрос:{Environment.NewLine}{Environment.NewLine}{userMessage}",
+                        parseMode: ParseMode.MarkdownV2);
+                }
+                else
+                    await client.SendTextMessageAsync(
+                        chatId: managerChatId,
+                        $"Пользователь [{userFirstName}](http://t\\.me/{userName}) в курсе Основы программирования прислал сообщение: {Environment.NewLine}{Environment.NewLine}{userMessage}",
+                        parseMode: ParseMode.MarkdownV2);
             }
-            else
-                await client.SendTextMessageAsync(
-                    chatId: managerChatId,
-                    $"Пользователь [{userFirstName}](http://t\\.me/{userName}) в курсе Основы программирования прислал сообщение: {Environment.NewLine}{Environment.NewLine}{userMessage}",
-                    parseMode: ParseMode.MarkdownV2);
+            catch (Exception ex)
+            {
+                Log.Error(ex, $"Ошибка {ex} на странице BasicsProgrammingPage в методе SendMessageRequestAsync");
+            }
         }
 
         public override IPage GetNextPage()
