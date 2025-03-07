@@ -43,8 +43,7 @@ namespace IRON_PROGRAMMER_BOT_Common.CoursesPage
                 var userName = message.From?.Username;
                 var userFirstName = message.From!.FirstName;
 
-                var listCoursesAndTutors = FeedbackStorage.Tutors;
-                var course = listCoursesAndTutors["AdvancedPage"];
+                var course = FeedbackStorage.Tutors["AdvancedPage"];
                 var randomIndex = random.Next(course.Count);
                 var managerChatId = course.ElementAt(randomIndex);
 
