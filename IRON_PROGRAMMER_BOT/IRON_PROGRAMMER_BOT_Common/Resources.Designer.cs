@@ -174,7 +174,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to **Это заключительный ответ. Попыток больше нет!!!**.
+        ///   Looks up a localized string similar to **Это заключительный ответ. Попыток больше нет**.
         /// </summary>
         public static string CommonQuestionPageFinalTrying {
             get {

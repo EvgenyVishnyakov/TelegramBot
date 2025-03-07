@@ -215,7 +215,7 @@ _Важно задать вопрос очень конкретно и по те
     <value>**Возможностей задавать вопросы больше нет...увы**</value>
   </data>
   <data name="CommonQuestionPageFinalTrying" xml:space="preserve">
-    <value>**Это заключительный ответ. Попыток больше нет!!!**</value>
+    <value>**Это заключительный ответ. Попыток больше нет**</value>
   </data>
   <data name="CommonQuestionPagePenultimateQuestion" xml:space="preserve">
     <value>**У вас осталась возможность для одного вопроса**</value>
