@@ -25,9 +25,9 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 if (attemptCounter == 0)
                     return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPageFinalTrying}{Environment.NewLine}{Environment.NewLine}{answerAI}";
                 if (attemptCounter == 1)
-                    return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPagePenultimateQuestion}{Environment.NewLine}{Environment.NewLine}{answerAI}";
+                    return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPagePenultimateQuestion}{Environment.NewLine}{answerAI}";
 
-                return $"{text}{Environment.NewLine}{Environment.NewLine}**У тебя есть возможность для **__{attemptCounter}__** вопросов!**{Environment.NewLine}{Environment.NewLine}{answerAI}";
+                return $"{text}{Environment.NewLine}{Environment.NewLine}**У тебя есть возможность задать **__{attemptCounter}__** вопроса!**{Environment.NewLine}{Environment.NewLine}{answerAI}";
             }
             catch (Exception ex)
             {
