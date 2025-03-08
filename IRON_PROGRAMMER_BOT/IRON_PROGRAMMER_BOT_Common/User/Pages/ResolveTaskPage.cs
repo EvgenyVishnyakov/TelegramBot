@@ -44,11 +44,11 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             try
             {
-                Completion completion = new Completion();
+                var completion = new Completion();
                 var auth = _gigaChatApiProvider.EnsureAuthenticatedAsync().Result;
                 var prompt = Resources.TaskPromt + Environment.NewLine + message.Text;
 
-                CompletionSettings settings = new CompletionSettings("GigaChat:latest", 0.8f, null, 4);
+                var settings = new CompletionSettings();
                 var result = completion.SendRequest(auth.GigaChatAuthorizationResponse?.AccessToken!, prompt).Result;
 
                 if (result.RequestSuccessed)

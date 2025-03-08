@@ -38,10 +38,10 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
         {
             try
             {
-                TimeSpan expiredTimeSpan = reserveTime ?? TimeSpan.Zero;
+                var expiredTimeSpan = reserveTime ?? TimeSpan.Zero;
                 if (LastResponse == null || LastResponse.GigaChatAuthorizationResponse?.ExpiresAtDateTime - expiredTimeSpan < DateTime.Now)
                 {
-                    Guid rqUID = RqUId ?? Guid.NewGuid();
+                    var rqUID = RqUId ?? Guid.NewGuid();
                     LastRequest = new AuthorizationRequest(rqUID);
                     LastResponse = await AuthenticateAsync();
                     return LastResponse;

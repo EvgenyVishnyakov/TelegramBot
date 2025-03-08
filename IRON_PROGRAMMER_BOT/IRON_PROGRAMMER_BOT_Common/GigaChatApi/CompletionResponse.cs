@@ -10,7 +10,7 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
 
         public CompletionResponse(HttpResponseMessage HttpMsg)
         {
-            string responseVal = HttpMsg.Content.ReadAsStringAsync().Result;
+            var responseVal = HttpMsg.Content.ReadAsStringAsync().Result;
 
             if (HttpMsg.StatusCode == System.Net.HttpStatusCode.OK)
             {

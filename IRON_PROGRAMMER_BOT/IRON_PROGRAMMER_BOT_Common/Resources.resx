@@ -165,11 +165,8 @@ _Рекомендую спрашивать по следующему образ�
   </data>
   <data name="CommonQuestionsPageText" xml:space="preserve">
     <value>**_Задавайте свой вопрос_**
-
 __**У тебя есть возможность задать вопросы не более  3 раз!**__
-
-_Важно задать вопрос очень конкретно и по теме!_
-                                      </value>
+_Важно задать вопрос очень конкретно и по теме!_                                      </value>
   </data>
   <data name="HelpByCoursePage" xml:space="preserve">
     <value>HelpByCoursePage</value>
@@ -215,7 +212,7 @@ _Важно задать вопрос очень конкретно и по те
     <value>**Возможностей задавать вопросы больше нет...увы**</value>
   </data>
   <data name="CommonQuestionPageFinalTrying" xml:space="preserve">
-    <value>**Это заключительный ответ. Попыток больше нет!!!**</value>
+    <value>**Это заключительный ответ. Попыток больше нет**</value>
   </data>
   <data name="CommonQuestionPagePenultimateQuestion" xml:space="preserve">
     <value>**У вас осталась возможность для одного вопроса**</value>
@@ -283,5 +280,20 @@ _Важно задать вопрос очень конкретно и по те
   </data>
   <data name="EvolutionPage" xml:space="preserve">
     <value>EvolutionPage</value>
+  </data>
+  <data name="MaxTokens" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>GigaChat:latest</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TopP" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

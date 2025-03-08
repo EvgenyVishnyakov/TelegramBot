@@ -174,7 +174,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to **Это заключительный ответ. Попыток больше нет!!!**.
+        ///   Looks up a localized string similar to **Это заключительный ответ. Попыток больше нет**.
         /// </summary>
         public static string CommonQuestionPageFinalTrying {
             get {
@@ -202,11 +202,8 @@ namespace IRON_PROGRAMMER_BOT_Common {
         
         /// <summary>
         ///   Looks up a localized string similar to **_Задавайте свой вопрос_**
-        ///
         ///__**У тебя есть возможность задать вопросы не более  3 раз!**__
-        ///
-        ///_Важно задать вопрос очень конкретно и по теме!_
-        ///                                      .
+        ///_Важно задать вопрос очень конкретно и по теме!_                                      .
         /// </summary>
         public static string CommonQuestionsPageText {
             get {
@@ -269,6 +266,15 @@ namespace IRON_PROGRAMMER_BOT_Common {
         public static string CoomQuestionPageStopAI {
             get {
                 return ResourceManager.GetString("CoomQuestionPageStopAI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        public static string Count {
+            get {
+                return ResourceManager.GetString("Count", resourceCulture);
             }
         }
         
@@ -415,6 +421,24 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 4.
+        /// </summary>
+        public static string MaxTokens {
+            get {
+                return ResourceManager.GetString("MaxTokens", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GigaChat:latest.
+        /// </summary>
+        public static string Model {
+            get {
+                return ResourceManager.GetString("Model", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] PhotoAI {
@@ -486,12 +510,30 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1.
+        /// </summary>
+        public static string Temperature {
+            get {
+                return ResourceManager.GetString("Temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         public static byte[] ThinlingAI {
             get {
                 object obj = ResourceManager.GetObject("ThinlingAI", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        public static string TopP {
+            get {
+                return ResourceManager.GetString("TopP", resourceCulture);
             }
         }
     }

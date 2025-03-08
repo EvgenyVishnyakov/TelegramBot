@@ -27,7 +27,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 if (attemptCounter == 1)
                     return $"{text}{Environment.NewLine}{Environment.NewLine}{Resources.CommonQuestionPagePenultimateQuestion}{Environment.NewLine}{Environment.NewLine}{answerAI}";
 
-                return $"{text}{Environment.NewLine}{Environment.NewLine}**У тебя есть возможность для **__{attemptCounter}__** вопросов!**{Environment.NewLine}{Environment.NewLine}{answerAI}";
+                return $"{text}{Environment.NewLine}{Environment.NewLine}**У тебя есть возможность задать **__{attemptCounter}__** вопроса!**{Environment.NewLine}{Environment.NewLine}{answerAI}";
             }
             catch (Exception ex)
             {
@@ -49,18 +49,18 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
         {
             try
             {
-                Completion completion = new Completion();
+                var completion = new Completion();
                 var auth = _gigaChatApiProvider.EnsureAuthenticatedAsync().Result;
                 var prompt = Resources.HeaderPromtForAI + Environment.NewLine + message.Text;
 
-                CompletionSettings settings = new CompletionSettings("GigaChat:latest", 1f, null, 4);
+                var settings = new CompletionSettings();
                 var result = completion.SendRequest(auth.GigaChatAuthorizationResponse?.AccessToken!, prompt).Result;
 
                 if (result.RequestSuccessed)
                 {
                     foreach (var it in result.GigaChatCompletionResponse!.Choices!)
                     {
-                        answerAI += $"{it.Message!.Content}{Environment.NewLine}";
+                        answerAI = $"{it.Message!.Content}{Environment.NewLine}";
                         userState.requestCounter = attemptCounter--;
                     }
                 }

@@ -23,8 +23,8 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
 
                 if (_expiresAtDateTime == null)
                 {
-                    TimeSpan ts = TimeSpan.FromMilliseconds(ExpiresAt.Value);
-                    _expiresAtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + ts;
+                    var timeSpan = TimeSpan.FromMilliseconds(ExpiresAt.Value);
+                    _expiresAtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc) + timeSpan;
                     _expiresAtDateTime = _expiresAtDateTime.Value.ToLocalTime();
                 }
 
