@@ -273,7 +273,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to null.
+        ///   Looks up a localized string similar to 0.
         /// </summary>
         public static string Count {
             get {
@@ -532,7 +532,7 @@ namespace IRON_PROGRAMMER_BOT_Common {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -1.
+        ///   Looks up a localized string similar to 0.
         /// </summary>
         public static string TopP {
             get {

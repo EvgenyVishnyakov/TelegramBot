@@ -9,7 +9,7 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
         public CompletionResponse? LastResponse { get; private set; }
         public List<GigaChatMessage> History { get; set; } = new List<GigaChatMessage>();
 
-        public async Task<CompletionResponse?> SendRequest(string token, string message, bool useHistory = true, CompletionSettings requestSettings = null)
+        public async Task<CompletionResponse?> SendRequest(string token, string message, bool useHistory = false, CompletionSettings requestSettings = null)
         {
             try
             {

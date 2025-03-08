@@ -60,7 +60,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 {
                     foreach (var it in result.GigaChatCompletionResponse!.Choices!)
                     {
-                        answerAI += $"{it.Message!.Content}{Environment.NewLine}";
+                        answerAI = $"{it.Message!.Content}{Environment.NewLine}";
                         userState.requestCounter = attemptCounter--;
                     }
                 }
