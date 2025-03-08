@@ -22,7 +22,6 @@ namespace IRON_PROGRAMMER_BOT_Common
                 {
                     return;
                 }
-
                 long telegramUserId = GetUserId(update);
                 Log.Information($"updateId={update.Id}, telegramUserId={telegramUserId}");
 
