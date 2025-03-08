@@ -284,4 +284,19 @@ _Важно задать вопрос очень конкретно и по те
   <data name="EvolutionPage" xml:space="preserve">
     <value>EvolutionPage</value>
   </data>
+  <data name="MaxTokens" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>null</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>GigaChat:latest</value>
+  </data>
+  <data name="TopP" xml:space="preserve">
+    <value>-1</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>1</value>
+  </data>
 </root>

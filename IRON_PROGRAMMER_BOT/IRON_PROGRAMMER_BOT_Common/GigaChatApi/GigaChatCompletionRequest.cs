@@ -5,34 +5,22 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
     public class GigaChatCompletionRequest
     {
         [JsonPropertyName("model")]
-        public string Model { get; set; } = "GigaChat:latest";
+        public string Model { get; set; } = Resources.Model!;
 
-        private float? _temperature;
+        // private float? _temperature;
 
         [JsonPropertyName("temperature")]
-        public float? Temperature
-        {
-            get => _temperature;
-            set => _temperature = value == null ? null : value < 0 ? 0 : value > 2 ? 2 : value;
-        }
+        public float? Temperature { get; set; } = Convert.ToInt64(Resources.Temperature)!;
 
-        private float? _topP;
+        //private float? _topP;
 
         [JsonPropertyName("top_p")]
-        public float? TopP
-        {
-            get => _topP;
-            set => _topP = value == null ? null : value < 0 ? 0 : value > 1 ? 1 : value;
-        }
+        public float? TopP { get; set; } = Convert.ToInt64(Resources.TopP)!;
 
-        private long? _count;
+        //private long? _count;
 
         [JsonPropertyName("count")]
-        public long? Count
-        {
-            get => _count;
-            set => _count = value == null ? null : value < 1 ? 1 : value > 4 ? 4 : value;
-        }
+        public long? Count { get; set; } = Convert.ToInt64(Resources.Count)!;
 
         [JsonPropertyName("messages")]
         public IEnumerable<GigaChatMessage>? MessageCollection { get; set; }

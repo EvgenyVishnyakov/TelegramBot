@@ -2,46 +2,45 @@
 {
     public class CompletionSettings
     {
-        public string Model { get; set; }
+        public string Model { get; set; } = Resources.Model!;
 
-        private float? _temperature;
+        //private float? _temperature;
 
-        public float? Temperature
-        {
-            get => _temperature;
-            set => _temperature = value == null ? null : value < 0 ? 0 : value > 2 ? 2 : value;
-        }
+        public float? Temperature { get; set; } = Convert.ToInt64(Resources.Temperature)!;
 
-        private float? _topP;
+        //private float? _topP = Convert.ToInt64(Resources.TopP);
 
-        public float? TopP
-        {
-            get => _topP;
-            set => _topP = value == null ? null : value < 0 ? 0 : value > 1 ? 1 : value;
-        }
+        public float? TopP { get; set; } = Convert.ToSingle(Resources.TopP);
+        //{
+        //    get
+        //    {
+        //        return Convert.ToSingle(Resources.TopP); // Используем Convert.ToSingle для преобразования в float
+        //    }
+        //    set
+        //    {
+        //        if (value.HasValue && value.Value == -1) // Проверяем, является ли значение null и равно ли оно -1
+        //        {
+        //            Resources.TopP = null; // Присваиваем null, если значение равно -1
+        //        }
+        //        else
+        //        {
+        //            Resources.TopP = value; // Присваиваем значение
+        //        }
+        //    }
+        //}
+        //private long? _count;
 
-        private long? _count;
+        public long? Count { get; set; } = Convert.ToInt64(Resources.Count)!;
+        //private long? _maxTokens;
 
-        public long? Count
-        {
-            get => _count;
-            set => _count = value == null ? null : value < 1 ? 1 : value > 4 ? 4 : value;
-        }
+        public long? MaxTokens { get; set; } = Convert.ToInt64(Resources.MaxTokens)!;
 
-        private long? _maxTokens;
-
-        public long? MaxTokens
-        {
-            get => _maxTokens;
-            set => _maxTokens = value == null ? null : value < 1 ? 1 : value;
-        }
-
-        public CompletionSettings(string modelName, float? temperature, float? topP, long? maxTokens)
-        {
-            Model = modelName;
-            Temperature = temperature;
-            TopP = topP;
-            MaxTokens = maxTokens;
-        }
+        //public CompletionSettings(string modelName, float? temperature, float? topP, long? maxTokens)
+        //{
+        //    Model = modelName;
+        //    Temperature = temperature;
+        //    TopP = topP;
+        //    MaxTokens = maxTokens;
+        //}
     }
 }

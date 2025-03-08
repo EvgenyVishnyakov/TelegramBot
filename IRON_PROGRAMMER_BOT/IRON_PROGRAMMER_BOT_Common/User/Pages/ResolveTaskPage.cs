@@ -48,7 +48,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages
                 var auth = _gigaChatApiProvider.EnsureAuthenticatedAsync().Result;
                 var prompt = Resources.TaskPromt + Environment.NewLine + message.Text;
 
-                var settings = new CompletionSettings("GigaChat:latest", 0.8f, null, 4);
+                var settings = new CompletionSettings();
                 var result = completion.SendRequest(auth.GigaChatAuthorizationResponse?.AccessToken!, prompt).Result;
 
                 if (result.RequestSuccessed)
