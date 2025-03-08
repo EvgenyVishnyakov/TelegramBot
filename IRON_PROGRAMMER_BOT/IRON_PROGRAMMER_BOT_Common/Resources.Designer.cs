@@ -202,11 +202,8 @@ namespace IRON_PROGRAMMER_BOT_Common {
         
         /// <summary>
         ///   Looks up a localized string similar to **_Задавайте свой вопрос_**
-        ///
         ///__**У тебя есть возможность задать вопросы не более  3 раз!**__
-        ///
-        ///_Важно задать вопрос очень конкретно и по теме!_
-        ///                                      .
+        ///_Важно задать вопрос очень конкретно и по теме!_                                      .
         /// </summary>
         public static string CommonQuestionsPageText {
             get {

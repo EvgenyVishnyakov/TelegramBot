@@ -50,7 +50,7 @@ namespace IRON_PROGRAMMER_BOT_Common.GigaChatApi
                 var data = JsonSerializer.Serialize(request.RequestData, typeof(GigaChatCompletionRequest));
                 var response = await client.PostAsync(EndPoints.CompletionURL, new StringContent(data));
 
-                CompletionResponse result = new CompletionResponse(response);
+                var result = new CompletionResponse(response);
                 LastResponse = result;
 
                 if (LastResponse != null && LastResponse.RequestSuccessed)
