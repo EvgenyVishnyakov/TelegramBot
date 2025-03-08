@@ -45,9 +45,11 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var expectedButtons = new InlineKeyboardButton[][]
             {
                 [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
+
                  [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage)],
                   [InlineKeyboardButton.WithCallbackData("Обратиться к кураторам курсов", Resources.ConnectWithTutorPage)],
                   [InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
+
             };
             //Act
             var result = startPage.View(null, userState);
@@ -145,10 +147,12 @@ namespace IRON_PROGRAMMER_BOT_Tests
             var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
             var expectedButtons = new InlineKeyboardButton[][]
             {
+
                  [InlineKeyboardButton.WithCallbackData("Нужна помощь по курсу", Resources.HelpByCoursePage)],
                  [InlineKeyboardButton.WithCallbackData("Узнать о курсах", Resources.InfoByCoursePage)],
                   [InlineKeyboardButton.WithCallbackData("Обратиться к кураторам курсов", Resources.ConnectWithTutorPage)],
                   [InlineKeyboardButton.WithCallbackData("Позвать менеджера", Resources.ConnectWithManagerPage)]
+
 
             };
             //Act
