@@ -118,10 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ConnectWithManagerPageText" xml:space="preserve">
-    <value>&lt;b&gt;&lt;u&gt;Обращение к сотрудникам школы!&lt;/u&gt;&lt;/b&gt;
-Задавайте свой вопрос 
-&lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;
-&lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;</value>
+    <value>&lt;b&gt;&lt;u&gt;Обращение к менеджерам школы Iron Programmer!&lt;/u&gt;&lt;/b&gt;
+                                                                                                                               
+ Задавайте свой вопрос.                                                                                                       &lt;b&gt;Важно&lt;/b&gt;: напишите свое имя и связь с Вами, а затем ваш вопрос.                                        
+                                                                                                                                                       &lt;u&gt;Мы вернемся с обратной связью в ближайшее время!&lt;/u&gt;                                                        
+                                                                                                                                                                             &lt;b&gt;Спасибо за Ваш интерес!&lt;/b&gt;
+</value>
   </data>
   <data name="InfoByCoursePageText" xml:space="preserve">
     <value>&lt;b&gt;Информация о курсах!&lt;/b&gt;  Вы можете перейти на страницу школы &lt;b&gt;&lt;u&gt;IRON PROGRAMMER&lt;/u&gt;&lt;/b&gt;</value>
@@ -153,7 +155,7 @@ _Задай свой вопрос и я тебе обязательно отве
   <data name="ResolveTaskPageText" xml:space="preserve">
     <value>**Решение задачи! 💻**
 
-_**Задавайте свой вопрос**_
+**Задавайте свой вопрос**
 
 **У тебя есть возможность задать один вопрос!**
 
@@ -164,7 +166,7 @@ _Рекомендую спрашивать по следующему образ�
   <data name="CommonQuestionsPageText" xml:space="preserve">
     <value>**_Задавайте свой вопрос_**
 
-**У тебя есть возможность задать вопросы не более 3 раз!**
+__**У тебя есть возможность задать вопросы не более  3 раз!**__
 
 _Важно задать вопрос очень конкретно и по теме!_
                                       </value>
@@ -209,17 +211,14 @@ _Важно задать вопрос очень конкретно и по те
   <data name="ThinlingAI" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ИИ_думает.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="DeepLinksPage" xml:space="preserve">
-    <value>DeepLinksPage</value>
-  </data>
   <data name="CoomQuestionPageStopAI" xml:space="preserve">
     <value>**Возможностей задавать вопросы больше нет...увы**</value>
   </data>
   <data name="CommonQuestionPageFinalTrying" xml:space="preserve">
-    <value>_**Это заключительный ответ. Попыток больше нет!!!**_</value>
+    <value>**Это заключительный ответ. Попыток больше нет**</value>
   </data>
   <data name="CommonQuestionPagePenultimateQuestion" xml:space="preserve">
-    <value>_**Осталась возможность только для 1 вопроса!!!**_</value>
+    <value>**У вас осталась возможность для одного вопроса**</value>
   </data>
   <data name="CommonQuestionPageAttempts" xml:space="preserve">
     <value>&lt;u&gt;У тебя есть возможность для &lt;b&gt;{counter}&lt;/b&gt; вопросов!&lt;/u&gt;</value>
@@ -228,6 +227,76 @@ _Важно задать вопрос очень конкретно и по те
     <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов.</value>
   </data>
   <data name="TaskPromt" xml:space="preserve">
-    <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку, которую надо поменять/поправить/объяснить!!!</value>
+    <value>Ты главный специалист по C# в мире. Ответь на вопрос четко, структурированно, но кратко, укладываясь в 1000 символов, не давать все решение, а только строку!(это важно), которую надо либо поменять, либо поправить, либо объяснить!!!</value>
+  </data>
+  <data name="Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Help.jpg;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ConnectWithTutor" xml:space="preserve">
+    <value>&lt;b&gt;&lt;i&gt;Выбирай курс и жмакай кнопочку😊&lt;/i&gt;&lt;/b&gt;
+</value>
+  </data>
+  <data name="ConnectWithTutorPage" xml:space="preserve">
+    <value>ConnectWithTutorPage</value>
+  </data>
+  <data name="Logo_basics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Logo_basics.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Collections" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Collections.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Advanced" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Advanced.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LINQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LINQ.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Alghoritms" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Alghoritms.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Code" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Code.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Evolution" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Evolution.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BasicsProgrammingPage" xml:space="preserve">
+    <value>BasicsProgrammingPage</value>
+  </data>
+  <data name="CommonTutorText" xml:space="preserve">
+    <value>&lt;b&gt;Задавай свой вопрос! Мы тебе на него ответим в ближайшее время в чате курса. Не забудь написать свое имя!&lt;/b&gt;</value>
+  </data>
+  <data name="AdvancedPage" xml:space="preserve">
+    <value>AdvancedPage</value>
+  </data>
+  <data name="LINQPage" xml:space="preserve">
+    <value>LINQPage</value>
+  </data>
+  <data name="CollectionPage" xml:space="preserve">
+    <value>CollectionPage</value>
+  </data>
+  <data name="AlgorithmPage" xml:space="preserve">
+    <value>AlgorithmPage</value>
+  </data>
+  <data name="CodePage" xml:space="preserve">
+    <value>CodePage</value>
+  </data>
+  <data name="EvolutionPage" xml:space="preserve">
+    <value>EvolutionPage</value>
+  </data>
+  <data name="MaxTokens" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>GigaChat:latest</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="TopP" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>0</value>
   </data>
 </root>

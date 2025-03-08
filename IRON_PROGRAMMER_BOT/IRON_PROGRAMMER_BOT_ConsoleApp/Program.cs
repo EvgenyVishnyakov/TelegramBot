@@ -22,10 +22,8 @@ class Program
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.ToString());
+            Console.WriteLine($"Ошибка запуска {ex}");
         }
     }
-
-
 }
 

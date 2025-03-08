@@ -1,10 +1,11 @@
-﻿using Telegram.Bot.Types;
+﻿using Serilog;
+using Telegram.Bot.Types;
 
 namespace IRON_PROGRAMMER_BOT_Common.Services
 {
     public class ResourcesService
     {
-        public InputFileStream GetResource(byte[] buffer, string filename = "filename")
+        public InputFileStream? GetResource(byte[] buffer, string filename = "filename")
         {
             try
             {
@@ -13,7 +14,8 @@ namespace IRON_PROGRAMMER_BOT_Common.Services
             }
             catch (Exception ex)
             {
-                throw new Exception($"{ex}");
+                Log.Error($"{ex}");
+                return null;
             }
         }
     }

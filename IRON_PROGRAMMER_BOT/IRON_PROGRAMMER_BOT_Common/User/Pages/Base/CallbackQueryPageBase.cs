@@ -1,5 +1,6 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Serilog;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
 
@@ -14,8 +15,13 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
         {
             try
             {
-                if (update.CallbackQuery != null)
-                    telegramService.SendChatTypingActionAsync(update).GetAwaiter();
+                if (update?.CallbackQuery != null || update?.Message?.Text != null)
+                {
+                    if (update?.CallbackQuery != null)
+                        telegramService.SendChatTypingCallbackQueryActionAsync(update).GetAwaiter();
+                    if (update?.Message?.Text != null && update.Message.Chat != null)
+                        telegramService.SendChatTypingActionAsync(update).GetAwaiter();
+                }
                 var text = GetText(userState);
                 var replyMarkup = GetInlineKeyboardMarkup();
                 userState.AddPage(this);
@@ -26,7 +32,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл StartPage");
+                Log.Error($"Ошибка {ex} в методе View, файл StartPage");
                 return View(update, userState);
             }
         }
@@ -46,7 +52,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе View, файл Handle");
+                Log.Error($"Ошибка {ex} в методе View, файл Handle");
                 return View(update, userState);
             }
         }

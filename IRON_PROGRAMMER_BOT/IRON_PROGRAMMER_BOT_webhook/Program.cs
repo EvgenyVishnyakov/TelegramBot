@@ -1,18 +1,34 @@
 using IRON_PROGRAMMER_BOT_Common;
 using IRON_PROGRAMMER_BOT_Webhook;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
+try
+{
+    Log.Information("starting server.");
+    Log.Logger = new LoggerConfiguration().WriteTo.File("bin/debug/net9.0/Logs/log.json")
+    .CreateLogger();
 
-ContainerConfigurator.Configure(builder.Configuration, builder.Services);
+    var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHostedService<WebHookConfigurator>();
+    ContainerConfigurator.Configure(builder.Configuration, builder.Services);
 
-builder.Services.AddControllers().AddNewtonsoftJson();
+    builder.Services.AddHostedService<WebHookConfigurator>();
 
-var app = builder.Build();
+    builder.Services.AddControllers().AddNewtonsoftJson();
 
-app.UseHttpsRedirection();
+    var app = builder.Build();
 
-app.MapControllers();
+    app.UseHttpsRedirection();
 
-app.Run();
+    app.MapControllers();
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "server terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}

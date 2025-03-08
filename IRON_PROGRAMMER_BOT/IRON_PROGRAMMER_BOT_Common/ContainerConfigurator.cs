@@ -9,6 +9,7 @@ using IRON_PROGRAMMER_BOT_Common.Storage;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Serilog;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 
@@ -20,6 +21,11 @@ namespace IRON_PROGRAMMER_BOT_Common
         {
             try
             {
+                Log.Information("starting server.");
+                Log.Logger = new LoggerConfiguration()
+                .WriteTo.File("bin/debug/net9.0/Logs/log.json")
+                .CreateLogger();
+
                 var firebaseConfigurationSection = configuration.GetSection(FirebaseConfiguration.SectionName);
                 services.Configure<FirebaseConfiguration>(firebaseConfigurationSection);
 
@@ -61,14 +67,18 @@ namespace IRON_PROGRAMMER_BOT_Common
                 services.AddSingleton<AuthorizationRequest>();
                 services.AddSingleton<EndPoints>();
                 services.AddSingleton<IGigaChatApiProvider, GigaChatApiProvider>();
-                services.AddSingleton<StepikApiProvider>();
                 services.AddSingleton<ITelegramService, TelegramService>();
                 services.AddSingleton<PagesFactory>();
 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Log.Fatal(ex, "server terminated unexpectedly");
+            }
+
+            finally
+            {
+                Log.CloseAndFlush();
             }
         }
     }

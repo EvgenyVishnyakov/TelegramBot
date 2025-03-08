@@ -4,6 +4,7 @@ using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
@@ -23,17 +24,17 @@ namespace IRON_PROGRAMMER_BOT_Common
                 }
 
                 long telegramUserId = GetUserId(update);
-                Console.WriteLine($"updateId={update.Id}, telegramUserId={telegramUserId}");
+                Log.Information($"updateId={update.Id}, telegramUserId={telegramUserId}");
 
                 var userState = await stateStorage.TryGetAsync(telegramUserId);
                 if (userState == null)
                 {
                     userState = new UserState(new Stack<IPage>([services.GetRequiredService<NotStatedPage>()]), new UserData());
                 }
-                Console.WriteLine($"updated_Id={update.Id}, userState={userState}");
+                Log.Information($"updated_Id={update.Id}, userState={userState}");
 
                 var result = userState!.CurrentPage.Handle(update, userState);
-                Console.WriteLine($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
+                Log.Information($"updated_Id={update.Id}, send_text={result.Text}, Updated_UserState = {result.UpdatedUserState}");
 
                 var lastMessage = await SendResult(client, telegramUserId, result, update);
 
@@ -42,13 +43,13 @@ namespace IRON_PROGRAMMER_BOT_Common
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе HandlerUpdate, файл Programm");
+                Log.Error($"Ошибка {ex} в методе HandlerUpdate, файл Programm");
             }
         }
 
         public async Task HandlePollingErrorAsync(ITelegramBotClient client, Exception exception, CancellationToken token)
         {
-            Console.WriteLine(exception.Message);
+            Log.Error(exception.Message);
         }
 
         private static bool GetUpdateType(Update update)
@@ -91,7 +92,7 @@ namespace IRON_PROGRAMMER_BOT_Common
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе SendResult, файл Programm");
+                Log.Error($"Ошибка {ex} в методе SendResult, файл Programm");
                 return null;
             }
         }
@@ -144,7 +145,7 @@ namespace IRON_PROGRAMMER_BOT_Common
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе SendPhoto, файл Programm");
+                Log.Error($"Ошибка {ex} в методе SendPhoto, файл Programm");
                 return null;
             }
         }
@@ -180,7 +181,7 @@ namespace IRON_PROGRAMMER_BOT_Common
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка {ex} в методе SendText, файл Programm");
+                Log.Error($"Ошибка {ex} в методе SendText, файл Programm");
                 return null;
             }
         }

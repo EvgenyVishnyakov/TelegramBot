@@ -1,5 +1,6 @@
 ﻿using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
+using Serilog;
 using Telegram.Bot.Types;
 
 namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
@@ -24,7 +25,7 @@ namespace IRON_PROGRAMMER_BOT_Common.User.Pages.Base
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+                Log.Error(ex.ToString());
                 return base.Handle(update, userState);
             }
         }

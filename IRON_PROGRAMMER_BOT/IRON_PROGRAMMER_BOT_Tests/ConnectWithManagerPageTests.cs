@@ -44,8 +44,7 @@ public class ConnectWithManagerPageTests
         var userState = new UserState(pages, new UserData());
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Отправить вопрос", Resources.SendQuastion),
-                InlineKeyboardButton.WithCallbackData(Resources.Back)]
+                [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
 
         //Act
@@ -91,8 +90,7 @@ public class ConnectWithManagerPageTests
         var update = new Update() { Message = new Message() { Text = "Неверный текст" } };
         var expectedButtons = new InlineKeyboardButton[][]
         {
-                [InlineKeyboardButton.WithCallbackData("Отправить вопрос",Resources.SendQuastion),
-                InlineKeyboardButton.WithCallbackData(Resources.Back)]
+                [InlineKeyboardButton.WithCallbackData(Resources.Back)]
         };
         //Act
         var result = сonnectWithManagerPage.View(update, userState);
