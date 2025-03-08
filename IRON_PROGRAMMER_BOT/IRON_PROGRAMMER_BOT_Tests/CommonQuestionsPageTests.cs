@@ -2,7 +2,6 @@
 using IRON_PROGRAMMER_BOT_Common.Interfaces;
 using IRON_PROGRAMMER_BOT_Common.User;
 using IRON_PROGRAMMER_BOT_Common.User.Pages;
-using IRON_PROGRAMMER_BOT_Common.User.Pages.Base;
 using IRON_PROGRAMMER_BOT_Common.User.Pages.PagesResult;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,11 +51,12 @@ public class CommonQuestionsPageTests
         var result = commonQuestionsPage.View(null, userState);
 
         //Assert
-        ClassicAssert.IsInstanceOf<MessagePageBase>(result);
+        ClassicAssert.IsInstanceOf<PageResultBase>(result);
 
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(commonQuestionsPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
-        Assert.That(result.Text, Is.EqualTo(Resources.CommonQuestionsPageText));
+        Assert.That(result.Text, Is.EqualTo($"{Resources.CommonQuestionsPageText}{Environment.NewLine}{Environment.NewLine}" +
+            $"**У тебя есть возможность для **__{3}__** вопросов!**{Environment.NewLine}{Environment.NewLine}"));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
         KeyboardHelper.AssertKeyboard(expectedButtons, (InlineKeyboardMarkup)result.ReplyMarkup);
@@ -99,7 +99,8 @@ public class CommonQuestionsPageTests
         Assert.That(result.UpdatedUserState.CurrentPage, Is.EqualTo(commonQuestionsPage));
         Assert.That(result.UpdatedUserState.Pages.Count, Is.EqualTo(4));
 
-        Assert.That(result.Text, Is.EqualTo(Resources.CommonQuestionsPageText));
+        Assert.That(result.Text, Is.EqualTo($"{Resources.CommonQuestionsPageText}{Environment.NewLine}{Environment.NewLine}" +
+            $"**У тебя есть возможность для **__{3}__** вопросов!**{Environment.NewLine}{Environment.NewLine}"));
         Assert.That(result.ParseMode, Is.EqualTo(ParseMode.Html));
 
         ClassicAssert.IsInstanceOf<InlineKeyboardMarkup>(result.ReplyMarkup);
